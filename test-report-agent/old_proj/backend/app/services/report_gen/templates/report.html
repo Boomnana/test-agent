@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>测试分析报告 - {{ job_id }}</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+</head>
+<body class="bg-gray-50 p-8">
+    <div class="max-w-7xl mx-auto bg-white shadow-lg rounded-lg overflow-hidden">
+        <!-- Header -->
+        <div class="bg-blue-600 text-white p-6">
+            <h1 class="text-3xl font-bold">测试结果分析报告</h1>
+            <p class="mt-2 opacity-80">任务 ID: {{ job_id }} | 生成时间: {{ generated_at }}</p>
+        </div>
+
+        <!-- Executive Summary -->
+        <div class="p-6 border-b">
+            <h2 class="text-xl font-bold mb-4 text-gray-800">1. 执行总结</h2>
+            <div class="prose max-w-none text-gray-600">
+                {{ summary_text | safe }}
+            </div>
+        </div>
+
+        <!-- Statistics -->
+        <div class="p-6 border-b bg-gray-50">
+            <h2 class="text-xl font-bold mb-4 text-gray-800">2. 执行统计</h2>
+            <div class="grid grid-cols-4 gap-4 mb-6">
+                <div class="bg-white p-4 rounded shadow text-center">
+                    <div class="text-gray-500">用例总数</div>
+                    <div class="text-2xl font-bold">{{ stats.total_cases }}</div>
+                </div>
+                <div class="bg-green-100 p-4 rounded shadow text-center">
+                    <div class="text-green-700">通过</div>
+                    <div class="text-2xl font-bold text-green-700">{{ stats.results.Pass or 0 }}</div>
+                </div>
+                <div class="bg-red-100 p-4 rounded shadow text-center">
+                    <div class="text-red-700">失败</div>
+                    <div class="text-2xl font-bold text-red-700">{{ stats.results.Fail or 0 }}</div>
+                </div>
+                <div class="bg-yellow-100 p-4 rounded shadow text-center">
+                    <div class="text-yellow-700">阻塞</div>
+                    <div class="text-2xl font-bold text-yellow-700">{{ stats.results.Blocked or 0 }}</div>
+                </div>
+            </div>
+            
+            <!-- Charts Placeholders -->
+            <div class="grid grid-cols-2 gap-6">
+                <div id="chart-results" class="h-64 bg-white rounded shadow"></div>
+                <div id="chart-modules" class="h-64 bg-white rounded shadow"></div>
+            </div>
+        </div>
+
+        <!-- Quality Audit / Suspicious Cases -->
+        {% if suspicious_cases %}
+        <div class="p-6 border-b bg-yellow-50">
+            <h2 class="text-xl font-bold mb-4 text-yellow-800">3. 质量审计与可信度分析 (疑似假成功)</h2>
+            <div class="mb-4 text-yellow-700">
+                <p>⚠️ 系统检测到以下 <strong>{{ suspicious_cases|length }}</strong> 个用例虽然被标记为“成功”，但其实际结果或备注显示可能存在失败。请重点复核！</p>
+            </div>
+            <div class="overflow-x-auto">
+                <table class="min-w-full text-sm text-left text-gray-500 border border-yellow-200">
+                    <thead class="text-xs text-yellow-900 uppercase bg-yellow-100">
+                        <tr>
+                            <th class="px-4 py-2">用例名称</th>
+                            <th class="px-4 py-2">预期结果</th>
+                            <th class="px-4 py-2">实际结果</th>
+                            <th class="px-4 py-2">备注</th>
+                            <th class="px-4 py-2">审计发现 (AI 分析)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for case in suspicious_cases %}
+                        <tr class="bg-white border-b hover:bg-yellow-50 tooltip-target"
+                            data-case-name="{{ case.case_name }}"
+                            data-module="{{ case.module }}"
+                            data-expected="{{ case.expected }}"
+                            data-actual="{{ case.actual }}"
+                            data-steps="{{ case.steps }}"
+                            data-remark="{{ case.remark }}">
+                            <td class="px-4 py-2 font-medium text-gray-900">{{ case.case_name }}</td>
+                            <td class="px-4 py-2">{{ case.expected }}</td>
+                            <td class="px-4 py-2">{{ case.actual }}</td>
+                            <td class="px-4 py-2 text-gray-600">{{ case.remark }}</td>
+                            <td class="px-4 py-2 text-red-600 font-bold">{{ case.audit_reason }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        {% endif %}
+
+        <!-- Defect Analysis -->
+        <div class="p-6 border-b">
+            <h2 class="text-xl font-bold mb-4 text-gray-800">4. 缺陷分析与风险</h2>
+            
+            {% for cluster in clusters %}
+            <div class="mb-6 bg-red-50 p-4 rounded-lg border border-red-100">
+                <h3 class="font-bold text-red-800 text-lg mb-2">{{ cluster.cluster_name }}</h3>
+                <p class="text-gray-700 mb-2"><strong>总结:</strong> {{ cluster.summary }}</p>
+                <p class="text-gray-700 mb-2"><strong>风险评估:</strong> {{ cluster.risk_assessment }}</p>
+                <div class="mt-3">
+                    <span class="text-sm font-semibold text-gray-500">相关用例:</span>
+                    <div class="flex flex-wrap gap-2 mt-1">
+                        {% for defect in cluster.defects %}
+                        <span class="px-2 py-1 bg-white border rounded text-xs text-gray-600 tooltip-target"
+                              data-case-name="{{ defect.testcase.case_name }}"
+                              data-module="{{ defect.testcase.module }}"
+                              data-expected="{{ defect.testcase.expected }}"
+                              data-actual="{{ defect.testcase.actual }}"
+                              data-steps="{{ defect.testcase.steps }}"
+                              data-remark="{{ defect.testcase.remark }}">
+                            {{ defect.testcase.case_name }}
+                        </span>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+            
+            {% if not clusters %}
+            <p class="text-gray-500 italic">未发现显著的缺陷聚类。</p>
+            {% endif %}
+        </div>
+
+        <!-- Detailed Failures -->
+        <div class="p-6 border-b">
+            <h2 class="text-xl font-bold mb-4 text-gray-800">5. 失败详情列表</h2>
+            <div class="overflow-x-auto">
+                <table class="min-w-full text-sm text-left text-gray-500">
+                    <thead class="text-xs text-gray-700 uppercase bg-gray-100">
+                        <tr>
+                            <th class="px-4 py-2">用例名称</th>
+                            <th class="px-4 py-2">模块</th>
+                            <th class="px-4 py-2">结果</th>
+                            <th class="px-4 py-2">观察事实</th>
+                            <th class="px-4 py-2">推测原因</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for defect in defects %}
+                        <tr class="bg-white border-b hover:bg-gray-50 tooltip-target"
+                            data-case-name="{{ defect.testcase.case_name }}"
+                            data-module="{{ defect.testcase.module }}"
+                            data-expected="{{ defect.testcase.expected }}"
+                            data-actual="{{ defect.testcase.actual }}"
+                            data-steps="{{ defect.testcase.steps }}"
+                            data-remark="{{ defect.testcase.remark }}">
+                            <td class="px-4 py-2 font-medium text-gray-900">{{ defect.testcase.case_name }}</td>
+                            <td class="px-4 py-2">{{ defect.testcase.module }}</td>
+                            <td class="px-4 py-2 text-red-600 font-bold">{{ defect.testcase.normalized_result }}</td>
+                            <td class="px-4 py-2">{{ defect.observed_fact }}</td>
+                            <td class="px-4 py-2">{{ defect.hypothesis }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Appendix: All Cases -->
+        <div class="p-6">
+            <h2 class="text-xl font-bold mb-4 text-gray-800">6. 附录：完整测试报告</h2>
+            <div class="overflow-x-auto">
+                <table class="min-w-full text-sm text-left text-gray-500">
+                    <thead class="text-xs text-gray-700 uppercase bg-gray-100">
+                        <tr>
+                            <th class="px-4 py-2">ID</th>
+                            <th class="px-4 py-2">用例名称</th>
+                            <th class="px-4 py-2">模块</th>
+                            <th class="px-4 py-2">结果</th>
+                            <th class="px-4 py-2">备注</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for case in all_cases %}
+                        <tr class="bg-white border-b hover:bg-gray-50">
+                            <td class="px-4 py-2">{{ loop.index }}</td>
+                            <td class="px-4 py-2 font-medium text-gray-900">{{ case.case_name }}</td>
+                            <td class="px-4 py-2">{{ case.module }}</td>
+                            <td class="px-4 py-2">
+                                {% if case.normalized_result == 'Pass' %}
+                                <span class="text-green-600 font-bold">Pass</span>
+                                {% elif case.normalized_result == 'Fail' %}
+                                <span class="text-red-600 font-bold">Fail</span>
+                                {% else %}
+                                <span class="text-yellow-600 font-bold">{{ case.normalized_result }}</span>
+                                {% endif %}
+                            </td>
+                            <td class="px-4 py-2">{{ case.remark }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- Tooltip Element -->
+    <div id="case-tooltip" class="fixed hidden bg-gray-800 text-white text-xs p-4 rounded shadow-xl z-50 max-w-lg pointer-events-none transition-opacity duration-300 opacity-0">
+        <div class="grid grid-cols-1 gap-2">
+            <div><span class="font-bold text-blue-300">模块:</span> <span id="tt-module"></span></div>
+            <div><span class="font-bold text-blue-300">用例:</span> <span id="tt-name"></span></div>
+            <div><span class="font-bold text-blue-300">步骤:</span> <span id="tt-steps" class="whitespace-pre-wrap"></span></div>
+            <div><span class="font-bold text-blue-300">预期:</span> <span id="tt-expected" class="whitespace-pre-wrap"></span></div>
+            <div><span class="font-bold text-blue-300">实际:</span> <span id="tt-actual" class="whitespace-pre-wrap"></span></div>
+            <div><span class="font-bold text-blue-300">备注:</span> <span id="tt-remark"></span></div>
+        </div>
+    </div>
+
+    <script>
+        // Render Charts using Plotly
+        var resultData = [{
+            values: [{{ stats.results.Pass or 0 }}, {{ stats.results.Fail or 0 }}, {{ stats.results.Blocked or 0 }}, {{ stats.results.Skipped or 0 }}],
+            labels: ['通过', '失败', '阻塞', '跳过'],
+            type: 'pie',
+            marker: {colors: ['#4ade80', '#f87171', '#facc15', '#9ca3af']}
+        }];
+        Plotly.newPlot('chart-results', resultData, {title: '测试结果分布'});
+
+        var modules = {{ stats.modules | tojson }};
+        var moduleData = [{
+            x: Object.keys(modules),
+            y: Object.values(modules),
+            type: 'bar'
+        }];
+        Plotly.newPlot('chart-modules', moduleData, {title: '各模块用例数'});
+
+        // Tooltip Logic
+        const tooltip = document.getElementById('case-tooltip');
+        let tooltipTimer = null;
+        let activeElement = null;
+
+        function showTooltip(x, y, data) {
+            document.getElementById('tt-module').textContent = data.module || 'N/A';
+            document.getElementById('tt-name').textContent = data.name || 'N/A';
+            document.getElementById('tt-steps').textContent = data.steps || 'N/A';
+            document.getElementById('tt-expected').textContent = data.expected || 'N/A';
+            document.getElementById('tt-actual').textContent = data.actual || 'N/A';
+            document.getElementById('tt-remark').textContent = data.remark || 'N/A';
+
+            tooltip.style.left = (x + 15) + 'px';
+            tooltip.style.top = (y + 15) + 'px';
+            tooltip.classList.remove('hidden');
+            tooltip.classList.remove('opacity-0');
+        }
+
+        function hideTooltip() {
+            tooltip.classList.add('opacity-0');
+            tooltip.classList.add('hidden');
+        }
+
+        document.querySelectorAll('.tooltip-target').forEach(el => {
+            el.addEventListener('mouseenter', (e) => {
+                // Clear global timer if exists
+                if (tooltipTimer) {
+                    clearTimeout(tooltipTimer);
+                    tooltipTimer = null;
+                }
+                
+                // Hide current tooltip immediately
+                hideTooltip();
+                
+                // Set this element as active
+                activeElement = el;
+
+                // Capture data
+                const data = {
+                    name: el.getAttribute('data-case-name'),
+                    module: el.getAttribute('data-module'),
+                    expected: el.getAttribute('data-expected'),
+                    actual: el.getAttribute('data-actual'),
+                    steps: el.getAttribute('data-steps'),
+                    remark: el.getAttribute('data-remark')
+                };
+
+                // Initialize coordinates
+                el._mouseX = e.clientX;
+                el._mouseY = e.clientY;
+
+                // Start timer
+                tooltipTimer = setTimeout(() => {
+                    // Only show if this element is still active
+                    if (activeElement === el) {
+                        showTooltip(el._mouseX, el._mouseY, data);
+                    }
+                }, 1000); // 1 second delay
+            });
+
+            el.addEventListener('mousemove', (e) => {
+                // Update coordinates for when timer fires
+                el._mouseX = e.clientX;
+                el._mouseY = e.clientY;
+
+                // If tooltip is already visible AND this is the active element, move it
+                if (!tooltip.classList.contains('hidden') && activeElement === el) {
+                    tooltip.style.left = (e.clientX + 15) + 'px';
+                    tooltip.style.top = (e.clientY + 15) + 'px';
+                }
+            });
+
+            el.addEventListener('mouseleave', () => {
+                // Only clear if we are leaving the active element
+                if (activeElement === el) {
+                    if (tooltipTimer) {
+                        clearTimeout(tooltipTimer);
+                        tooltipTimer = null;
+                    }
+                    hideTooltip();
+                    activeElement = null;
+                }
+            });
+        });
+
+    </script>
+</body>
+</html>

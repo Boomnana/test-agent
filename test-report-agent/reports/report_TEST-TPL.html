@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>测试分析报告 - TEST-TPL</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+</head>
+<body class="bg-gray-50 p-8">
+    <div class="max-w-7xl mx-auto bg-white shadow-lg rounded-lg overflow-hidden">
+        <div class="bg-blue-600 text-white p-6">
+            <h1 class="text-3xl font-bold">测试结果分析报告</h1>
+            <p class="mt-2 opacity-80">任务 ID: TEST-TPL | 生成时间: 2026-01-15 12:00:00</p>
+        </div>
+        <div class="p-6 border-b">
+            <h2 class="text-xl font-bold mb-4 text-gray-800">1. 执行总结</h2>
+            <div class="prose max-w-none text-gray-600">
+                <p>测试总结</p>
+            </div>
+        </div>
+        <div class="p-6 border-b bg-gray-50">
+            <h2 class="text-xl font-bold mb-4 text-gray-800">2. 执行统计</h2>
+            <div class="grid grid-cols-4 gap-4 mb-6">
+                <div class="bg-white p-4 rounded shadow text-center">
+                    <div class="text-gray-500">用例总数</div>
+                    <div class="text-2xl font-bold">10</div>
+                </div>
+                <div class="bg-green-100 p-4 rounded shadow text-center">
+                    <div class="text-green-700">通过</div>
+                    <div class="text-2xl font-bold text-green-700">6</div>
+                </div>
+                <div class="bg-red-100 p-4 rounded shadow text-center">
+                    <div class="text-red-700">失败</div>
+                    <div class="text-2xl font-bold text-red-700">3</div>
+                </div>
+                <div class="bg-yellow-100 p-4 rounded shadow text-center">
+                    <div class="text-yellow-700">阻塞</div>
+                    <div class="text-2xl font-bold text-yellow-700">1</div>
+                </div>
+            </div>
+            <div class="grid grid-cols-2 gap-6">
+                <div id="chart-results" class="h-64 bg-white rounded shadow"></div>
+                <div id="chart-modules" class="h-64 bg-white rounded shadow"></div>
+            </div>
+        </div>
+        
+        <div class="p-6 border-b">
+            <h2 class="text-xl font-bold mb-4 text-gray-800">4. 缺陷分析与风险</h2>
+            
+            
+            <p class="text-gray-500 italic">未发现显著的缺陷聚类。</p>
+            
+        </div>
+        <div class="p-6 border-b">
+            <h2 class="text-xl font-bold mb-4 text-gray-800">5. 失败详情列表</h2>
+            <div class="overflow-x-auto">
+                <table class="min-w-full text-sm text-left text-gray-500">
+                    <thead class="text-xs text-gray-700 uppercase bg-gray-100">
+                        <tr>
+                            <th class="px-4 py-2">用例名称</th>
+                            <th class="px-4 py-2">模块</th>
+                            <th class="px-4 py-2">结果</th>
+                            <th class="px-4 py-2">观察事实</th>
+                            <th class="px-4 py-2">推测原因</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="p-6">
+            <h2 class="text-xl font-bold mb-4 text-gray-800">6. 附录：完整测试报告</h2>
+            <div class="overflow-x-auto">
+                <table class="min-w-full text-sm text-left text-gray-500">
+                    <thead class="text-xs text-gray-700 uppercase bg-gray-100">
+                        <tr>
+                            <th class="px-4 py-2">ID</th>
+                            <th class="px-4 py-2">用例名称</th>
+                            <th class="px-4 py-2">模块</th>
+                            <th class="px-4 py-2">结果</th>
+                            <th class="px-4 py-2">备注</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <script>
+        var resultValues = [6, 3, 1, 0];
+        var resultLabels = ['通过', '失败', '阻塞', '跳过'];
+        var resultData = [{
+            values: resultValues,
+            labels: resultLabels,
+            type: 'pie',
+            marker: {colors: ['#4ade80', '#f87171', '#facc15', '#9ca3af']},
+            hoverinfo: 'label+percent+value',
+            textinfo: 'label+percent'
+        }];
+        Plotly.newPlot('chart-results', resultData, {title: '测试结果分布', showlegend: true, legend: {orientation: 'h'}});
+
+        var modules = {
+            
+            "模块A": 4,
+            
+            "模块B": 6
+            
+        };
+        var moduleData = [{
+            x: Object.keys(modules),
+            y: Object.values(modules),
+            type: 'bar',
+            name: '模块用例数'
+        }];
+        Plotly.newPlot('chart-modules', moduleData, {title: '各模块用例数', showlegend: true, legend: {orientation: 'h'}});
+    </script>
+</body>
+</html>

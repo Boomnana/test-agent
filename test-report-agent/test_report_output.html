@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>测试分析报告 - test-job-123</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+</head>
+<body class="bg-gray-50 p-8">
+    <div class="max-w-7xl mx-auto bg-white shadow-lg rounded-lg overflow-hidden">
+        <div class="bg-blue-600 text-white p-6">
+            <h1 class="text-3xl font-bold">测试结果分析报告</h1>
+            <p class="mt-2 opacity-80">任务 ID: test-job-123 | 生成时间: 2026-01-15 17:48:25</p>
+        </div>
+        <div class="p-6 border-b">
+            <h2 class="text-xl font-bold mb-4 text-gray-800">1. 执行总结</h2>
+            <div class="prose max-w-none text-gray-600">
+                <p>Mock Summary</p>
+            </div>
+        </div>
+        <div class="p-6 border-b bg-gray-50">
+            <h2 class="text-xl font-bold mb-4 text-gray-800">2. 执行统计</h2>
+            <div class="grid grid-cols-4 gap-4 mb-6">
+                <div class="bg-white p-4 rounded shadow text-center">
+                    <div class="text-gray-500">用例总数</div>
+                    <div class="text-2xl font-bold">10</div>
+                </div>
+                <div class="bg-green-100 p-4 rounded shadow text-center">
+                    <div class="text-green-700">通过</div>
+                    <div class="text-2xl font-bold text-green-700">6</div>
+                </div>
+                <div class="bg-red-100 p-4 rounded shadow text-center">
+                    <div class="text-red-700">失败</div>
+                    <div class="text-2xl font-bold text-red-700">3</div>
+                </div>
+                <div class="bg-yellow-100 p-4 rounded shadow text-center">
+                    <div class="text-yellow-700">阻塞</div>
+                    <div class="text-2xl font-bold text-yellow-700">1</div>
+                </div>
+            </div>
+            <div class="grid grid-cols-2 gap-6">
+                <div id="chart-results" class="h-64 bg-white rounded shadow"></div>
+                <div id="chart-modules" class="h-64 bg-white rounded shadow"></div>
+            </div>
+        </div>
+        
+        <div class="p-6 border-b">
+            <h2 class="text-xl font-bold mb-4 text-gray-800">4. 缺陷分析与风险</h2>
+            
+            
+            <p class="text-gray-500 italic">未发现显著的缺陷聚类。</p>
+            
+        </div>
+        <div class="p-6 border-b">
+            <h2 class="text-xl font-bold mb-4 text-gray-800">5. 失败详情列表</h2>
+            <div class="overflow-x-auto">
+                <table class="min-w-full text-sm text-left text-gray-500">
+                    <thead class="text-xs text-gray-700 uppercase bg-gray-100">
+                        <tr>
+                            <th class="px-4 py-2">用例名称</th>
+                            <th class="px-4 py-2">模块</th>
+                            <th class="px-4 py-2">结果</th>
+                            <th class="px-4 py-2">观察事实</th>
+                            <th class="px-4 py-2">推测原因</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="p-6">
+            <h2 class="text-xl font-bold mb-4 text-gray-800">6. 附录：完整测试报告</h2>
+            <div class="overflow-x-auto">
+                <table class="min-w-full text-sm text-left text-gray-500">
+                    <thead class="text-xs text-gray-700 uppercase bg-gray-100">
+                        <tr>
+                            <th class="px-4 py-2">ID</th>
+                            <th class="px-4 py-2">用例名称</th>
+                            <th class="px-4 py-2">模块</th>
+                            <th class="px-4 py-2">结果</th>
+                            <th class="px-4 py-2">备注</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        
+                        <tr class="bg-white border-b hover:bg-gray-50">
+                            <td class="px-4 py-2">1</td>
+                            <td class="px-4 py-2 font-medium text-gray-900">Case0</td>
+                            <td class="px-4 py-2">ModuleA</td>
+                            <td class="px-4 py-2">
+                                
+                                <span class="text-green-600 font-bold">Pass</span>
+                                
+                            </td>
+                            <td class="px-4 py-2">remark</td>
+                        </tr>
+                        
+                        <tr class="bg-white border-b hover:bg-gray-50">
+                            <td class="px-4 py-2">2</td>
+                            <td class="px-4 py-2 font-medium text-gray-900">Case1</td>
+                            <td class="px-4 py-2">ModuleA</td>
+                            <td class="px-4 py-2">
+                                
+                                <span class="text-green-600 font-bold">Pass</span>
+                                
+                            </td>
+                            <td class="px-4 py-2">remark</td>
+                        </tr>
+                        
+                        <tr class="bg-white border-b hover:bg-gray-50">
+                            <td class="px-4 py-2">3</td>
+                            <td class="px-4 py-2 font-medium text-gray-900">Case2</td>
+                            <td class="px-4 py-2">ModuleA</td>
+                            <td class="px-4 py-2">
+                                
+                                <span class="text-green-600 font-bold">Pass</span>
+                                
+                            </td>
+                            <td class="px-4 py-2">remark</td>
+                        </tr>
+                        
+                        <tr class="bg-white border-b hover:bg-gray-50">
+                            <td class="px-4 py-2">4</td>
+                            <td class="px-4 py-2 font-medium text-gray-900">Case3</td>
+                            <td class="px-4 py-2">ModuleA</td>
+                            <td class="px-4 py-2">
+                                
+                                <span class="text-green-600 font-bold">Pass</span>
+                                
+                            </td>
+                            <td class="px-4 py-2">remark</td>
+                        </tr>
+                        
+                        <tr class="bg-white border-b hover:bg-gray-50">
+                            <td class="px-4 py-2">5</td>
+                            <td class="px-4 py-2 font-medium text-gray-900">Case4</td>
+                            <td class="px-4 py-2">ModuleA</td>
+                            <td class="px-4 py-2">
+                                
+                                <span class="text-green-600 font-bold">Pass</span>
+                                
+                            </td>
+                            <td class="px-4 py-2">remark</td>
+                        </tr>
+                        
+                        <tr class="bg-white border-b hover:bg-gray-50">
+                            <td class="px-4 py-2">6</td>
+                            <td class="px-4 py-2 font-medium text-gray-900">Case5</td>
+                            <td class="px-4 py-2">ModuleB</td>
+                            <td class="px-4 py-2">
+                                
+                                <span class="text-green-600 font-bold">Pass</span>
+                                
+                            </td>
+                            <td class="px-4 py-2">remark</td>
+                        </tr>
+                        
+                        <tr class="bg-white border-b hover:bg-gray-50">
+                            <td class="px-4 py-2">7</td>
+                            <td class="px-4 py-2 font-medium text-gray-900">Case6</td>
+                            <td class="px-4 py-2">ModuleB</td>
+                            <td class="px-4 py-2">
+                                
+                                <span class="text-red-600 font-bold">Fail</span>
+                                
+                            </td>
+                            <td class="px-4 py-2">remark</td>
+                        </tr>
+                        
+                        <tr class="bg-white border-b hover:bg-gray-50">
+                            <td class="px-4 py-2">8</td>
+                            <td class="px-4 py-2 font-medium text-gray-900">Case7</td>
+                            <td class="px-4 py-2">ModuleB</td>
+                            <td class="px-4 py-2">
+                                
+                                <span class="text-red-600 font-bold">Fail</span>
+                                
+                            </td>
+                            <td class="px-4 py-2">remark</td>
+                        </tr>
+                        
+                        <tr class="bg-white border-b hover:bg-gray-50">
+                            <td class="px-4 py-2">9</td>
+                            <td class="px-4 py-2 font-medium text-gray-900">Case8</td>
+                            <td class="px-4 py-2">ModuleB</td>
+                            <td class="px-4 py-2">
+                                
+                                <span class="text-red-600 font-bold">Fail</span>
+                                
+                            </td>
+                            <td class="px-4 py-2">remark</td>
+                        </tr>
+                        
+                        <tr class="bg-white border-b hover:bg-gray-50">
+                            <td class="px-4 py-2">10</td>
+                            <td class="px-4 py-2 font-medium text-gray-900">Case9</td>
+                            <td class="px-4 py-2">ModuleB</td>
+                            <td class="px-4 py-2">
+                                
+                                <span class="text-red-600 font-bold">Fail</span>
+                                
+                            </td>
+                            <td class="px-4 py-2">remark</td>
+                        </tr>
+                        
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- Tooltip Element -->
+    <div id="case-tooltip" class="fixed hidden bg-gray-800 text-white text-xs p-4 rounded shadow-xl z-50 max-w-lg pointer-events-none transition-opacity duration-300 opacity-0">
+        <div class="grid grid-cols-1 gap-2">
+            <div><span class="font-bold text-blue-300">模块:</span> <span id="tt-module"></span></div>
+            <div><span class="font-bold text-blue-300">用例:</span> <span id="tt-name"></span></div>
+            <div><span class="font-bold text-blue-300">步骤:</span> <span id="tt-steps" class="whitespace-pre-wrap"></span></div>
+            <div><span class="font-bold text-blue-300">预期:</span> <span id="tt-expected" class="whitespace-pre-wrap"></span></div>
+            <div><span class="font-bold text-blue-300">实际:</span> <span id="tt-actual" class="whitespace-pre-wrap"></span></div>
+            <div><span class="font-bold text-blue-300">备注:</span> <span id="tt-remark"></span></div>
+        </div>
+    </div>
+
+    <script>
+        // Parse the stats data passed from Python
+        var stats = {"total_cases": 10, "results": {"Pass": 6, "Fail": 3, "Blocked": 1, "Skipped": 0}, "pass_rate": 60.0, "modules": {"ModuleA": 5, "ModuleB": 5}, "top_failed_modules": {"ModuleB": 3}};
+
+        // Render Charts using Plotly
+        var passCount = stats.results['Pass'] || 0;
+        var failCount = stats.results['Fail'] || 0;
+        var blockedCount = stats.results['Blocked'] || 0;
+        var skippedCount = stats.results['Skipped'] || 0;
+
+        var resultData = [{
+            values: [passCount, failCount, blockedCount, skippedCount],
+            labels: ['通过', '失败', '阻塞', '跳过'],
+            type: 'pie',
+            marker: {colors: ['#4ade80', '#f87171', '#facc15', '#9ca3af']}
+        }];
+        Plotly.newPlot('chart-results', resultData, {title: '测试结果分布'});
+
+        var modules = stats.modules;
+        var moduleData = [{
+            x: Object.keys(modules),
+            y: Object.values(modules),
+            type: 'bar'
+        }];
+        Plotly.newPlot('chart-modules', moduleData, {title: '各模块用例数'});
+
+        // Tooltip Logic
+        const tooltip = document.getElementById('case-tooltip');
+        let tooltipTimer = null;
+        let activeElement = null;
+
+        function showTooltip(x, y, data) {
+            document.getElementById('tt-module').textContent = data.module || 'N/A';
+            document.getElementById('tt-name').textContent = data.name || 'N/A';
+            document.getElementById('tt-steps').textContent = data.steps || 'N/A';
+            document.getElementById('tt-expected').textContent = data.expected || 'N/A';
+            document.getElementById('tt-actual').textContent = data.actual || 'N/A';
+            document.getElementById('tt-remark').textContent = data.remark || 'N/A';
+
+            tooltip.style.left = (x + 15) + 'px';
+            tooltip.style.top = (y + 15) + 'px';
+            tooltip.classList.remove('hidden');
+            tooltip.classList.remove('opacity-0');
+        }
+
+        function hideTooltip() {
+            tooltip.classList.add('opacity-0');
+            tooltip.classList.add('hidden');
+        }
+
+        document.querySelectorAll('.tooltip-target').forEach(el => {
+            el.addEventListener('mouseenter', (e) => {
+                if (tooltipTimer) {
+                    clearTimeout(tooltipTimer);
+                    tooltipTimer = null;
+                }
+                hideTooltip();
+                activeElement = el;
+
+                const data = {
+                    name: el.getAttribute('data-case-name'),
+                    module: el.getAttribute('data-module'),
+                    expected: el.getAttribute('data-expected'),
+                    actual: el.getAttribute('data-actual'),
+                    steps: el.getAttribute('data-steps'),
+                    remark: el.getAttribute('data-remark')
+                };
+
+                el._mouseX = e.clientX;
+                el._mouseY = e.clientY;
+
+                tooltipTimer = setTimeout(() => {
+                    if (activeElement === el) {
+                        showTooltip(el._mouseX, el._mouseY, data);
+                    }
+                }, 1000);
+            });
+
+            el.addEventListener('mousemove', (e) => {
+                el._mouseX = e.clientX;
+                el._mouseY = e.clientY;
+                if (!tooltip.classList.contains('hidden') && activeElement === el) {
+                    tooltip.style.left = (e.clientX + 15) + 'px';
+                    tooltip.style.top = (e.clientY + 15) + 'px';
+                }
+            });
+
+            el.addEventListener('mouseleave', () => {
+                if (activeElement === el) {
+                    if (tooltipTimer) {
+                        clearTimeout(tooltipTimer);
+                        tooltipTimer = null;
+                    }
+                    hideTooltip();
+                    activeElement = null;
+                }
+            });
+        });
+    </script>
+</body>
+</html>

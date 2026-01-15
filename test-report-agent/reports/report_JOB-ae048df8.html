@@ -1,0 +1,2980 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>测试分析报告 - JOB-ae048df8</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+</head>
+<body class="bg-gray-50 p-8">
+    <div class="max-w-7xl mx-auto bg-white shadow-lg rounded-lg overflow-hidden">
+        <!-- Header -->
+        <div class="bg-blue-600 text-white p-6">
+            <h1 class="text-3xl font-bold">测试结果分析报告</h1>
+            <p class="mt-2 opacity-80">任务 ID: JOB-ae048df8 | 生成时间: 2026-01-07 18:25:32</p>
+        </div>
+
+        <!-- Executive Summary -->
+        <div class="p-6 border-b">
+            <h2 class="text-xl font-bold mb-4 text-gray-800">1. 执行总结</h2>
+            <div class="prose max-w-none text-gray-600">
+                <p>一、整体质量评估：</p>
+<p>本次测试共执行了91个测试用例，其中73个通过，18个失败，通过率为80.22%。从测试结果来看，整体质量较好，但仍有20%的测试用例未能通过，说明软件在某些方面还存在缺陷。</p>
+
+<p>二、关键风险领域：</p>
+<p>测试中发现，'闹钟模块'、'位置管理模块'、'预览模块'、'任务清单模块'和'同步模块'是失败用例最多的模块。特别是'闹钟模块'，有7个用例失败，这表明这些模块可能存在关键风险，需要重点关注和改进。</p>
+
+<p>三、改进建议：</p>
+<p>针对失败的用例，建议开发团队对'闹钟模块'、'位置管理模块'等关键模块进行深入分析，找出问题的根本原因，并进行修复。同时，对缺陷聚类中的'显示问题'、'交互响应问题'、'同步与解析问题'、'数据不一致问题'、'设置更新问题'进行专项测试，确保这些问题得到有效解决。</p>
+
+<p>四、数据可信度风险：</p>
+<p>在结果审计中发现了70个疑似'假成功'的用例，这可能影响测试结果的可信度。建议对这部分用例进行复测，确保测试结果的准确性。</p>
+            </div>
+        </div>
+
+        <!-- Statistics -->
+        <div class="p-6 border-b bg-gray-50">
+            <h2 class="text-xl font-bold mb-4 text-gray-800">2. 执行统计</h2>
+            <div class="grid grid-cols-4 gap-4 mb-6">
+                <div class="bg-white p-4 rounded shadow text-center">
+                    <div class="text-gray-500">用例总数</div>
+                    <div class="text-2xl font-bold">91</div>
+                </div>
+                <div class="bg-green-100 p-4 rounded shadow text-center">
+                    <div class="text-green-700">通过</div>
+                    <div class="text-2xl font-bold text-green-700">73</div>
+                </div>
+                <div class="bg-red-100 p-4 rounded shadow text-center">
+                    <div class="text-red-700">失败</div>
+                    <div class="text-2xl font-bold text-red-700">18</div>
+                </div>
+                <div class="bg-yellow-100 p-4 rounded shadow text-center">
+                    <div class="text-yellow-700">阻塞</div>
+                    <div class="text-2xl font-bold text-yellow-700">0</div>
+                </div>
+            </div>
+            
+            <!-- Charts Placeholders -->
+            <div class="grid grid-cols-2 gap-6">
+                <div id="chart-results" class="h-64 bg-white rounded shadow"></div>
+                <div id="chart-modules" class="h-64 bg-white rounded shadow"></div>
+            </div>
+        </div>
+
+        <!-- Quality Audit / Suspicious Cases -->
+        
+        <div class="p-6 border-b bg-yellow-50">
+            <h2 class="text-xl font-bold mb-4 text-yellow-800">3. 质量审计与可信度分析 (疑似假成功)</h2>
+            <div class="mb-4 text-yellow-700">
+                <p>⚠️ 系统检测到以下 <strong>70</strong> 个用例虽然被标记为“成功”，但其实际结果或备注显示可能存在失败。请重点复核！</p>
+            </div>
+            <div class="overflow-x-auto">
+                <table class="min-w-full text-sm text-left text-gray-500 border border-yellow-200">
+                    <thead class="text-xs text-yellow-900 uppercase bg-yellow-100">
+                        <tr>
+                            <th class="px-4 py-2">用例名称</th>
+                            <th class="px-4 py-2">预期结果</th>
+                            <th class="px-4 py-2">实际结果</th>
+                            <th class="px-4 py-2">备注</th>
+                            <th class="px-4 py-2">审计发现 (AI 分析)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        
+                        <tr class="bg-white border-b hover:bg-yellow-50 tooltip-target"
+                            data-case-name="T-Quillpad-编辑-Markdown-20251230_003148"
+                            data-module="编辑模块"
+                            data-expected="{"输入数据": "测试笔记\n# 一级标题\n**加粗**\n*斜体*", "前置条件": "App启动后停留在“所有笔记”页", "执行步骤": "1.点右下角“＋”\n2.在标题栏输入：测试笔记\n3.在正文输入：# 一级标题\n**加粗**\n*斜体*", "预期结果": "预览模式渲染为：一级标题（大字号加粗）、“加粗”字体加粗、“斜体”字体倾斜，无崩溃"}"
+                            data-actual="None"
+                            data-steps="1. 点击右下角绿色圆形“+”按钮，进入新建笔记编辑界面。 在标题栏输入“测试笔记” 在正文区域输入“# 一级标题\n**加粗**\n*斜体*”"
+                            data-remark="编辑-Markdown">
+                            <td class="px-4 py-2 font-medium text-gray-900">T-Quillpad-编辑-Markdown-20251230_003148</td>
+                            <td class="px-4 py-2">{"输入数据": "测试笔记\n# 一级标题\n**加粗**\n*斜体*", "前置条件": "App启动后停留在“所有笔记”页", "执行步骤": "1.点右下角“＋”\n2.在标题栏输入：测试笔记\n3.在正文输入：# 一级标题\n**加粗**\n*斜体*", "预期结果": "预览模式渲染为：一级标题（大字号加粗）、“加粗”字体加粗、“斜体”字体倾斜，无崩溃"}</td>
+                            <td class="px-4 py-2">None</td>
+                            <td class="px-4 py-2 text-gray-600">编辑-Markdown</td>
+                            <td class="px-4 py-2 text-red-600 font-bold">实际结果为N/A，无法证明测试通过。</td>
+                        </tr>
+                        
+                        <tr class="bg-white border-b hover:bg-yellow-50 tooltip-target"
+                            data-case-name="T-Quillpad-编辑-保存-20251230_003756"
+                            data-module="编辑模块"
+                            data-expected="{"输入数据": "B", "前置条件": "已存在内容为A的笔记", "执行步骤": "1.点笔记进入编辑\n2.将A改为B并点“←”返回", "预期结果": "再次打开该笔记仅显示B，无A残留；修改时间更新"}"
+                            data-actual="None"
+                            data-steps="1. 点击“无标题”笔记卡片，进入编辑界面。 连续删除20个字符，以清空当前笔记中的所有文本内容。 在编辑框中输入“B” 点击左上角的返回箭头以保存当前笔记的修改。 点击“无标题”笔记卡片，进入详情页以验证内容是否仅显示“B”且修改时间已更新"
+                            data-remark="编辑-保存">
+                            <td class="px-4 py-2 font-medium text-gray-900">T-Quillpad-编辑-保存-20251230_003756</td>
+                            <td class="px-4 py-2">{"输入数据": "B", "前置条件": "已存在内容为A的笔记", "执行步骤": "1.点笔记进入编辑\n2.将A改为B并点“←”返回", "预期结果": "再次打开该笔记仅显示B，无A残留；修改时间更新"}</td>
+                            <td class="px-4 py-2">None</td>
+                            <td class="px-4 py-2 text-gray-600">编辑-保存</td>
+                            <td class="px-4 py-2 text-red-600 font-bold">实际结果为N/A，无法证明测试通过。</td>
+                        </tr>
+                        
+                        <tr class="bg-white border-b hover:bg-yellow-50 tooltip-target"
+                            data-case-name="T-Quillpad-笔记-置顶-20251230_014016"
+                            data-module="笔记管理模块"
+                            data-expected="{"前置条件": "列表至少2条笔记", "执行步骤": "1.长按任一条笔记\n2.在弹出菜单选“置顶”", "预期结果": "该笔记立即移至列表首位，置顶图标高亮；新建笔记后仍保持第一"}"
+                            data-actual="None"
+                            data-steps="1. 长按右侧包含“测试笔记 一级标题”的“无标题”笔记，以触发操作菜单。 点击弹出菜单中的“置顶”选项。 点击右下角的绿色加号按钮以新建一条空白笔记。 点击左上角返回箭头，退出当前笔记编辑页面。 点击右下角绿色加号按钮，新建一条空白笔记。 在当前激活的输入框中输入“验证笔记2” 点击左上角返回箭头，保存并退出当前笔记编辑页面"
+                            data-remark="笔记-置顶">
+                            <td class="px-4 py-2 font-medium text-gray-900">T-Quillpad-笔记-置顶-20251230_014016</td>
+                            <td class="px-4 py-2">{"前置条件": "列表至少2条笔记", "执行步骤": "1.长按任一条笔记\n2.在弹出菜单选“置顶”", "预期结果": "该笔记立即移至列表首位，置顶图标高亮；新建笔记后仍保持第一"}</td>
+                            <td class="px-4 py-2">None</td>
+                            <td class="px-4 py-2 text-gray-600">笔记-置顶</td>
+                            <td class="px-4 py-2 text-red-600 font-bold">实际结果为N/A，无法证明测试通过。</td>
+                        </tr>
+                        
+                        <tr class="bg-white border-b hover:bg-yellow-50 tooltip-target"
+                            data-case-name="T-Quillpad-笔记-隐藏-20251230_014741"
+                            data-module="笔记管理模块"
+                            data-expected="{"前置条件": "任一条笔记可见", "执行步骤": "1.长按→选“隐藏”\n2.点右上角“列表”→勾选“显示隐藏的笔记”", "预期结果": "主列表不再显示该笔记；隐藏专区出现该条，图标带斜线"}"
+                            data-actual="None"
+                            data-steps="1. 长按左侧第一条笔记，以调出操作菜单。 点击弹出菜单中的“隐藏”选项。 点击屏幕左上角的三条横线菜单图标，以进入设置界面。 点击“设置”选项，进入设置界面。 点击左上角返回箭头，退出设置界面，回到主笔记列表。 点击右上角筛选图标，以寻找“显示隐藏的笔记”开关。 点击屏幕空白处，关闭当前弹出的排序菜单。 点击右上角三个竖点的“更多”菜单图标，以查找“隐藏笔记”相关功能入口。 点击“显示隐藏的笔记”右侧的复选框，以开启该功能。 长按主笔记列表中左侧第一条笔记，调出操作菜单并再次选择“隐藏”选项。 点击左上角返回箭头，退出当前“选定的1条笔记”界面，返回主笔记列表。"
+                            data-remark="笔记-隐藏">
+                            <td class="px-4 py-2 font-medium text-gray-900">T-Quillpad-笔记-隐藏-20251230_014741</td>
+                            <td class="px-4 py-2">{"前置条件": "任一条笔记可见", "执行步骤": "1.长按→选“隐藏”\n2.点右上角“列表”→勾选“显示隐藏的笔记”", "预期结果": "主列表不再显示该笔记；隐藏专区出现该条，图标带斜线"}</td>
+                            <td class="px-4 py-2">None</td>
+                            <td class="px-4 py-2 text-gray-600">笔记-隐藏</td>
+                            <td class="px-4 py-2 text-red-600 font-bold">实际结果为N/A，无法证明测试通过。</td>
+                        </tr>
+                        
+                        <tr class="bg-white border-b hover:bg-yellow-50 tooltip-target"
+                            data-case-name="T-Quillpad-笔记-提醒-20251230_015940"
+                            data-module="提醒功能模块"
+                            data-expected="{"输入数据": "开会", "前置条件": "已允许闹钟权限", "执行步骤": "1.在笔记详情点“提醒”图标→“新提醒”\n2.名称：开会\n3.选12:30", "预期结果": "到达设定时间系统弹出通知：“开会”，点击后跳该笔记"}"
+                            data-actual="None"
+                            data-steps="1. 点击左侧标题为“无标题”的笔记卡片，进入该笔记详情页。 点击顶部右侧的铃铛图标，进入设置提醒的界面。 点击“新提醒”选项，进入创建新提醒的界面。 在“提醒事项名称”输入框中输入“开会” 点击时间选择器区域，准备修改提醒时间。 点击钟面上的“12”以设置小时为12。 点击钟面上的“30”刻度，以设置分钟为30。 点击“确定”按钮确认时间设置 点击“保存”按钮以确认并创建提醒。"
+                            data-remark="笔记-提醒">
+                            <td class="px-4 py-2 font-medium text-gray-900">T-Quillpad-笔记-提醒-20251230_015940</td>
+                            <td class="px-4 py-2">{"输入数据": "开会", "前置条件": "已允许闹钟权限", "执行步骤": "1.在笔记详情点“提醒”图标→“新提醒”\n2.名称：开会\n3.选12:30", "预期结果": "到达设定时间系统弹出通知：“开会”，点击后跳该笔记"}</td>
+                            <td class="px-4 py-2">None</td>
+                            <td class="px-4 py-2 text-gray-600">笔记-提醒</td>
+                            <td class="px-4 py-2 text-red-600 font-bold">实际结果为N/A，无法证明测试通过。</td>
+                        </tr>
+                        
+                        <tr class="bg-white border-b hover:bg-yellow-50 tooltip-target"
+                            data-case-name="T-Quillpad-附件-录音-20251230_020527"
+                            data-module="附件模块"
+                            data-expected="{"前置条件": "进入编辑页", "执行步骤": "1.点右上角“列表”→点击“录制音频”→录制3s→停止", "预期结果": "音频控件插入成功，可播放且时长正确；文件保存在附件目录"}"
+                            data-actual="None"
+                            data-steps="1. 点击左侧“无标题 验证笔记2”笔记卡片以进入编辑页面。 点击屏幕右上角的“列表”图标（三个竖点） 点击弹出菜单中的“录制音频”选项。 点击录音弹窗中的麦克风图标以开始录音。 点击录音弹窗中的灰色方块停止按钮以结束录音。"
+                            data-remark="附件-录音">
+                            <td class="px-4 py-2 font-medium text-gray-900">T-Quillpad-附件-录音-20251230_020527</td>
+                            <td class="px-4 py-2">{"前置条件": "进入编辑页", "执行步骤": "1.点右上角“列表”→点击“录制音频”→录制3s→停止", "预期结果": "音频控件插入成功，可播放且时长正确；文件保存在附件目录"}</td>
+                            <td class="px-4 py-2">None</td>
+                            <td class="px-4 py-2 text-gray-600">附件-录音</td>
+                            <td class="px-4 py-2 text-red-600 font-bold">实际结果为N/A，无法证明测试通过。</td>
+                        </tr>
+                        
+                        <tr class="bg-white border-b hover:bg-yellow-50 tooltip-target"
+                            data-case-name="T-Quillpad-附件-文件-20251230_021005"
+                            data-module="附件模块"
+                            data-expected="{"输入数据": "test.jpg", "前置条件": "进入编辑页", "执行步骤": "1.点右上角“列表”→点“附加文件”→选图片→确认", "预期结果": "笔记上方出现图片，点击可放大图片"}"
+                            data-actual="None"
+                            data-steps="1. 点击“无标题”笔记卡片，进入该笔记的编辑页面。 点击屏幕右上角的“列表”图标，以打开菜单。 点击菜单中的“附加文件”选项。 点击顶部的搜索图标，准备进行文件搜索。 在搜索框中输入“test.jpg” 点击搜索框左侧的返回箭头，退出当前空搜索结果页面。 点击“netease”文件夹以进入查看其内容。 点击左上角返回箭头，退出“netease”文件夹，回到上级文件列表。 点击“图片”选项，进入图片文件选择界面。 点击 "Screenshots" 图片以选中并准备添加为附件。 点击菜单外的空白区域以关闭当前弹出的菜单。 长按“Screenshot_2025122...”图片缩略图的中心区域，以尝试激活文件选择器的选择模式并选中该图片。 点击屏幕右上角的“打开”按钮，以确认添加已选图片为附件。 点击笔记上方的“Screenshot_2025122...”图片缩略图，以验证其是否可被点击并放大查看。"
+                            data-remark="附件-文件">
+                            <td class="px-4 py-2 font-medium text-gray-900">T-Quillpad-附件-文件-20251230_021005</td>
+                            <td class="px-4 py-2">{"输入数据": "test.jpg", "前置条件": "进入编辑页", "执行步骤": "1.点右上角“列表”→点“附加文件”→选图片→确认", "预期结果": "笔记上方出现图片，点击可放大图片"}</td>
+                            <td class="px-4 py-2">None</td>
+                            <td class="px-4 py-2 text-gray-600">附件-文件</td>
+                            <td class="px-4 py-2 text-red-600 font-bold">实际结果为N/A，无法证明测试通过。</td>
+                        </tr>
+                        
+                        <tr class="bg-white border-b hover:bg-yellow-50 tooltip-target"
+                            data-case-name="T-Quillpad-笔记本-创建-20251230_022220"
+                            data-module="笔记本管理模块"
+                            data-expected="{"输入数据": "工作", "前置条件": "“您的笔记本”页", "执行步骤": "1.点右上角“＋”\n2.输入名称：工作", "预期结果": "列表新增“工作”分组；侧边栏同步出现"}"
+                            data-actual="None"
+                            data-steps="1. 点击屏幕右下角的绿色“＋”按钮。 点击左上角的返回箭头，返回到上一级页面。 点击左上角的菜单图标（三条横线），以打开导航抽屉。 点击“您的笔记本”选项，进入分组管理页面。 点击屏幕右上角的“+”按钮。 在“笔记本名称”输入框中输入“工作”。 点击“保存”按钮以确认创建名为“工作”的新笔记本分组。"
+                            data-remark="笔记本-创建">
+                            <td class="px-4 py-2 font-medium text-gray-900">T-Quillpad-笔记本-创建-20251230_022220</td>
+                            <td class="px-4 py-2">{"输入数据": "工作", "前置条件": "“您的笔记本”页", "执行步骤": "1.点右上角“＋”\n2.输入名称：工作", "预期结果": "列表新增“工作”分组；侧边栏同步出现"}</td>
+                            <td class="px-4 py-2">None</td>
+                            <td class="px-4 py-2 text-gray-600">笔记本-创建</td>
+                            <td class="px-4 py-2 text-red-600 font-bold">实际结果为N/A，无法证明测试通过。</td>
+                        </tr>
+                        
+                        <tr class="bg-white border-b hover:bg-yellow-50 tooltip-target"
+                            data-case-name="T-Quillpad-笔记本-移动-20251230_022912"
+                            data-module="笔记管理模块"
+                            data-expected="{"前置条件": "“所有笔记”存在一条笔记", "执行步骤": "1.长按该笔记→“移动到…”→选“工作”", "预期结果": "原列表消失；“工作”分组数量+1，点击进入可见该笔记"}"
+                            data-actual="None"
+                            data-steps="1. 长按标题为“无标题”的笔记卡片，以触发上下文操作菜单。 点击“移动到...”选项，以进入分组选择界面。 点击“工作”分组选项，使其被选中。 点击“无标题”笔记卡片，进入该笔记的详情页面。 点击左上角返回箭头，返回至上一级页面。 长按标题为“无标题”的笔记卡片，触发上下文操作菜单。 点击“移动到...”选项，进入分组选择界面。 点击“完成！”按钮，确认将“无标题”笔记移动至“工作”分组。 点击左上角的菜单按钮，以打开侧边栏菜单。 点击侧边栏中的“工作”分组选项，进入该分组页面。 点击左上角菜单按钮，以打开侧边栏菜单，准备切换回“所有笔记”主列表。 点击侧边栏中的“所有笔记”选项，返回主列表页面。 点击左上角菜单按钮，以打开侧边栏菜单。 点击侧边栏中的“工作”分组选项，进入该分组页面。"
+                            data-remark="笔记本-移动">
+                            <td class="px-4 py-2 font-medium text-gray-900">T-Quillpad-笔记本-移动-20251230_022912</td>
+                            <td class="px-4 py-2">{"前置条件": "“所有笔记”存在一条笔记", "执行步骤": "1.长按该笔记→“移动到…”→选“工作”", "预期结果": "原列表消失；“工作”分组数量+1，点击进入可见该笔记"}</td>
+                            <td class="px-4 py-2">None</td>
+                            <td class="px-4 py-2 text-gray-600">笔记本-移动</td>
+                            <td class="px-4 py-2 text-red-600 font-bold">实际结果为N/A，无法证明测试通过。</td>
+                        </tr>
+                        
+                        <tr class="bg-white border-b hover:bg-yellow-50 tooltip-target"
+                            data-case-name="T-Quillpad-标签-添加-20251230_024306"
+                            data-module="标签管理模块"
+                            data-expected="{"输入数据": "会议", "前置条件": "编辑页可见“标签”按钮", "执行步骤": "1.点右上角“列表”→点“标签”→点右上角“+”→输入“会议”→勾选该标签", "预期结果": "笔记卡片下方出现标签；标签页同时新增标签"}"
+                            data-actual="None"
+                            data-steps="1. 点击右上角的“列表”图标，以进入标签管理界面。 点击屏幕空白处，关闭当前弹出的排序菜单。 点击左上角的三横线菜单图标，以打开侧边栏菜单。 点击侧边栏中的“标签”选项，进入标签设置页面。 点击右上角的“+”按钮，以打开新建标签输入框。 输入“会议”作为新标签名称 点击“保存”按钮，确认创建“会议”标签。 点击左上角返回箭头，返回笔记主界面 点击“验证笔记2”卡片以进入其编辑页面。 点击右下角绿色铅笔图标，进入完整编辑模式。 点击右上角三点菜单图标，查看是否包含“标签”或“添加标签”选项 点击菜单中的“标签”选项，进入标签选择界面。 点击“会议”标签旁边的复选框，以勾选该标签。 点击左上角返回箭头，返回笔记编辑页面。 点击左上角返回箭头，返回笔记主界面。"
+                            data-remark="标签-添加">
+                            <td class="px-4 py-2 font-medium text-gray-900">T-Quillpad-标签-添加-20251230_024306</td>
+                            <td class="px-4 py-2">{"输入数据": "会议", "前置条件": "编辑页可见“标签”按钮", "执行步骤": "1.点右上角“列表”→点“标签”→点右上角“+”→输入“会议”→勾选该标签", "预期结果": "笔记卡片下方出现标签；标签页同时新增标签"}</td>
+                            <td class="px-4 py-2">None</td>
+                            <td class="px-4 py-2 text-gray-600">标签-添加</td>
+                            <td class="px-4 py-2 text-red-600 font-bold">实际结果为N/A，无法证明测试通过。</td>
+                        </tr>
+                        
+                        <tr class="bg-white border-b hover:bg-yellow-50 tooltip-target"
+                            data-case-name="T-Quillpad-标签-搜索-20251230_025727"
+                            data-module="搜索模块"
+                            data-expected="{"输入数据": "会议", "前置条件": "已存在带“会议”标签的笔记", "执行步骤": "1.在搜索栏输入：会议", "预期结果": "仅列出含“会议”标签的笔记；显示关键词"}"
+                            data-actual="None"
+                            data-steps="1. 点击顶部的搜索图标以进入搜索模式。 在搜索栏中输入“会议”"
+                            data-remark="标签-搜索">
+                            <td class="px-4 py-2 font-medium text-gray-900">T-Quillpad-标签-搜索-20251230_025727</td>
+                            <td class="px-4 py-2">{"输入数据": "会议", "前置条件": "已存在带“会议”标签的笔记", "执行步骤": "1.在搜索栏输入：会议", "预期结果": "仅列出含“会议”标签的笔记；显示关键词"}</td>
+                            <td class="px-4 py-2">None</td>
+                            <td class="px-4 py-2 text-gray-600">标签-搜索</td>
+                            <td class="px-4 py-2 text-red-600 font-bold">实际结果为N/A，无法证明测试通过。</td>
+                        </tr>
+                        
+                        <tr class="bg-white border-b hover:bg-yellow-50 tooltip-target"
+                            data-case-name="T-Quillpad-笔记-归档-20251230_030017"
+                            data-module="笔记管理模块"
+                            data-expected="{"前置条件": "任一条笔记在“所有笔记”", "执行步骤": "1.长按→“存档”", "预期结果": "主列表消失；进入“存档”可见该笔记"}"
+                            data-actual="None"
+                            data-steps="1. 长按标题为“验证笔记2”的笔记卡片 点击菜单中的“存档”选项。 点击左上角的菜单图标（三横线），以打开侧边栏导航。 点击侧边栏中的“存档”选项，进入存档笔记列表。"
+                            data-remark="笔记-归档">
+                            <td class="px-4 py-2 font-medium text-gray-900">T-Quillpad-笔记-归档-20251230_030017</td>
+                            <td class="px-4 py-2">{"前置条件": "任一条笔记在“所有笔记”", "执行步骤": "1.长按→“存档”", "预期结果": "主列表消失；进入“存档”可见该笔记"}</td>
+                            <td class="px-4 py-2">None</td>
+                            <td class="px-4 py-2 text-gray-600">笔记-归档</td>
+                            <td class="px-4 py-2 text-red-600 font-bold">实际结果为N/A，无法证明测试通过。</td>
+                        </tr>
+                        
+                        <tr class="bg-white border-b hover:bg-yellow-50 tooltip-target"
+                            data-case-name="T-Quillpad-存档-恢复-20251230_030437"
+                            data-module="笔记管理模块"
+                            data-expected="{"前置条件": "该笔记已在存档", "执行步骤": "1.在存档页长按→“取消存档”", "预期结果": "笔记回到原分组/所有笔记；存档数量-1"}"
+                            data-actual="None"
+                            data-steps="1. 点击左上角的菜单按钮（三条横线），以打开侧边栏或导航菜单。 点击侧边栏中的“存档”选项，进入存档笔记页面。 长按标题为“无标题”的笔记，以弹出操作菜单。 点击“取消存档”选项，以将“无标题”笔记从存档中恢复。"
+                            data-remark="存档-恢复">
+                            <td class="px-4 py-2 font-medium text-gray-900">T-Quillpad-存档-恢复-20251230_030437</td>
+                            <td class="px-4 py-2">{"前置条件": "该笔记已在存档", "执行步骤": "1.在存档页长按→“取消存档”", "预期结果": "笔记回到原分组/所有笔记；存档数量-1"}</td>
+                            <td class="px-4 py-2">None</td>
+                            <td class="px-4 py-2 text-gray-600">存档-恢复</td>
+                            <td class="px-4 py-2 text-red-600 font-bold">实际结果为N/A，无法证明测试通过。</td>
+                        </tr>
+                        
+                        <tr class="bg-white border-b hover:bg-yellow-50 tooltip-target"
+                            data-case-name="T-Quillpad-搜索-全文-20251230_030859"
+                            data-module="搜索模块"
+                            data-expected="{"输入数据": "项目进度", "前置条件": "存在内容含“项目进度”的笔记", "执行步骤": "1.在顶部搜索框输入：项目进度", "预期结果": "列出标题或正文含该词的所有笔记；摘要高亮关键词"}"
+                            data-actual="None"
+                            data-steps="1. 点击屏幕右下角的绿色加号按钮以新建一条笔记。 在标题区域输入“项目进度” 点击左上角的返回箭头，以退出当前笔记详情页，返回主笔记列表界面。 点击主界面顶部右侧的搜索图标，以进入搜索界面。 在搜索框中输入“项目进度”。"
+                            data-remark="搜索-全文">
+                            <td class="px-4 py-2 font-medium text-gray-900">T-Quillpad-搜索-全文-20251230_030859</td>
+                            <td class="px-4 py-2">{"输入数据": "项目进度", "前置条件": "存在内容含“项目进度”的笔记", "执行步骤": "1.在顶部搜索框输入：项目进度", "预期结果": "列出标题或正文含该词的所有笔记；摘要高亮关键词"}</td>
+                            <td class="px-4 py-2">None</td>
+                            <td class="px-4 py-2 text-gray-600">搜索-全文</td>
+                            <td class="px-4 py-2 text-red-600 font-bold">实际结果为N/A，无法证明测试通过。</td>
+                        </tr>
+                        
+                        <tr class="bg-white border-b hover:bg-yellow-50 tooltip-target"
+                            data-case-name="T-Quillpad-同步-登录-20251230_031539"
+                            data-module="同步模块"
+                            data-expected="{"输入数据": "https://xxx.com", "前置条件": "已部署Nextcloud且账号正常", "执行步骤": "1.设置→同步设置→勾选Nexxtcloud云服务→输入网址/账号/密码→连接", "预期结果": "提示“连接成功”，状态显示“已同步”"}"
+                            data-actual="None"
+                            data-steps="1. 点击屏幕左上角的菜单图标，以打开导航菜单。 点击导航菜单中的“设置”选项，进入设置页面。"
+                            data-remark="同步-登录">
+                            <td class="px-4 py-2 font-medium text-gray-900">T-Quillpad-同步-登录-20251230_031539</td>
+                            <td class="px-4 py-2">{"输入数据": "https://xxx.com", "前置条件": "已部署Nextcloud且账号正常", "执行步骤": "1.设置→同步设置→勾选Nexxtcloud云服务→输入网址/账号/密码→连接", "预期结果": "提示“连接成功”，状态显示“已同步”"}</td>
+                            <td class="px-4 py-2">None</td>
+                            <td class="px-4 py-2 text-gray-600">同步-登录</td>
+                            <td class="px-4 py-2 text-red-600 font-bold">实际结果为N/A，无法证明测试通过。</td>
+                        </tr>
+                        
+                        <tr class="bg-white border-b hover:bg-yellow-50 tooltip-target"
+                            data-case-name="T-Quillpad-主题-深色-20251230_040245"
+                            data-module="主题与设置模块"
+                            data-expected="{"前置条件": "当前为浅色", "执行步骤": "1.设置→主题模式→选“深色”", "预期结果": "背景变黑、文字变白；重启后保持"}"
+                            data-actual="None"
+                            data-steps="1. 点击屏幕左上角的三条横线菜单图标，进入应用主菜单。 点击“设置”选项，进入设置页面。 点击“主题模式”选项，进入主题选择界面。 点击“深色”选项以选择深色模式。 按下主页按钮，返回到设备的主屏幕。 点击 Quillpad 应用图标，重新打开应用。"
+                            data-remark="主题-深色">
+                            <td class="px-4 py-2 font-medium text-gray-900">T-Quillpad-主题-深色-20251230_040245</td>
+                            <td class="px-4 py-2">{"前置条件": "当前为浅色", "执行步骤": "1.设置→主题模式→选“深色”", "预期结果": "背景变黑、文字变白；重启后保持"}</td>
+                            <td class="px-4 py-2">None</td>
+                            <td class="px-4 py-2 text-gray-600">主题-深色</td>
+                            <td class="px-4 py-2 text-red-600 font-bold">实际结果为N/A，无法证明测试通过。</td>
+                        </tr>
+                        
+                        <tr class="bg-white border-b hover:bg-yellow-50 tooltip-target"
+                            data-case-name="T-Quillpad-主题-浅色-20251230_040918"
+                            data-module="界面设置模块"
+                            data-expected="{"前置条件": "当前为深色", "执行步骤": "1.设置→主题模式→选“浅色”", "预期结果": "背景变白、文字变深；切换平滑无闪烁"}"
+                            data-actual="None"
+                            data-steps="1. 点击左上角三条横线菜单图标，以打开侧边栏或功能菜单。 点击“设置”选项以进入设置页面。 点击“主题模式”选项，进入主题模式设置页面。 点击“浅色”选项以切换主题模式。"
+                            data-remark="主题-浅色">
+                            <td class="px-4 py-2 font-medium text-gray-900">T-Quillpad-主题-浅色-20251230_040918</td>
+                            <td class="px-4 py-2">{"前置条件": "当前为深色", "执行步骤": "1.设置→主题模式→选“浅色”", "预期结果": "背景变白、文字变深；切换平滑无闪烁"}</td>
+                            <td class="px-4 py-2">None</td>
+                            <td class="px-4 py-2 text-gray-600">主题-浅色</td>
+                            <td class="px-4 py-2 text-red-600 font-bold">实际结果为N/A，无法证明测试通过。</td>
+                        </tr>
+                        
+                        <tr class="bg-white border-b hover:bg-yellow-50 tooltip-target"
+                            data-case-name="T-Quillpad-主题-配色-20251230_041429"
+                            data-module="界面设置模块"
+                            data-expected="{"前置条件": "当前为蓝色", "执行步骤": "1.设置→配色方案→选“绿色”", "预期结果": "导航栏、按钮、高亮区域立即变为绿色；重启保持"}"
+                            data-actual="None"
+                            data-steps="1. 点击屏幕右上角的三点菜单图标，以打开更多选项。 点击屏幕左上角的汉堡菜单图标，以打开侧边栏或主菜单。 点击屏幕左上角的汉堡菜单图标，以打开侧边栏。 点击侧边栏中的“设置”选项，进入设置页面。 点击“配色方案”选项，进入配色方案选择页面。 点击“完成！”按钮以关闭配色方案弹窗并应用绿色主题。 点击屏幕左上角的返回箭头，退出设置页面，返回主界面。 点击Quillpad应用图标，启动该应用以验证主题颜色。"
+                            data-remark="主题-配色">
+                            <td class="px-4 py-2 font-medium text-gray-900">T-Quillpad-主题-配色-20251230_041429</td>
+                            <td class="px-4 py-2">{"前置条件": "当前为蓝色", "执行步骤": "1.设置→配色方案→选“绿色”", "预期结果": "导航栏、按钮、高亮区域立即变为绿色；重启保持"}</td>
+                            <td class="px-4 py-2">None</td>
+                            <td class="px-4 py-2 text-gray-600">主题-配色</td>
+                            <td class="px-4 py-2 text-red-600 font-bold">实际结果为N/A，无法证明测试通过。</td>
+                        </tr>
+                        
+                        <tr class="bg-white border-b hover:bg-yellow-50 tooltip-target"
+                            data-case-name="T-Quillpad-附件-视频播放-20251230_043946"
+                            data-module="附件查看模块"
+                            data-expected="{"前置条件": "笔记已插入视频", "执行步骤": "1.点视频缩略图", "预期结果": "弹出内部播放器，可播放/暂停/拖动；音画同步"}"
+                            data-actual="None"
+                            data-steps="1. 点击包含视频缩略图并标有“验证笔记2”的笔记卡片。 点击视频缩略图区域以启动播放器。 点击左上角返回箭头，退出当前音频剪辑页面，回到笔记列表。 点击顶部搜索图标以激活搜索功能。 在搜索框中输入关键词“视频” 点击左上角返回箭头，退出当前空搜索结果页，回到笔记列表主界面。 点击“验证笔记2”笔记卡片中的视频缩略图区域，以启动播放器。 点击左上角返回箭头，退出“录制的音频剪辑”页面，回到“验证笔记2”的笔记详情页。 点击“验证笔记2”详情页中显示“录制的音频剪辑”的视频缩略图区域，以触发播放器弹出。"
+                            data-remark="附件-视频播放">
+                            <td class="px-4 py-2 font-medium text-gray-900">T-Quillpad-附件-视频播放-20251230_043946</td>
+                            <td class="px-4 py-2">{"前置条件": "笔记已插入视频", "执行步骤": "1.点视频缩略图", "预期结果": "弹出内部播放器，可播放/暂停/拖动；音画同步"}</td>
+                            <td class="px-4 py-2">None</td>
+                            <td class="px-4 py-2 text-gray-600">附件-视频播放</td>
+                            <td class="px-4 py-2 text-red-600 font-bold">实际结果为N/A，无法证明测试通过。</td>
+                        </tr>
+                        
+                        <tr class="bg-white border-b hover:bg-yellow-50 tooltip-target"
+                            data-case-name="T-Quillpad-UI-侧边栏-20251230_045732"
+                            data-module="UI交互模块"
+                            data-expected="{"前置条件": "任意页", "执行步骤": "1.点左上角“≡”\n2.再按系统返回键", "预期结果": "侧边栏展开；返回键优先关闭侧边栏而非退出App"}"
+                            data-actual="None"
+                            data-steps="1. 点击左上角的“≡”图标以打开侧边栏。 按下系统返回键以关闭当前打开的侧边栏。"
+                            data-remark="UI-侧边栏">
+                            <td class="px-4 py-2 font-medium text-gray-900">T-Quillpad-UI-侧边栏-20251230_045732</td>
+                            <td class="px-4 py-2">{"前置条件": "任意页", "执行步骤": "1.点左上角“≡”\n2.再按系统返回键", "预期结果": "侧边栏展开；返回键优先关闭侧边栏而非退出App"}</td>
+                            <td class="px-4 py-2">None</td>
+                            <td class="px-4 py-2 text-gray-600">UI-侧边栏</td>
+                            <td class="px-4 py-2 text-red-600 font-bold">实际结果为N/A，无法证明测试通过。</td>
+                        </tr>
+                        
+                        <tr class="bg-white border-b hover:bg-yellow-50 tooltip-target"
+                            data-case-name="T-Quillpad-系统-最小化-20251230_050025"
+                            data-module="系统交互模块"
+                            data-expected="{"前置条件": "侧边栏已关闭", "执行步骤": "1.连续按系统返回键", "预期结果": "App退到后台；在最近任务中可见；重新打开恢复原页"}"
+                            data-actual="None"
+                            data-steps="1. 按下系统返回键，使当前应用退到后台。 点击屏幕中央偏下的空白区域，尝试退出桌面编辑模式。 点击桌面上的Quillpad应用图标，直接打开该应用。 按下系统返回键，使Quillpad应用退到后台（最小化）。 点击桌面上的Quillpad应用图标，重新打开该应用。"
+                            data-remark="系统-最小化">
+                            <td class="px-4 py-2 font-medium text-gray-900">T-Quillpad-系统-最小化-20251230_050025</td>
+                            <td class="px-4 py-2">{"前置条件": "侧边栏已关闭", "执行步骤": "1.连续按系统返回键", "预期结果": "App退到后台；在最近任务中可见；重新打开恢复原页"}</td>
+                            <td class="px-4 py-2">None</td>
+                            <td class="px-4 py-2 text-gray-600">系统-最小化</td>
+                            <td class="px-4 py-2 text-red-600 font-bold">实际结果为N/A，无法证明测试通过</td>
+                        </tr>
+                        
+                        <tr class="bg-white border-b hover:bg-yellow-50 tooltip-target"
+                            data-case-name="T-Quillpad-搜索-模糊-20251230_055044"
+                            data-module="搜索功能模块"
+                            data-expected="{"输入数据": "项目", "前置条件": "存在含“项目”的笔记", "执行步骤": "1.搜索框输入：项目", "预期结果": "所有含“项目”/“项目的”/“Project项目”等笔记均被列出；不区分大小写"}"
+                            data-actual="None"
+                            data-steps="1. 点击顶部的搜索图标以打开搜索功能。 在搜索框中输入“项目”"
+                            data-remark="搜索-模糊">
+                            <td class="px-4 py-2 font-medium text-gray-900">T-Quillpad-搜索-模糊-20251230_055044</td>
+                            <td class="px-4 py-2">{"输入数据": "项目", "前置条件": "存在含“项目”的笔记", "执行步骤": "1.搜索框输入：项目", "预期结果": "所有含“项目”/“项目的”/“Project项目”等笔记均被列出；不区分大小写"}</td>
+                            <td class="px-4 py-2">None</td>
+                            <td class="px-4 py-2 text-gray-600">搜索-模糊</td>
+                            <td class="px-4 py-2 text-red-600 font-bold">实际结果为N/A，无法证明测试通过</td>
+                        </tr>
+                        
+                        <tr class="bg-white border-b hover:bg-yellow-50 tooltip-target"
+                            data-case-name="T-Quillpad-笔记-取消置顶-20251230_055438"
+                            data-module="笔记管理模块"
+                            data-expected="{"前置条件": "该笔记已置顶", "执行步骤": "1.长按→“取消置顶”", "预期结果": "笔记回归按修改时间排序的原位；置顶图标消失；列表重新排序"}"
+                            data-actual="None"
+                            data-steps="1. 长按标题为“验证笔记2”的笔记卡片 点击操作菜单中的“置顶”选项。 长按标题为“验证笔记2”的笔记卡片，重新打开操作菜单 点击操作菜单中的“取消置顶”选项。"
+                            data-remark="笔记-取消置顶">
+                            <td class="px-4 py-2 font-medium text-gray-900">T-Quillpad-笔记-取消置顶-20251230_055438</td>
+                            <td class="px-4 py-2">{"前置条件": "该笔记已置顶", "执行步骤": "1.长按→“取消置顶”", "预期结果": "笔记回归按修改时间排序的原位；置顶图标消失；列表重新排序"}</td>
+                            <td class="px-4 py-2">None</td>
+                            <td class="px-4 py-2 text-gray-600">笔记-取消置顶</td>
+                            <td class="px-4 py-2 text-red-600 font-bold">实际结果为N/A，无法证明测试通过</td>
+                        </tr>
+                        
+                        <tr class="bg-white border-b hover:bg-yellow-50 tooltip-target"
+                            data-case-name="T-Cirrus-Weather-20260101_165327"
+                            data-module="Cirrus应用模块"
+                            data-expected="{"输入数据": "无", "前置条件": "1.首次安装并打开Cirrus应用", "执行步骤": "1.查看Weather页面", "预期结果": "页面显示提示：There is no city selected. To select a city go to \"Manage locations\""}"
+                            data-actual="None"
+                            data-steps="1. 确认当前页面显示的提示文字为：“There is no city selected. To select a city go to "Manage locations"”。"
+                            data-remark="Weather">
+                            <td class="px-4 py-2 font-medium text-gray-900">T-Cirrus-Weather-20260101_165327</td>
+                            <td class="px-4 py-2">{"输入数据": "无", "前置条件": "1.首次安装并打开Cirrus应用", "执行步骤": "1.查看Weather页面", "预期结果": "页面显示提示：There is no city selected. To select a city go to \"Manage locations\""}</td>
+                            <td class="px-4 py-2">None</td>
+                            <td class="px-4 py-2 text-gray-600">Weather</td>
+                            <td class="px-4 py-2 text-red-600 font-bold">实际结果为N/A，无法证明测试通过</td>
+                        </tr>
+                        
+                        <tr class="bg-white border-b hover:bg-yellow-50 tooltip-target"
+                            data-case-name="T-Cirrus-Weather-20260101_165406"
+                            data-module="导航菜单模块"
+                            data-expected="{"输入数据": "无", "前置条件": "1.成功打开Cirrus应用首页", "执行步骤": "1.点击左上角菜单按钮", "预期结果": "左侧滑出导航菜单，显示Weather、Manage locations、Settings、Backup/Restore、About、GitHub选项"}"
+                            data-actual="None"
+                            data-steps="1. 点击左上角菜单按钮"
+                            data-remark="Weather">
+                            <td class="px-4 py-2 font-medium text-gray-900">T-Cirrus-Weather-20260101_165406</td>
+                            <td class="px-4 py-2">{"输入数据": "无", "前置条件": "1.成功打开Cirrus应用首页", "执行步骤": "1.点击左上角菜单按钮", "预期结果": "左侧滑出导航菜单，显示Weather、Manage locations、Settings、Backup/Restore、About、GitHub选项"}</td>
+                            <td class="px-4 py-2">None</td>
+                            <td class="px-4 py-2 text-gray-600">Weather</td>
+                            <td class="px-4 py-2 text-red-600 font-bold">实际结果为N/A，无法证明测试通过</td>
+                        </tr>
+                        
+                        <tr class="bg-white border-b hover:bg-yellow-50 tooltip-target"
+                            data-case-name="T-Cirrus-Weather-20260101_170527"
+                            data-module="网络请求与权限同意模块"
+                            data-expected="{"输入数据": "无", "前置条件": "1.成功打开Cirrus应用首页", "执行步骤": "1.点击右上角雷达图标\n2.点击【OK】", "预期结果": "进入Settings页面"}"
+                            data-actual="None"
+                            data-steps="1. 点击Cirrus应用图标以启动应用。 点击右上角的雷达图标 点击【OK】按钮 点击“Rain Radar”旁边的开关，将其打开。"
+                            data-remark="Weather">
+                            <td class="px-4 py-2 font-medium text-gray-900">T-Cirrus-Weather-20260101_170527</td>
+                            <td class="px-4 py-2">{"输入数据": "无", "前置条件": "1.成功打开Cirrus应用首页", "执行步骤": "1.点击右上角雷达图标\n2.点击【OK】", "预期结果": "进入Settings页面"}</td>
+                            <td class="px-4 py-2">None</td>
+                            <td class="px-4 py-2 text-gray-600">Weather</td>
+                            <td class="px-4 py-2 text-red-600 font-bold">实际结果为N/A，无法证明测试通过</td>
+                        </tr>
+                        
+                        <tr class="bg-white border-b hover:bg-yellow-50 tooltip-target"
+                            data-case-name="T-Cirrus-Weather-20260101_170751"
+                            data-module="网络请求与权限拒绝模块"
+                            data-expected="{"输入数据": "无", "前置条件": "1.成功打开Cirrus应用首页", "执行步骤": "1.点击右上角雷达图标\n2.点击【NO】", "预期结果": "提示窗口关闭，保持在Weather页面"}"
+                            data-actual="None"
+                            data-steps="1. 点击右上角的雷达图标"
+                            data-remark="Weather">
+                            <td class="px-4 py-2 font-medium text-gray-900">T-Cirrus-Weather-20260101_170751</td>
+                            <td class="px-4 py-2">{"输入数据": "无", "前置条件": "1.成功打开Cirrus应用首页", "执行步骤": "1.点击右上角雷达图标\n2.点击【NO】", "预期结果": "提示窗口关闭，保持在Weather页面"}</td>
+                            <td class="px-4 py-2">None</td>
+                            <td class="px-4 py-2 text-gray-600">Weather</td>
+                            <td class="px-4 py-2 text-red-600 font-bold">实际结果为N/A，无法证明测试通过</td>
+                        </tr>
+                        
+                        <tr class="bg-white border-b hover:bg-yellow-50 tooltip-target"
+                            data-case-name="T-Cirrus-Weather-20260101_170847"
+                            data-module="GPS定位模块"
+                            data-expected="{"输入数据": "无", "前置条件": "1.成功打开Cirrus应用首页\n2.已开启Allow GPS usage开关\n3.GPS已开启", "执行步骤": "1.点击GPS按钮", "预期结果": "显示GPS定位的城市天气信息"}"
+                            data-actual="None"
+                            data-steps="1. 返回Cirrus首页，寻找并点击GPS按钮（可能位于刷新按钮附近或菜单内）。
+2. 等待应用加载并显示当前定位的城市天气信息。 点击顶部导航栏中的定位图标（📍）以触发GPS定位。"
+                            data-remark="Weather">
+                            <td class="px-4 py-2 font-medium text-gray-900">T-Cirrus-Weather-20260101_170847</td>
+                            <td class="px-4 py-2">{"输入数据": "无", "前置条件": "1.成功打开Cirrus应用首页\n2.已开启Allow GPS usage开关\n3.GPS已开启", "执行步骤": "1.点击GPS按钮", "预期结果": "显示GPS定位的城市天气信息"}</td>
+                            <td class="px-4 py-2">None</td>
+                            <td class="px-4 py-2 text-gray-600">Weather</td>
+                            <td class="px-4 py-2 text-red-600 font-bold">实际结果为N/A，无法证明测试通过</td>
+                        </tr>
+                        
+                        <tr class="bg-white border-b hover:bg-yellow-50 tooltip-target"
+                            data-case-name="T-Cirrus-Weather-20260101_171220"
+                            data-module="天气预报查看模块"
+                            data-expected="{"输入数据": "无", "前置条件": "1.成功打开Cirrus应用首页\n2.已添加至少一个城市\n3.当前在Weather页面", "执行步骤": "1.在THURSDAY区域向左拖动", "预期结果": "显示未来7天天气预报，WEEK图表同步更新对应日期"}"
+                            data-actual="None"
+                            data-steps="1. 点击“WEEK”区域中的“Fr.”标签，以切换至星期五的天气预报详情。 点击“WEEK”区域中的“Fr.”标签，以切换至星期五的天气预报详情。 点击“WEEK”区域中的“Fr.”标签，以尝试切换至星期五的天气预报详情。"
+                            data-remark="Weather">
+                            <td class="px-4 py-2 font-medium text-gray-900">T-Cirrus-Weather-20260101_171220</td>
+                            <td class="px-4 py-2">{"输入数据": "无", "前置条件": "1.成功打开Cirrus应用首页\n2.已添加至少一个城市\n3.当前在Weather页面", "执行步骤": "1.在THURSDAY区域向左拖动", "预期结果": "显示未来7天天气预报，WEEK图表同步更新对应日期"}</td>
+                            <td class="px-4 py-2">None</td>
+                            <td class="px-4 py-2 text-gray-600">Weather</td>
+                            <td class="px-4 py-2 text-red-600 font-bold">实际结果为N/A，无法证明测试通过</td>
+                        </tr>
+                        
+                        <tr class="bg-white border-b hover:bg-yellow-50 tooltip-target"
+                            data-case-name="T-Cirrus-Weather-20260101_171539"
+                            data-module="天气预报详情查看模块"
+                            data-expected="{"输入数据": "无", "前置条件": "1.成功打开Cirrus应用首页\n2.已添加至少一个城市\n3.当前在Weather页面", "执行步骤": "1.点击WEEK区域中某一天", "预期结果": "THURSDAY区域显示选中日的详细天气信息"}"
+                            data-actual="None"
+                            data-steps="1. 点击WEEK区域中的“Fr.”日期卡片。"
+                            data-remark="Weather">
+                            <td class="px-4 py-2 font-medium text-gray-900">T-Cirrus-Weather-20260101_171539</td>
+                            <td class="px-4 py-2">{"输入数据": "无", "前置条件": "1.成功打开Cirrus应用首页\n2.已添加至少一个城市\n3.当前在Weather页面", "执行步骤": "1.点击WEEK区域中某一天", "预期结果": "THURSDAY区域显示选中日的详细天气信息"}</td>
+                            <td class="px-4 py-2">None</td>
+                            <td class="px-4 py-2 text-gray-600">Weather</td>
+                            <td class="px-4 py-2 text-red-600 font-bold">实际结果为N/A，无法证明测试通过</td>
+                        </tr>
+                        
+                        <tr class="bg-white border-b hover:bg-yellow-50 tooltip-target"
+                            data-case-name="T-Cirrus-Manage locations-20260101_172737"
+                            data-module="城市搜索与地图显示模块"
+                            data-expected="{"输入数据": "Paris", "前置条件": "1.成功进入Manage locations页面\n2.在添加城市搜索框中输入有效城市", "执行步骤": "1.输入“Paris”\n2.选择提示中的巴黎", "预期结果": "地图上显示巴黎位置，并有放大缩小按钮"}"
+                            data-actual="None"
+                            data-steps="1. 点击屏幕左上角的三条横线菜单图标。 点击“Manage locations”选项，进入管理位置页面。 点击右下角的蓝色圆形加号图标，进入添加城市界面。 在搜索框中输入“Paris”。 点击搜索提示列表中的第一个选项“Pa, BF, 布克萊迪穆翁大區”。 点击搜索提示列表中的第一个选项“巴黎, FR, 法兰西岛, Paris, Paris, Par”，以选择法国巴黎。"
+                            data-remark="Manage locations">
+                            <td class="px-4 py-2 font-medium text-gray-900">T-Cirrus-Manage locations-20260101_172737</td>
+                            <td class="px-4 py-2">{"输入数据": "Paris", "前置条件": "1.成功进入Manage locations页面\n2.在添加城市搜索框中输入有效城市", "执行步骤": "1.输入“Paris”\n2.选择提示中的巴黎", "预期结果": "地图上显示巴黎位置，并有放大缩小按钮"}</td>
+                            <td class="px-4 py-2">None</td>
+                            <td class="px-4 py-2 text-gray-600">Manage locations</td>
+                            <td class="px-4 py-2 text-red-600 font-bold">实际结果为N/A，无法证明测试通过</td>
+                        </tr>
+                        
+                        <tr class="bg-white border-b hover:bg-yellow-50 tooltip-target"
+                            data-case-name="T-Cirrus-Manage locations-20260101_173209"
+                            data-module="城市添加验证模块"
+                            data-expected="{"输入数据": "无效名称：abc123", "前置条件": "1.成功进入Manage locations页面", "执行步骤": "1.点击添加按钮\n2.输入无效名称\n3.直接点击【ADD】", "预期结果": "提示\"No location was found...\"，无法添加"}"
+                            data-actual="None"
+                            data-steps="1. 点击顶部左侧的菜单图标以打开侧边栏或导航菜单。 点击“Manage locations”选项以进入管理城市页面。 点击右下角的“+”按钮以打开添加城市输入框。 在当前激活的输入框中输入文本“abc123”。 点击弹窗中的“ADD”按钮以尝试添加城市。"
+                            data-remark="Manage locations">
+                            <td class="px-4 py-2 font-medium text-gray-900">T-Cirrus-Manage locations-20260101_173209</td>
+                            <td class="px-4 py-2">{"输入数据": "无效名称：abc123", "前置条件": "1.成功进入Manage locations页面", "执行步骤": "1.点击添加按钮\n2.输入无效名称\n3.直接点击【ADD】", "预期结果": "提示\"No location was found...\"，无法添加"}</td>
+                            <td class="px-4 py-2">None</td>
+                            <td class="px-4 py-2 text-gray-600">Manage locations</td>
+                            <td class="px-4 py-2 text-red-600 font-bold">实际结果为N/A，无法证明测试通过</td>
+                        </tr>
+                        
+                        <tr class="bg-white border-b hover:bg-yellow-50 tooltip-target"
+                            data-case-name="T-Cirrus-Manage locations-20260101_173432"
+                            data-module="位置管理模块"
+                            data-expected="{"输入数据": "任意城市名称", "前置条件": "1.成功进入添加城市窗口", "执行步骤": "1.输入城市名称\n2.点击【CLOSE】", "预期结果": "窗口关闭，城市未添加"}"
+                            data-actual="None"
+                            data-steps="1. 点击顶部导航栏中的定位图标。 点击顶部导航栏左侧的菜单图标（三条横线），以查看是否弹出包含“管理城市”或“添加城市”选项的菜单。 点击“Manage locations”选项，进入城市管理页面。 点击右下角蓝色圆形加号按钮，以打开添加城市窗口。 点击输入框以激活它，准备输入“北京”。 在输入框中输入“北京”。 点击弹窗中的【CLOSE】按钮，以取消添加城市操作。"
+                            data-remark="Manage locations">
+                            <td class="px-4 py-2 font-medium text-gray-900">T-Cirrus-Manage locations-20260101_173432</td>
+                            <td class="px-4 py-2">{"输入数据": "任意城市名称", "前置条件": "1.成功进入添加城市窗口", "执行步骤": "1.输入城市名称\n2.点击【CLOSE】", "预期结果": "窗口关闭，城市未添加"}</td>
+                            <td class="px-4 py-2">None</td>
+                            <td class="px-4 py-2 text-gray-600">Manage locations</td>
+                            <td class="px-4 py-2 text-red-600 font-bold">实际结果为N/A，无法证明测试通过</td>
+                        </tr>
+                        
+                        <tr class="bg-white border-b hover:bg-yellow-50 tooltip-target"
+                            data-case-name="T-Cirrus-Manage locations-20260101_175832"
+                            data-module="位置管理模块"
+                            data-expected="{"输入数据": "无", "前置条件": "1.Manage locations列表中已有至少一个城市", "执行步骤": "1.点击城市名称\n2.点击【CLOSE】", "预期结果": "修改窗口关闭，名称未改变"}"
+                            data-actual="None"
+                            data-steps="1. 点击城市名称“北京市”以进入城市选择或编辑界面。 点击城市名称“北京市”以确认其仍被选中，验证取消修改后的状态。"
+                            data-remark="Manage locations">
+                            <td class="px-4 py-2 font-medium text-gray-900">T-Cirrus-Manage locations-20260101_175832</td>
+                            <td class="px-4 py-2">{"输入数据": "无", "前置条件": "1.Manage locations列表中已有至少一个城市", "执行步骤": "1.点击城市名称\n2.点击【CLOSE】", "预期结果": "修改窗口关闭，名称未改变"}</td>
+                            <td class="px-4 py-2">None</td>
+                            <td class="px-4 py-2 text-gray-600">Manage locations</td>
+                            <td class="px-4 py-2 text-red-600 font-bold">实际结果为N/A，无法证明测试通过</td>
+                        </tr>
+                        
+                        <tr class="bg-white border-b hover:bg-yellow-50 tooltip-target"
+                            data-case-name="T-Cirrus-Settings-20260101_180013"
+                            data-module="设置模块"
+                            data-expected="{"输入数据": "无", "前置条件": "1.进入Settings页面", "执行步骤": "1.点击【Allow GPS usage】开关\n2.点击【允许】", "预期结果": "开关开启，Cirrus获取位置权限"}"
+                            data-actual="None"
+                            data-steps="1. 点击左上角的菜单图标（三条横线）。 点击“Settings”选项以进入设置页面。"
+                            data-remark="Settings">
+                            <td class="px-4 py-2 font-medium text-gray-900">T-Cirrus-Settings-20260101_180013</td>
+                            <td class="px-4 py-2">{"输入数据": "无", "前置条件": "1.进入Settings页面", "执行步骤": "1.点击【Allow GPS usage】开关\n2.点击【允许】", "预期结果": "开关开启，Cirrus获取位置权限"}</td>
+                            <td class="px-4 py-2">None</td>
+                            <td class="px-4 py-2 text-gray-600">Settings</td>
+                            <td class="px-4 py-2 text-red-600 font-bold">实际结果为N/A，无法证明测试通过</td>
+                        </tr>
+                        
+                        <tr class="bg-white border-b hover:bg-yellow-50 tooltip-target"
+                            data-case-name="T-Cirrus-Settings-20260101_180125"
+                            data-module="设置模块"
+                            data-expected="{"输入数据": "无", "前置条件": "1.进入Settings页面", "执行步骤": "1.点击【Manual update only】开关", "预期结果": "开关开启，天气仅手动刷新"}"
+                            data-actual="None"
+                            data-steps="1. 点击左上角的菜单图标（三条横线），以打开侧边栏或更多选项。 点击“Settings”选项，进入设置页面。 点击“Manual update only”开关，将其开启。"
+                            data-remark="Settings">
+                            <td class="px-4 py-2 font-medium text-gray-900">T-Cirrus-Settings-20260101_180125</td>
+                            <td class="px-4 py-2">{"输入数据": "无", "前置条件": "1.进入Settings页面", "执行步骤": "1.点击【Manual update only】开关", "预期结果": "开关开启，天气仅手动刷新"}</td>
+                            <td class="px-4 py-2">None</td>
+                            <td class="px-4 py-2 text-gray-600">Settings</td>
+                            <td class="px-4 py-2 text-red-600 font-bold">实际结果为N/A，无法证明测试通过</td>
+                        </tr>
+                        
+                        <tr class="bg-white border-b hover:bg-yellow-50 tooltip-target"
+                            data-case-name="T-Cirrus-Settings-20260101_180301"
+                            data-module="设置模块"
+                            data-expected="{"输入数据": "无", "前置条件": "1.进入Settings页面", "执行步骤": "1.点击【2 columns】开关", "预期结果": "Weather页面切换为两栏布局"}"
+                            data-actual="None"
+                            data-steps="1. 点击左上角的菜单图标（三条横线），以打开导航菜单。 点击“Settings”选项以进入设置页面。 点击“2 columns”开关以启用两栏布局。 返回Weather页面，观察界面是否已切换为两栏布局"
+                            data-remark="Settings">
+                            <td class="px-4 py-2 font-medium text-gray-900">T-Cirrus-Settings-20260101_180301</td>
+                            <td class="px-4 py-2">{"输入数据": "无", "前置条件": "1.进入Settings页面", "执行步骤": "1.点击【2 columns】开关", "预期结果": "Weather页面切换为两栏布局"}</td>
+                            <td class="px-4 py-2">None</td>
+                            <td class="px-4 py-2 text-gray-600">Settings</td>
+                            <td class="px-4 py-2 text-red-600 font-bold">实际结果为N/A，无法证明测试通过</td>
+                        </tr>
+                        
+                        <tr class="bg-white border-b hover:bg-yellow-50 tooltip-target"
+                            data-case-name="T-Cirrus-Settings-20260101_180451"
+                            data-module="设置模块"
+                            data-expected="{"输入数据": "无", "前置条件": "1.进入Settings页面", "执行步骤": "1.点击【Rain Radar】开关", "预期结果": "开关开启，Weather页面显示降雨雷达"}"
+                            data-actual="None"
+                            data-steps="1. 点击左上角的菜单图标（三条横线），以打开侧边栏或导航菜单。 点击“Settings”选项，进入设置页面。 点击左上角菜单图标，返回主Weather页面。 点击“Rain Radar”开关以开启该功能。 点击屏幕右上角的图层图标，尝试激活降雨雷达图层显示。"
+                            data-remark="Settings">
+                            <td class="px-4 py-2 font-medium text-gray-900">T-Cirrus-Settings-20260101_180451</td>
+                            <td class="px-4 py-2">{"输入数据": "无", "前置条件": "1.进入Settings页面", "执行步骤": "1.点击【Rain Radar】开关", "预期结果": "开关开启，Weather页面显示降雨雷达"}</td>
+                            <td class="px-4 py-2">None</td>
+                            <td class="px-4 py-2 text-gray-600">Settings</td>
+                            <td class="px-4 py-2 text-red-600 font-bold">实际结果为N/A，无法证明测试通过</td>
+                        </tr>
+                        
+                        <tr class="bg-white border-b hover:bg-yellow-50 tooltip-target"
+                            data-case-name="T-Cirrus-Settings-20260101_180734"
+                            data-module="设置模块"
+                            data-expected="{"输入数据": "5天", "前置条件": "1.进入Settings页面", "执行步骤": "1.拖动Number of forecast days滑块至5", "预期结果": "Weather页面显示5天预报"}"
+                            data-actual="None"
+                            data-steps="1. 点击左上角的菜单图标以进入应用菜单。 点击“Settings”选项以进入设置页面。 向左拖动“Number of forecast days”滑块至数值“5” 点击左上角的菜单图标以返回天气主页面。 点击“Weather”选项以进入天气主页面，查看是否显示5天预报。 向右滑动“WEEK”区域，查看是否可显示更多日期。"
+                            data-remark="Settings">
+                            <td class="px-4 py-2 font-medium text-gray-900">T-Cirrus-Settings-20260101_180734</td>
+                            <td class="px-4 py-2">{"输入数据": "5天", "前置条件": "1.进入Settings页面", "执行步骤": "1.拖动Number of forecast days滑块至5", "预期结果": "Weather页面显示5天预报"}</td>
+                            <td class="px-4 py-2">None</td>
+                            <td class="px-4 py-2 text-gray-600">Settings</td>
+                            <td class="px-4 py-2 text-red-600 font-bold">实际结果为N/A，无法证明测试通过</td>
+                        </tr>
+                        
+                        <tr class="bg-white border-b hover:bg-yellow-50 tooltip-target"
+                            data-case-name="T-Cirrus-Settings-20260101_181050"
+                            data-module="设置模块"
+                            data-expected="{"输入数据": "无", "前置条件": "1.进入Settings页面", "执行步骤": "1.点击【24-hour format】开关", "预期结果": "Weather页面时间显示AM/PM格式"}"
+                            data-actual="None"
+                            data-steps="1. 点击左上角的菜单图标以打开导航抽屉。 点击【Settings】选项以进入设置页面。 点击“24-hour format”开关以将其关闭。 返回天气主页面，观察时间显示是否已变为AM/PM格式。"
+                            data-remark="Settings">
+                            <td class="px-4 py-2 font-medium text-gray-900">T-Cirrus-Settings-20260101_181050</td>
+                            <td class="px-4 py-2">{"输入数据": "无", "前置条件": "1.进入Settings页面", "执行步骤": "1.点击【24-hour format】开关", "预期结果": "Weather页面时间显示AM/PM格式"}</td>
+                            <td class="px-4 py-2">None</td>
+                            <td class="px-4 py-2 text-gray-600">Settings</td>
+                            <td class="px-4 py-2 text-red-600 font-bold">实际结果为N/A，无法证明测试通过</td>
+                        </tr>
+                        
+                        <tr class="bg-white border-b hover:bg-yellow-50 tooltip-target"
+                            data-case-name="T-Cirrus-Settings-20260101_181243"
+                            data-module="设置模块"
+                            data-expected="{"输入数据": "无", "前置条件": "1.进入Settings页面", "执行步骤": "1.点击【Precipitation】开关", "预期结果": "Weather页面显示降水量信息（需下雪城市）"}"
+                            data-actual="None"
+                            data-steps="1. 点击左上角的菜单图标以打开导航抽屉。 点击导航抽屉中的“Settings”选项。 点击“Precipitation”开关以开启降水量显示功能。 点击屏幕右侧的灰色区域以关闭导航抽屉，返回主Weather页面。 点击“Precipitation”开关以开启降水量显示功能。 点击屏幕右侧的灰色区域以关闭导航抽屉，返回主Weather页面。 按下系统返回键，以退出当前Settings页面并返回主Weather页面。 点击“北京市”标签以切换至该城市，查看是否有降水量数据显示。"
+                            data-remark="Settings">
+                            <td class="px-4 py-2 font-medium text-gray-900">T-Cirrus-Settings-20260101_181243</td>
+                            <td class="px-4 py-2">{"输入数据": "无", "前置条件": "1.进入Settings页面", "执行步骤": "1.点击【Precipitation】开关", "预期结果": "Weather页面显示降水量信息（需下雪城市）"}</td>
+                            <td class="px-4 py-2">None</td>
+                            <td class="px-4 py-2 text-gray-600">Settings</td>
+                            <td class="px-4 py-2 text-red-600 font-bold">实际结果为N/A，无法证明测试通过</td>
+                        </tr>
+                        
+                        <tr class="bg-white border-b hover:bg-yellow-50 tooltip-target"
+                            data-case-name="T-Cirrus-Settings-20260101_181656"
+                            data-module="设置模块"
+                            data-expected="{"输入数据": "无", "前置条件": "1.进入Settings页面", "执行步骤": "1.点击【Show temperature with one decimal】开关", "预期结果": "Weather页面温度显示一位小数（如23.5℃）"}"
+                            data-actual="None"
+                            data-steps="1. 点击左上角的菜单图标以打开导航抽屉。 点击导航抽屉中的“Settings”选项以进入设置页面。 向下滚动设置页面，寻找【Show temperature with one decimal】开关 点击【Show temperature with one decimal】开关以开启功能 返回主页面，观察温度显示是否已变为一位小数（如23.5℃）"
+                            data-remark="Settings">
+                            <td class="px-4 py-2 font-medium text-gray-900">T-Cirrus-Settings-20260101_181656</td>
+                            <td class="px-4 py-2">{"输入数据": "无", "前置条件": "1.进入Settings页面", "执行步骤": "1.点击【Show temperature with one decimal】开关", "预期结果": "Weather页面温度显示一位小数（如23.5℃）"}</td>
+                            <td class="px-4 py-2">None</td>
+                            <td class="px-4 py-2 text-gray-600">Settings</td>
+                            <td class="px-4 py-2 text-red-600 font-bold">实际结果为N/A，无法证明测试通过</td>
+                        </tr>
+                        
+                        <tr class="bg-white border-b hover:bg-yellow-50 tooltip-target"
+                            data-case-name="T-Cirrus-Settings-20260101_181913"
+                            data-module="设置模块"
+                            data-expected="{"输入数据": "无", "前置条件": "1.进入Settings页面", "执行步骤": "1.点击【Temperature】\n2.选择Fahrenheit\n3.返回", "预期结果": "Weather页面温度显示为华氏度"}"
+                            data-actual="None"
+                            data-steps="1. 点击左上角的菜单图标（三条横线），以打开设置页面。 点击“Settings”选项以进入设置页面。 点击“Temperature”选项，进入温度单位设置页面。 点击“Fahrenheit”选项以切换温度单位。 点击左上角的菜单图标（三条横线），以返回主界面。 点击“Weather”选项，进入天气页面以查看温度单位是否已切换为°F。"
+                            data-remark="Settings">
+                            <td class="px-4 py-2 font-medium text-gray-900">T-Cirrus-Settings-20260101_181913</td>
+                            <td class="px-4 py-2">{"输入数据": "无", "前置条件": "1.进入Settings页面", "执行步骤": "1.点击【Temperature】\n2.选择Fahrenheit\n3.返回", "预期结果": "Weather页面温度显示为华氏度"}</td>
+                            <td class="px-4 py-2">None</td>
+                            <td class="px-4 py-2 text-gray-600">Settings</td>
+                            <td class="px-4 py-2 text-red-600 font-bold">实际结果为N/A，无法证明测试通过</td>
+                        </tr>
+                        
+                        <tr class="bg-white border-b hover:bg-yellow-50 tooltip-target"
+                            data-case-name="T-Cirrus-Settings-20260101_182211"
+                            data-module="设置模块"
+                            data-expected="{"输入数据": "无", "前置条件": "1.进入Settings页面", "执行步骤": "1.点击【Wind speed】\n2.选择km/h\n3.返回", "预期结果": "Weather页面风速显示km/h单位"}"
+                            data-actual="None"
+                            data-steps="1. 点击左上角菜单图标以打开导航抽屉。 点击“Settings”选项以进入设置页面。 向下滚动设置页面以寻找“Wind speed”选项。 点击“Wind speed”选项以进入风速单位选择页面。 点击“km/h”选项以选择该风速单位。 点击返回按钮回到主天气页面"
+                            data-remark="Settings">
+                            <td class="px-4 py-2 font-medium text-gray-900">T-Cirrus-Settings-20260101_182211</td>
+                            <td class="px-4 py-2">{"输入数据": "无", "前置条件": "1.进入Settings页面", "执行步骤": "1.点击【Wind speed】\n2.选择km/h\n3.返回", "预期结果": "Weather页面风速显示km/h单位"}</td>
+                            <td class="px-4 py-2">None</td>
+                            <td class="px-4 py-2 text-gray-600">Settings</td>
+                            <td class="px-4 py-2 text-red-600 font-bold">实际结果为N/A，无法证明测试通过</td>
+                        </tr>
+                        
+                        <tr class="bg-white border-b hover:bg-yellow-50 tooltip-target"
+                            data-case-name="T-Cirrus-Settings-20260101_182448"
+                            data-module="设置模块"
+                            data-expected="{"输入数据": "无", "前置条件": "1.进入Settings页面", "执行步骤": "1.点击【Precipitation】\n2.选择\"\n3.返回", "预期结果": "Weather页面降水量显示英寸单位"}"
+                            data-actual="None"
+                            data-steps="1. 点击左上角的菜单图标（三条横线）以打开导航菜单。 点击“Settings”选项以进入设置页面。 向下滚动设置页面以查找“Precipitation”选项。 点击“Precipitation”选项以进入降水量单位选择界面 点击“"”选项以选择英寸作为降水量单位。 点击返回按钮回到天气主界面"
+                            data-remark="Settings">
+                            <td class="px-4 py-2 font-medium text-gray-900">T-Cirrus-Settings-20260101_182448</td>
+                            <td class="px-4 py-2">{"输入数据": "无", "前置条件": "1.进入Settings页面", "执行步骤": "1.点击【Precipitation】\n2.选择\"\n3.返回", "预期结果": "Weather页面降水量显示英寸单位"}</td>
+                            <td class="px-4 py-2">None</td>
+                            <td class="px-4 py-2 text-gray-600">Settings</td>
+                            <td class="px-4 py-2 text-red-600 font-bold">实际结果为N/A，无法证明测试通过</td>
+                        </tr>
+                        
+                        <tr class="bg-white border-b hover:bg-yellow-50 tooltip-target"
+                            data-case-name="T-Cirrus-Settings-20260101_182752"
+                            data-module="设置模块"
+                            data-expected="{"输入数据": "50%透明度", "前置条件": "1.进入Settings页面", "执行步骤": "1.拖动Widget transparency滑块至中间", "预期结果": "天气小部件透明度调整生效"}"
+                            data-actual="None"
+                            data-steps="1. 点击左上角的三条横线菜单图标，以打开导航菜单。 点击“Settings”选项以进入设置页面。 向下滚动设置页面，寻找“Widget transparency”或类似名称的选项 点击“Widget transparency”滑块滑轨的中间位置，以尝试激活并触发可拖动状态。"
+                            data-remark="Settings">
+                            <td class="px-4 py-2 font-medium text-gray-900">T-Cirrus-Settings-20260101_182752</td>
+                            <td class="px-4 py-2">{"输入数据": "50%透明度", "前置条件": "1.进入Settings页面", "执行步骤": "1.拖动Widget transparency滑块至中间", "预期结果": "天气小部件透明度调整生效"}</td>
+                            <td class="px-4 py-2">None</td>
+                            <td class="px-4 py-2 text-gray-600">Settings</td>
+                            <td class="px-4 py-2 text-red-600 font-bold">实际结果为N/A，无法证明测试通过</td>
+                        </tr>
+                        
+                        <tr class="bg-white border-b hover:bg-yellow-50 tooltip-target"
+                            data-case-name="T-Cirrus-BackupRestore-20260101_183041"
+                            data-module="备份与恢复模块"
+                            data-expected="{"输入数据": "无", "前置条件": "1.进入Backup/Restore页面", "执行步骤": "1.点击【BACKUP DATABASE】\n2.点击【OK】", "预期结果": "提示备份成功，文件保存在/storage/emulated/0/Documents/Cirrus.zip"}"
+                            data-actual="None"
+                            data-steps="1. 点击左上角的菜单图标（三条横线），以打开侧边栏菜单。 点击侧边栏菜单中的“Backup/Restore”选项。 点击【BACKUP DATABASE】按钮以开始备份数据库。 点击权限请求对话框中的【OK】按钮以授予外部存储访问权限。 点击权限请求对话框中的【始终允许】按钮以授予“Cirrus”访问设备照片、媒体内容和文件的权限。 点击【BACKUP DATABASE】按钮以开始备份数据库。 点击确认对话框中的【OK】按钮以确认备份数据库操作。"
+                            data-remark="Backup/Restore">
+                            <td class="px-4 py-2 font-medium text-gray-900">T-Cirrus-BackupRestore-20260101_183041</td>
+                            <td class="px-4 py-2">{"输入数据": "无", "前置条件": "1.进入Backup/Restore页面", "执行步骤": "1.点击【BACKUP DATABASE】\n2.点击【OK】", "预期结果": "提示备份成功，文件保存在/storage/emulated/0/Documents/Cirrus.zip"}</td>
+                            <td class="px-4 py-2">None</td>
+                            <td class="px-4 py-2 text-gray-600">Backup/Restore</td>
+                            <td class="px-4 py-2 text-red-600 font-bold">实际结果为N/A，无法证明测试通过</td>
+                        </tr>
+                        
+                        <tr class="bg-white border-b hover:bg-yellow-50 tooltip-target"
+                            data-case-name="T-Cirrus-BackupRestore-20260101_183408"
+                            data-module="备份与恢复模块"
+                            data-expected="{"输入数据": "无", "前置条件": "1.进入Backup/Restore页面", "执行步骤": "1.点击【BACKUP DATABASE】\n2.点击【NO】", "预期结果": "提示窗口关闭，备份未执行"}"
+                            data-actual="None"
+                            data-steps="1. 点击左上角的菜单图标，以打开侧边栏或设置页面。 点击侧边栏中的【Backup/Restore】选项，进入备份/恢复页面。 点击【BACKUP DATABASE】按钮，以启动备份流程并等待确认提示窗口弹出。 点击对话框中的【NO】按钮以取消备份操作。"
+                            data-remark="Backup/Restore">
+                            <td class="px-4 py-2 font-medium text-gray-900">T-Cirrus-BackupRestore-20260101_183408</td>
+                            <td class="px-4 py-2">{"输入数据": "无", "前置条件": "1.进入Backup/Restore页面", "执行步骤": "1.点击【BACKUP DATABASE】\n2.点击【NO】", "预期结果": "提示窗口关闭，备份未执行"}</td>
+                            <td class="px-4 py-2">None</td>
+                            <td class="px-4 py-2 text-gray-600">Backup/Restore</td>
+                            <td class="px-4 py-2 text-red-600 font-bold">实际结果为N/A，无法证明测试通过</td>
+                        </tr>
+                        
+                        <tr class="bg-white border-b hover:bg-yellow-50 tooltip-target"
+                            data-case-name="T-Cirrus-BackupRestore-20260101_183559"
+                            data-module="备份与恢复模块"
+                            data-expected="{"输入数据": "无", "前置条件": "1.进入Backup/Restore页面\n2.已有备份文件Cirrus.zip", "执行步骤": "1.点击【RESTORE DATABASER】\n2.点击【OK】\n3.选择备份文件", "预期结果": "应用恢复至备份时的状态"}"
+                            data-actual="None"
+                            data-steps="1. 点击左上角的汉堡菜单图标以打开侧边导航栏。 点击侧边菜单中的“Backup/Restore”选项。 点击【RESTORE DATABASE】按钮以启动数据库恢复操作。 点击弹出对话框中的【OK】按钮以确认恢复操作。 点击弹出对话框中的【OK】按钮以确认恢复操作。 点击【RESTORE DATABASE】按钮以再次尝试启动数据库恢复操作。 点击弹窗中的【OK】按钮以确认从Documents文件夹恢复数据。 点击【RESTORE DATABASE】按钮以再次尝试启动数据库恢复操作。 点击弹窗中的【OK】按钮以确认从 Documents 文件夹恢复数据。"
+                            data-remark="Backup/Restore">
+                            <td class="px-4 py-2 font-medium text-gray-900">T-Cirrus-BackupRestore-20260101_183559</td>
+                            <td class="px-4 py-2">{"输入数据": "无", "前置条件": "1.进入Backup/Restore页面\n2.已有备份文件Cirrus.zip", "执行步骤": "1.点击【RESTORE DATABASER】\n2.点击【OK】\n3.选择备份文件", "预期结果": "应用恢复至备份时的状态"}</td>
+                            <td class="px-4 py-2">None</td>
+                            <td class="px-4 py-2 text-gray-600">Backup/Restore</td>
+                            <td class="px-4 py-2 text-red-600 font-bold">实际结果为N/A，无法证明测试通过</td>
+                        </tr>
+                        
+                        <tr class="bg-white border-b hover:bg-yellow-50 tooltip-target"
+                            data-case-name="T-Cirrus-BackupRestore-20260101_184141"
+                            data-module="备份与恢复模块"
+                            data-expected="{"输入数据": "无", "前置条件": "1.进入Backup/Restore页面", "执行步骤": "1.点击【RESTORE DATABASER】\n2.点击【NO】", "预期结果": "提示窗口关闭，恢复未执行"}"
+                            data-actual="None"
+                            data-steps="1. 点击左上角的菜单图标（三条横线），以打开侧边栏或导航菜单。 点击“Backup/Restore”选项，进入 Backup/Restore 页面。 点击【RESTORE DATABASE】按钮以触发恢复提示窗口。 点击弹窗中的【NO】按钮以取消数据库恢复操作。"
+                            data-remark="Backup/Restore">
+                            <td class="px-4 py-2 font-medium text-gray-900">T-Cirrus-BackupRestore-20260101_184141</td>
+                            <td class="px-4 py-2">{"输入数据": "无", "前置条件": "1.进入Backup/Restore页面", "执行步骤": "1.点击【RESTORE DATABASER】\n2.点击【NO】", "预期结果": "提示窗口关闭，恢复未执行"}</td>
+                            <td class="px-4 py-2">None</td>
+                            <td class="px-4 py-2 text-gray-600">Backup/Restore</td>
+                            <td class="px-4 py-2 text-red-600 font-bold">实际结果为N/A，无法证明测试通过</td>
+                        </tr>
+                        
+                        <tr class="bg-white border-b hover:bg-yellow-50 tooltip-target"
+                            data-case-name="T-Chrono-闹钟-20260101_012910"
+                            data-module="闹钟模块"
+                            data-expected="{"输入数据": "无", "前置条件": "1.首次安装并打开Chrono应用\n2.进入闹钟页面", "执行步骤": "1.查看闹钟页面", "预期结果": "页面中间显示“未创建闹钟”提示"}"
+                            data-actual="None"
+                            data-steps="1. 确认当前页面为闹钟页面，且页面中央显示“未创建闹钟”提示。"
+                            data-remark="闹钟">
+                            <td class="px-4 py-2 font-medium text-gray-900">T-Chrono-闹钟-20260101_012910</td>
+                            <td class="px-4 py-2">{"输入数据": "无", "前置条件": "1.首次安装并打开Chrono应用\n2.进入闹钟页面", "执行步骤": "1.查看闹钟页面", "预期结果": "页面中间显示“未创建闹钟”提示"}</td>
+                            <td class="px-4 py-2">None</td>
+                            <td class="px-4 py-2 text-gray-600">闹钟</td>
+                            <td class="px-4 py-2 text-red-600 font-bold">实际结果为N/A，无法证明测试通过。</td>
+                        </tr>
+                        
+                        <tr class="bg-white border-b hover:bg-yellow-50 tooltip-target"
+                            data-case-name="T-Chrono-闹钟-20260101_013001"
+                            data-module="闹钟模块"
+                            data-expected="{"输入数据": "闹钟时间：当前时间 + 5分钟", "前置条件": "1.成功进入闹钟页面", "执行步骤": "1.点击底部【+】按钮\n2.设置时间为当前时间后5分钟\n3.点击【保存】", "预期结果": "闹钟列表新增一个闹钟，显示设置时间，响铃时间“就在今天”"}"
+                            data-actual="None"
+                            data-steps="1. 点击屏幕右下角蓝色【+】按钮。 点击分钟环上的“35”位置，将分钟值设置为35。 点击【保存】按钮"
+                            data-remark="闹钟">
+                            <td class="px-4 py-2 font-medium text-gray-900">T-Chrono-闹钟-20260101_013001</td>
+                            <td class="px-4 py-2">{"输入数据": "闹钟时间：当前时间 + 5分钟", "前置条件": "1.成功进入闹钟页面", "执行步骤": "1.点击底部【+】按钮\n2.设置时间为当前时间后5分钟\n3.点击【保存】", "预期结果": "闹钟列表新增一个闹钟，显示设置时间，响铃时间“就在今天”"}</td>
+                            <td class="px-4 py-2">None</td>
+                            <td class="px-4 py-2 text-gray-600">闹钟</td>
+                            <td class="px-4 py-2 text-red-600 font-bold">实际结果为N/A，无法证明测试通过。</td>
+                        </tr>
+                        
+                        <tr class="bg-white border-b hover:bg-yellow-50 tooltip-target"
+                            data-case-name="T-Chrono-闹钟-20260101_013300"
+                            data-module="闹钟模块"
+                            data-expected="{"输入数据": "重复类型：每天", "前置条件": "1.打开选择时间窗口\n2.成功进入闹钟自定义页面", "执行步骤": "1.点击【类型】\n2.选择“每天”\n3.点击【保存】", "预期结果": "闹钟设置为“每天”响铃提示"}"
+                            data-actual="None"
+                            data-steps="1. 点击屏幕右下角的蓝色加号按钮，进入新建闹钟页面。 点击弹窗右下角的【保存】按钮，确认所选时间并进入闹钟详情设置页面。 点击“1:33上午”的闹钟条目，进入该闹钟的详情设置页面。 点击“类型”选项旁边的下拉箭头，进入重复类型选择列表。 点击“每天”选项旁边的单选按钮，选择每日重复类型。 点击屏幕右上角的“保存”按钮，确认闹钟设置。 点击“1:33上午”的闹钟条目，进入该闹钟的详情设置页面。 点击“类型”选项旁边的下拉箭头，进入重复类型选择列表。 点击“每天”选项旁边的单选按钮，选择每日重复类型。"
+                            data-remark="闹钟">
+                            <td class="px-4 py-2 font-medium text-gray-900">T-Chrono-闹钟-20260101_013300</td>
+                            <td class="px-4 py-2">{"输入数据": "重复类型：每天", "前置条件": "1.打开选择时间窗口\n2.成功进入闹钟自定义页面", "执行步骤": "1.点击【类型】\n2.选择“每天”\n3.点击【保存】", "预期结果": "闹钟设置为“每天”响铃提示"}</td>
+                            <td class="px-4 py-2">None</td>
+                            <td class="px-4 py-2 text-gray-600">闹钟</td>
+                            <td class="px-4 py-2 text-red-600 font-bold">实际结果为N/A，无法证明测试通过。</td>
+                        </tr>
+                        
+                        <tr class="bg-white border-b hover:bg-yellow-50 tooltip-target"
+                            data-case-name="T-Chrono-闹钟-20260101_024032"
+                            data-module="闹钟模块"
+                            data-expected="{"输入数据": "无", "前置条件": "1.成功进入闹钟页面\n2.成功打开选择时间窗口\n2.成功进入闹钟自定义页面", "执行步骤": "1.点击【任务】\n2.点击【+】按钮\n3.选择“数学题”\n4.点击设置按钮\n5.设置难度为“简单”\n6.设置问题数目为2\n7.点击【保存】", "预期结果": "任务列表显示数学题任务，难度设置为简单，问题数为2"}"
+                            data-actual="None"
+                            data-steps="1. 点击“2:14上午”的闹钟条目，以进入其自定义设置页面。 点击“任务”选项，进入任务管理页面。 点击右下角的【+】按钮以添加新任务。 点击“数学题”选项以选择该任务类型。 点击“数学题”旁边的设置按钮（齿轮图标）。 将“问题数目”滑块向右拖动至2的位置。 再次滑动“问题数目”滑块，精确调整至2的位置 点击【保存】按钮以确认当前数学题任务的设置。 点击“2:14上午”的闹钟条目，进入其自定义设置页面以验证任务绑定情况。 点击“任务”选项，进入任务管理页面以确认数学题任务是否已成功添加并绑定。"
+                            data-remark="闹钟">
+                            <td class="px-4 py-2 font-medium text-gray-900">T-Chrono-闹钟-20260101_024032</td>
+                            <td class="px-4 py-2">{"输入数据": "无", "前置条件": "1.成功进入闹钟页面\n2.成功打开选择时间窗口\n2.成功进入闹钟自定义页面", "执行步骤": "1.点击【任务】\n2.点击【+】按钮\n3.选择“数学题”\n4.点击设置按钮\n5.设置难度为“简单”\n6.设置问题数目为2\n7.点击【保存】", "预期结果": "任务列表显示数学题任务，难度设置为简单，问题数为2"}</td>
+                            <td class="px-4 py-2">None</td>
+                            <td class="px-4 py-2 text-gray-600">闹钟</td>
+                            <td class="px-4 py-2 text-red-600 font-bold">实际结果为N/A，无法证明测试通过。</td>
+                        </tr>
+                        
+                        <tr class="bg-white border-b hover:bg-yellow-50 tooltip-target"
+                            data-case-name="T-Chrono-闹钟-20260101_031211"
+                            data-module="闹钟模块"
+                            data-expected="{"输入数据": "无", "前置条件": "1.成功进入闹钟页面\n2.闹钟列表中已存在至少一个闹钟", "执行步骤": "1.点击该闹钟的开关按钮", "预期结果": "闹钟变为关闭置灰状态，显示“无计划”"}"
+                            data-actual="None"
+                            data-steps="1. 点击第一个闹钟“1:33 上午”右侧的蓝色开关按钮"
+                            data-remark="闹钟">
+                            <td class="px-4 py-2 font-medium text-gray-900">T-Chrono-闹钟-20260101_031211</td>
+                            <td class="px-4 py-2">{"输入数据": "无", "前置条件": "1.成功进入闹钟页面\n2.闹钟列表中已存在至少一个闹钟", "执行步骤": "1.点击该闹钟的开关按钮", "预期结果": "闹钟变为关闭置灰状态，显示“无计划”"}</td>
+                            <td class="px-4 py-2">None</td>
+                            <td class="px-4 py-2 text-gray-600">闹钟</td>
+                            <td class="px-4 py-2 text-red-600 font-bold">实际结果为N/A，无法证明测试通过。</td>
+                        </tr>
+                        
+                        <tr class="bg-white border-b hover:bg-yellow-50 tooltip-target"
+                            data-case-name="T-Chrono-闹钟-20260101_031311"
+                            data-module="闹钟模块"
+                            data-expected="{"输入数据": "无", "前置条件": "1.成功进入闹钟页面\n2.闹钟列表中已存在至少一个闹钟", "执行步骤": "1.点击闹钟右侧的菜单按钮\n2.点击【删除】\n3.确认删除", "预期结果": "该闹钟从列表中移除"}"
+                            data-actual="None"
+                            data-steps="1. 点击第一个闹钟“1:33 上午”右侧的下拉箭头按钮 点击弹出菜单中的“删除”选项。"
+                            data-remark="闹钟">
+                            <td class="px-4 py-2 font-medium text-gray-900">T-Chrono-闹钟-20260101_031311</td>
+                            <td class="px-4 py-2">{"输入数据": "无", "前置条件": "1.成功进入闹钟页面\n2.闹钟列表中已存在至少一个闹钟", "执行步骤": "1.点击闹钟右侧的菜单按钮\n2.点击【删除】\n3.确认删除", "预期结果": "该闹钟从列表中移除"}</td>
+                            <td class="px-4 py-2">None</td>
+                            <td class="px-4 py-2 text-gray-600">闹钟</td>
+                            <td class="px-4 py-2 text-red-600 font-bold">实际结果为N/A，无法证明测试通过。</td>
+                        </tr>
+                        
+                        <tr class="bg-white border-b hover:bg-yellow-50 tooltip-target"
+                            data-case-name="T-Chrono-闹钟-20260101_031459"
+                            data-module="闹钟模块"
+                            data-expected="{"输入数据": "筛选条件：今天", "前置条件": "1.成功进入闹钟页面\n2.已创建今天、明天等不同日期的闹钟", "执行步骤": "1.点击【日期】按钮\n2.选择“今天”", "预期结果": "仅显示今天设置的闹钟"}"
+                            data-actual="None"
+                            data-steps="1. 点击【日期】按钮 点击“今天”选项以筛选今日闹钟"
+                            data-remark="闹钟">
+                            <td class="px-4 py-2 font-medium text-gray-900">T-Chrono-闹钟-20260101_031459</td>
+                            <td class="px-4 py-2">{"输入数据": "筛选条件：今天", "前置条件": "1.成功进入闹钟页面\n2.已创建今天、明天等不同日期的闹钟", "执行步骤": "1.点击【日期】按钮\n2.选择“今天”", "预期结果": "仅显示今天设置的闹钟"}</td>
+                            <td class="px-4 py-2">None</td>
+                            <td class="px-4 py-2 text-gray-600">闹钟</td>
+                            <td class="px-4 py-2 text-red-600 font-bold">实际结果为N/A，无法证明测试通过。</td>
+                        </tr>
+                        
+                        <tr class="bg-white border-b hover:bg-yellow-50 tooltip-target"
+                            data-case-name="T-Chrono-闹钟-20260101_031614"
+                            data-module="闹钟模块"
+                            data-expected="{"输入数据": "筛选条件：活跃", "前置条件": "1.成功进入闹钟页面\n2.已创建活跃、已禁用等不同状态的闹钟", "执行步骤": "1.点击【状态】按钮\n2.选择“活跃”", "预期结果": "仅显示活跃（开启）的闹钟"}"
+                            data-actual="None"
+                            data-steps="1. 点击【状态】按钮 点击“活跃”选项以筛选仅显示开启状态的闹钟。"
+                            data-remark="闹钟">
+                            <td class="px-4 py-2 font-medium text-gray-900">T-Chrono-闹钟-20260101_031614</td>
+                            <td class="px-4 py-2">{"输入数据": "筛选条件：活跃", "前置条件": "1.成功进入闹钟页面\n2.已创建活跃、已禁用等不同状态的闹钟", "执行步骤": "1.点击【状态】按钮\n2.选择“活跃”", "预期结果": "仅显示活跃（开启）的闹钟"}</td>
+                            <td class="px-4 py-2">None</td>
+                            <td class="px-4 py-2 text-gray-600">闹钟</td>
+                            <td class="px-4 py-2 text-red-600 font-bold">实际结果为N/A，无法证明测试通过。</td>
+                        </tr>
+                        
+                        <tr class="bg-white border-b hover:bg-yellow-50 tooltip-target"
+                            data-case-name="T-Chrono-闹钟-20260101_031735"
+                            data-module="闹钟模块"
+                            data-expected="{"输入数据": "筛选标签：Work", "前置条件": "1.成功进入闹钟页面\n2.已创建带有“Work”标签的闹钟", "执行步骤": "1.点击【标签】按钮\n2.勾选“Work”\n3.点击【保存】", "预期结果": "仅显示带有Work标签的闹钟"}"
+                            data-actual="None"
+                            data-steps="1. 点击“标签”按钮以展开标签筛选选项。 勾选“Work”标签 点击“保存”按钮以确认并应用“Work”标签筛选。"
+                            data-remark="闹钟">
+                            <td class="px-4 py-2 font-medium text-gray-900">T-Chrono-闹钟-20260101_031735</td>
+                            <td class="px-4 py-2">{"输入数据": "筛选标签：Work", "前置条件": "1.成功进入闹钟页面\n2.已创建带有“Work”标签的闹钟", "执行步骤": "1.点击【标签】按钮\n2.勾选“Work”\n3.点击【保存】", "预期结果": "仅显示带有Work标签的闹钟"}</td>
+                            <td class="px-4 py-2">None</td>
+                            <td class="px-4 py-2 text-gray-600">闹钟</td>
+                            <td class="px-4 py-2 text-red-600 font-bold">实际结果为N/A，无法证明测试通过。</td>
+                        </tr>
+                        
+                        <tr class="bg-white border-b hover:bg-yellow-50 tooltip-target"
+                            data-case-name="T-Chrono-时钟-20260101_031919"
+                            data-module="时钟模块"
+                            data-expected="{"输入数据": "无", "前置条件": "1.成功进入时钟页面", "执行步骤": "1.查看时钟列表", "预期结果": "默认显示New York City、London、Paris、Tokyo等城市时间"}"
+                            data-actual="None"
+                            data-steps="1. 点击底部导航栏中的时钟图标，以进入世界时钟页面。"
+                            data-remark="时钟">
+                            <td class="px-4 py-2 font-medium text-gray-900">T-Chrono-时钟-20260101_031919</td>
+                            <td class="px-4 py-2">{"输入数据": "无", "前置条件": "1.成功进入时钟页面", "执行步骤": "1.查看时钟列表", "预期结果": "默认显示New York City、London、Paris、Tokyo等城市时间"}</td>
+                            <td class="px-4 py-2">None</td>
+                            <td class="px-4 py-2 text-gray-600">时钟</td>
+                            <td class="px-4 py-2 text-red-600 font-bold">实际结果为N/A，无法证明测试通过。</td>
+                        </tr>
+                        
+                        <tr class="bg-white border-b hover:bg-yellow-50 tooltip-target"
+                            data-case-name="T-Chrono-时钟-20260101_032018"
+                            data-module="时钟模块"
+                            data-expected="{"输入数据": "城市：Beijing", "前置条件": "1.成功进入时钟页面", "执行步骤": "1.点击右下角【+】按钮\n2.搜索“Beijing”\n3.点击搜索结果中的“北京”", "预期结果": "北京时间成功加入列表，显示当前时间与本地时差"}"
+                            data-actual="None"
+                            data-steps="1. 点击底部导航栏中的“时钟”图标，进入时钟页面。 点击右下角的蓝色【+】按钮 在搜索框中输入“Beijing” 点击搜索结果中的“北京”条目"
+                            data-remark="时钟">
+                            <td class="px-4 py-2 font-medium text-gray-900">T-Chrono-时钟-20260101_032018</td>
+                            <td class="px-4 py-2">{"输入数据": "城市：Beijing", "前置条件": "1.成功进入时钟页面", "执行步骤": "1.点击右下角【+】按钮\n2.搜索“Beijing”\n3.点击搜索结果中的“北京”", "预期结果": "北京时间成功加入列表，显示当前时间与本地时差"}</td>
+                            <td class="px-4 py-2">None</td>
+                            <td class="px-4 py-2 text-gray-600">时钟</td>
+                            <td class="px-4 py-2 text-red-600 font-bold">实际结果为N/A，无法证明测试通过</td>
+                        </tr>
+                        
+                        <tr class="bg-white border-b hover:bg-yellow-50 tooltip-target"
+                            data-case-name="T-Chrono-时钟-20260101_032228"
+                            data-module="时钟模块"
+                            data-expected="{"输入数据": "无", "前置条件": "1.成功进入时钟页面\n2.时钟列表中已存在多个城市", "执行步骤": "1.点击某个城市右侧的按钮\n2.点击【删除】按钮", "预期结果": "该城市从列表中移除"}"
+                            data-actual="None"
+                            data-steps="1. 点击底部导航栏中的“时钟”图标，以进入世界时钟页面。 点击“Beijing”条目右侧的向下箭头图标，以展开更多选项。 点击【删除】按钮，确认删除“Beijing”城市"
+                            data-remark="时钟">
+                            <td class="px-4 py-2 font-medium text-gray-900">T-Chrono-时钟-20260101_032228</td>
+                            <td class="px-4 py-2">{"输入数据": "无", "前置条件": "1.成功进入时钟页面\n2.时钟列表中已存在多个城市", "执行步骤": "1.点击某个城市右侧的按钮\n2.点击【删除】按钮", "预期结果": "该城市从列表中移除"}</td>
+                            <td class="px-4 py-2">None</td>
+                            <td class="px-4 py-2 text-gray-600">时钟</td>
+                            <td class="px-4 py-2 text-red-600 font-bold">实际结果为N/A，无法证明测试通过</td>
+                        </tr>
+                        
+                        <tr class="bg-white border-b hover:bg-yellow-50 tooltip-target"
+                            data-case-name="T-Chrono-计时器-20260101_032413"
+                            data-module="计时器模块"
+                            data-expected="{"输入数据": "无", "前置条件": "1.首次进入计时器页面", "执行步骤": "1.查看计时器页面", "预期结果": "页面中间显示“未创计时器”提示"}"
+                            data-actual="None"
+                            data-steps="1. 点击底部导航栏中的“计时器”图标，进入计时器页面。 点击底部导航栏中的“计时器”图标（沙漏形状），以进入计时器页面。"
+                            data-remark="计时器">
+                            <td class="px-4 py-2 font-medium text-gray-900">T-Chrono-计时器-20260101_032413</td>
+                            <td class="px-4 py-2">{"输入数据": "无", "前置条件": "1.首次进入计时器页面", "执行步骤": "1.查看计时器页面", "预期结果": "页面中间显示“未创计时器”提示"}</td>
+                            <td class="px-4 py-2">None</td>
+                            <td class="px-4 py-2 text-gray-600">计时器</td>
+                            <td class="px-4 py-2 text-red-600 font-bold">实际结果为N/A，无法证明测试通过</td>
+                        </tr>
+                        
+                        <tr class="bg-white border-b hover:bg-yellow-50 tooltip-target"
+                            data-case-name="T-Chrono-计时器-20260101_032539"
+                            data-module="计时器模块"
+                            data-expected="{"输入数据": "无", "前置条件": "1.成功进入计时器页面", "执行步骤": "1.点击底部【+】按钮\n2.点击预设“5min”\n3.点击【保存】", "预期结果": "计时器列表新增一个5分钟的计时器"}"
+                            data-actual="None"
+                            data-steps="1. 点击底部导航栏中的“计时器”图标（时钟形状），以切换到计时器页面。 点击底部导航栏中倒数第二个沙漏形状的“计时器”图标，以切换到计时器页面。 点击页面右下角的蓝色【+】按钮，以进入创建计时器的界面。 点击预设模板中的“5 min”按钮。 点击【保存】按钮。"
+                            data-remark="计时器">
+                            <td class="px-4 py-2 font-medium text-gray-900">T-Chrono-计时器-20260101_032539</td>
+                            <td class="px-4 py-2">{"输入数据": "无", "前置条件": "1.成功进入计时器页面", "执行步骤": "1.点击底部【+】按钮\n2.点击预设“5min”\n3.点击【保存】", "预期结果": "计时器列表新增一个5分钟的计时器"}</td>
+                            <td class="px-4 py-2">None</td>
+                            <td class="px-4 py-2 text-gray-600">计时器</td>
+                            <td class="px-4 py-2 text-red-600 font-bold">实际结果为N/A，无法证明测试通过</td>
+                        </tr>
+                        
+                        <tr class="bg-white border-b hover:bg-yellow-50 tooltip-target"
+                            data-case-name="T-Chrono-计时器-20260101_032853"
+                            data-module="计时器模块"
+                            data-expected="{"输入数据": "时长：15分30秒", "前置条件": "1.成功进入计时器自定义页面", "执行步骤": "1.在时长选择器中设置15分30秒\n2.点击【保存】", "预期结果": "计时器列表新增一个15分30秒的计时器"}"
+                            data-actual="None"
+                            data-steps="1. 点击底部导航栏中倒数第二个图标（沙漏形状），以切换到“计时器”功能页面。 点击屏幕右下角的蓝色加号按钮，进入自定义创建计时器页面。 点击“M”区域中的“15”以设置分钟数。 点击“S”区域中的“30”以设置秒数。 点击“M”区域中的“15”位置，以将分钟数准确设置为15。 点击“H”区域中的“0”位置，将小时数设置为0。 点击“M”区域中的“15”位置，以设置分钟数为15。 点击“S”区域中的“30”位置，设置秒数为30。 点击【保存】按钮，完成计时器创建。"
+                            data-remark="计时器">
+                            <td class="px-4 py-2 font-medium text-gray-900">T-Chrono-计时器-20260101_032853</td>
+                            <td class="px-4 py-2">{"输入数据": "时长：15分30秒", "前置条件": "1.成功进入计时器自定义页面", "执行步骤": "1.在时长选择器中设置15分30秒\n2.点击【保存】", "预期结果": "计时器列表新增一个15分30秒的计时器"}</td>
+                            <td class="px-4 py-2">None</td>
+                            <td class="px-4 py-2 text-gray-600">计时器</td>
+                            <td class="px-4 py-2 text-red-600 font-bold">实际结果为N/A，无法证明测试通过</td>
+                        </tr>
+                        
+                        <tr class="bg-white border-b hover:bg-yellow-50 tooltip-target"
+                            data-case-name="T-Chrono-计时器-20260101_033836"
+                            data-module="计时器模块"
+                            data-expected="{"输入数据": "标签：School", "前置条件": "1.成功进入计时器页面\n2.已选择时长\n3.成功进入计时器自定义页面", "执行步骤": "1.点击【Tags】\n2.勾选“School”\n3.点击【保存】", "预期结果": "计时器列表新增一个School标签的计时器"}"
+                            data-actual="None"
+                            data-steps="1. 点击底部导航栏中的“计时器”图标（沙漏形状），以进入计时器页面。 点击“15m 30s timer”计时器条目，进入其编辑/详情页面。 点击右上角【编辑】按钮，进入计时器的编辑页面。 点击“Tags”区域右侧的下拉箭头，以展开标签选择界面。 点击标签选择界面右上角的“+”按钮，以创建新标签。 点击右下角蓝色“+”按钮，以确保弹出新标签输入框。 删除输入框中现有的“New Preset”文本内容。 在“编辑标签”输入框中输入“Meditation”。 点击【保存】按钮，确认创建“Meditation”标签。 点击“Meditation”标签条目，以勾选该标签并应用到当前计时器。 点击【保存】按钮，确认“Meditation”标签的创建并应用生效。 点击左上角的返回箭头，退出标签选择界面。 点击标签选择弹窗右下角的【保存】按钮，以确认标签选择并尝试退出弹窗。 点击左上角返回箭头，以退出当前计时器编辑页面，返回到计时器列表页面。 点击左上角返回箭头，确保回到计时器列表页面。 点击“标签”筛选按钮，以查看或确认“15m 30s timer”是否已应用“Meditation”标签。 点击“Meditation”标签左侧的复选框，以勾选该标签。 点击标签选择弹窗右下角的【保存】按钮，确认标签选择并退出弹窗。"
+                            data-remark="计时器">
+                            <td class="px-4 py-2 font-medium text-gray-900">T-Chrono-计时器-20260101_033836</td>
+                            <td class="px-4 py-2">{"输入数据": "标签：School", "前置条件": "1.成功进入计时器页面\n2.已选择时长\n3.成功进入计时器自定义页面", "执行步骤": "1.点击【Tags】\n2.勾选“School”\n3.点击【保存】", "预期结果": "计时器列表新增一个School标签的计时器"}</td>
+                            <td class="px-4 py-2">None</td>
+                            <td class="px-4 py-2 text-gray-600">计时器</td>
+                            <td class="px-4 py-2 text-red-600 font-bold">实际结果为N/A，无法证明测试通过</td>
+                        </tr>
+                        
+                        <tr class="bg-white border-b hover:bg-yellow-50 tooltip-target"
+                            data-case-name="T-Chrono-计时器-20260101_040102"
+                            data-module="计时器模块"
+                            data-expected="{"输入数据": "无", "前置条件": "1.成功进入计时器页面\n2.已创建进行中、已暂停等不同状态的计时器", "执行步骤": "1.点击【状态】按钮\n2.选择“进行中”", "预期结果": "仅显示正在计时的计时器"}"
+                            data-actual="None"
+                            data-steps="1. 点击【状态】按钮 点击“活跃”选项以选择该状态进行筛选。 点击【状态】按钮 选择“活跃”"
+                            data-remark="计时器">
+                            <td class="px-4 py-2 font-medium text-gray-900">T-Chrono-计时器-20260101_040102</td>
+                            <td class="px-4 py-2">{"输入数据": "无", "前置条件": "1.成功进入计时器页面\n2.已创建进行中、已暂停等不同状态的计时器", "执行步骤": "1.点击【状态】按钮\n2.选择“进行中”", "预期结果": "仅显示正在计时的计时器"}</td>
+                            <td class="px-4 py-2">None</td>
+                            <td class="px-4 py-2 text-gray-600">计时器</td>
+                            <td class="px-4 py-2 text-red-600 font-bold">实际结果为N/A，无法证明测试通过</td>
+                        </tr>
+                        
+                        <tr class="bg-white border-b hover:bg-yellow-50 tooltip-target"
+                            data-case-name="T-Chrono-计时器-20260101_040245"
+                            data-module="计时器模块"
+                            data-expected="{"输入数据": "无", "前置条件": "1.成功进入计时器页面\n2.已创建多个不同时长的计时器", "执行步骤": "1.点击【排序】按钮\n2.选择“时长由短到长”", "预期结果": "计时器列表按时长从短到长排序"}"
+                            data-actual="None"
+                            data-steps="1. 点击底部导航栏中的“计时器”图标，切换到计时器页面。 点击“排序”按钮以展开排序选项。 点击“时长由短到长”排序选项。"
+                            data-remark="计时器">
+                            <td class="px-4 py-2 font-medium text-gray-900">T-Chrono-计时器-20260101_040245</td>
+                            <td class="px-4 py-2">{"输入数据": "无", "前置条件": "1.成功进入计时器页面\n2.已创建多个不同时长的计时器", "执行步骤": "1.点击【排序】按钮\n2.选择“时长由短到长”", "预期结果": "计时器列表按时长从短到长排序"}</td>
+                            <td class="px-4 py-2">None</td>
+                            <td class="px-4 py-2 text-gray-600">计时器</td>
+                            <td class="px-4 py-2 text-red-600 font-bold">实际结果为N/A，无法证明测试通过</td>
+                        </tr>
+                        
+                        <tr class="bg-white border-b hover:bg-yellow-50 tooltip-target"
+                            data-case-name="T-Chrono-秒表-20260101_040456"
+                            data-module="秒表模块"
+                            data-expected="{"输入数据": "无", "前置条件": "1.成功进入秒表页面", "执行步骤": "1.点击底部“开始”按钮", "预期结果": "秒表开始计时，显示时、分、秒、毫秒"}"
+                            data-actual="None"
+                            data-steps="1. 点击底部导航栏中的“秒表”图标，进入秒表页面。 点击秒表页面底部的“开始”按钮，启动计时。"
+                            data-remark="秒表">
+                            <td class="px-4 py-2 font-medium text-gray-900">T-Chrono-秒表-20260101_040456</td>
+                            <td class="px-4 py-2">{"输入数据": "无", "前置条件": "1.成功进入秒表页面", "执行步骤": "1.点击底部“开始”按钮", "预期结果": "秒表开始计时，显示时、分、秒、毫秒"}</td>
+                            <td class="px-4 py-2">None</td>
+                            <td class="px-4 py-2 text-gray-600">秒表</td>
+                            <td class="px-4 py-2 text-red-600 font-bold">实际结果为N/A，无法证明测试通过</td>
+                        </tr>
+                        
+                        <tr class="bg-white border-b hover:bg-yellow-50 tooltip-target"
+                            data-case-name="T-Chrono-秒表-20260101_040618"
+                            data-module="秒表模块"
+                            data-expected="{"输入数据": "无", "前置条件": "1.成功进入秒表页面\n2.秒表正在运行", "执行步骤": "1.点击【计圈】按钮", "预期结果": "上方显示上一圈用时，下方列表新增一圈记录"}"
+                            data-actual="None"
+                            data-steps="1. 点击底部导航栏中的“秒表”图标，进入秒表页面。 点击底部导航栏最右侧的“秒表”图标，进入秒表页面。"
+                            data-remark="秒表">
+                            <td class="px-4 py-2 font-medium text-gray-900">T-Chrono-秒表-20260101_040618</td>
+                            <td class="px-4 py-2">{"输入数据": "无", "前置条件": "1.成功进入秒表页面\n2.秒表正在运行", "执行步骤": "1.点击【计圈】按钮", "预期结果": "上方显示上一圈用时，下方列表新增一圈记录"}</td>
+                            <td class="px-4 py-2">None</td>
+                            <td class="px-4 py-2 text-gray-600">秒表</td>
+                            <td class="px-4 py-2 text-red-600 font-bold">实际结果为N/A，无法证明测试通过</td>
+                        </tr>
+                        
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        
+
+        <!-- Defect Analysis -->
+        <div class="p-6 border-b">
+            <h2 class="text-xl font-bold mb-4 text-gray-800">4. 缺陷分析与风险</h2>
+            
+            
+            <div class="mb-6 bg-red-50 p-4 rounded-lg border border-red-100">
+                <h3 class="font-bold text-red-800 text-lg mb-2">显示问题</h3>
+                <p class="text-gray-700 mb-2"><strong>总结:</strong> 界面元素显示不正确或未显示</p>
+                <p class="text-gray-700 mb-2"><strong>风险评估:</strong> 影响用户体验，但不影响功能使用</p>
+                <div class="mt-3">
+                    <span class="text-sm font-semibold text-gray-500">相关用例:</span>
+                    <div class="flex flex-wrap gap-2 mt-1">
+                        
+                        <span class="px-2 py-1 bg-white border rounded text-xs text-gray-600 tooltip-target"
+                              data-case-name="T-Quillpad-编辑-预览-20251230_004606"
+                              data-module="预览模块"
+                              data-expected="{"前置条件": "当前笔记含多级标题、列表、粗斜体", "执行步骤": "1.点顶部右下角“眼睛”图标切换预览", "预期结果": "标题字号递减、列表缩进、粗/斜样式正确；代码块高亮"}"
+                              data-actual="None"
+                              data-steps="1. 在当前激活输入框中，于光标位置输入 ` ``` `（三个反引号），以闭合Markdown代码块。
+2. 点击屏幕右下角绿色“眼睛”图标，切换至预览模式。
+3. 观察预览界面：确认标题字号逐级递减、列表有缩进、加粗与斜体样式正确、代码块有语法高亮。 。"
+                              data-remark="编辑-预览">
+                            T-Quillpad-编辑-预览-20251230_004606
+                        </span>
+                        
+                        <span class="px-2 py-1 bg-white border rounded text-xs text-gray-600 tooltip-target"
+                              data-case-name="T-Quillpad-附件-图片查看-20251230_042243"
+                              data-module="附件查看模块"
+                              data-expected="{"前置条件": "笔记已插入图片", "执行步骤": "1.点图片", "预期结果": "进入全屏查看；支持双指缩放、左右滑动"}"
+                              data-actual="None"
+                              data-steps="1. 点击Quillpad应用图标，重新打开应用。
+2. 在Quillpad中找到并点击标题为“验证笔记2”的笔记卡片，进入其详情页。
+3. 点击笔记正文中的图片附件“Screenshot_2025122...”，触发全屏查看模式。
+4. 在全屏查看模式下，使用双指捏合手势验证缩放功能是否正常。
+5. 在全屏查看模式下，左右滑动屏幕验证是否支持切换其他图片（如存在多图）。
+6. 确认上述功能均正常后， 。"
+                              data-remark="附件-图片查看">
+                            T-Quillpad-附件-图片查看-20251230_042243
+                        </span>
+                        
+                        <span class="px-2 py-1 bg-white border rounded text-xs text-gray-600 tooltip-target"
+                              data-case-name="T-Cirrus-Weather-20260101_165453"
+                              data-module="天气信息刷新模块"
+                              data-expected="{"输入数据": "无", "前置条件": "1.当前在Weather页面\n2.已添加至少一个城市", "执行步骤": "1.点击右上角刷新按钮", "预期结果": "页面刷新显示最新时间及天气信息"}"
+                              data-actual="None"
+                              data-steps="1. 重新在输入框中输入“北京”，并确认输入法为中文模式。
+2. 点击键盘上的“搜索”键（如存在）或等待系统自动响应，确保“北京”被提交并显示搜索结果。
+3. 点击搜索结果中的第一项“北京市, CN, 北京, 北京市”以选择该城市。
+4. 等待城市添加成功后，点击左上角菜单图标返回侧边栏。
+5. 点击“Weather”选项，进入主天气页面。
+6. 点击右上角刷新按钮。
+7. 等待页面刷新完成，确认显示最新时间及天气信息。 。"
+                              data-remark="Weather">
+                            T-Cirrus-Weather-20260101_165453
+                        </span>
+                        
+                        <span class="px-2 py-1 bg-white border rounded text-xs text-gray-600 tooltip-target"
+                              data-case-name="T-Cirrus-Manage locations-20260101_173744"
+                              data-module="位置管理模块"
+                              data-expected="{"输入数据": "新名称：北京中心", "前置条件": "1.成功进入Manage locations页面\n2.Manage locations列表中已有至少一个城市", "执行步骤": "1.点击城市名称\n2.修改名称\n3.点击【MODIFY】", "预期结果": "城市名称更新成功"}"
+                              data-actual="None"
+                              data-steps="1. 点击列表中对应的城市条目（原“32.06° / 118.77°”位置），进入详情页面以验证名称是否已更新为“北京中心”。
+2. 若确认名称已更新， 。
+3. 若未更新，返回编辑页面重新输入并保存。
+4. 最终将计划标记为 ""。"
+                              data-remark="Manage locations">
+                            T-Cirrus-Manage locations-20260101_173744
+                        </span>
+                        
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mb-6 bg-red-50 p-4 rounded-lg border border-red-100">
+                <h3 class="font-bold text-red-800 text-lg mb-2">交互响应问题</h3>
+                <p class="text-gray-700 mb-2"><strong>总结:</strong> 用户操作后，界面无响应或响应不符合预期</p>
+                <p class="text-gray-700 mb-2"><strong>风险评估:</strong> 影响用户操作流畅性和体验</p>
+                <div class="mt-3">
+                    <span class="text-sm font-semibold text-gray-500">相关用例:</span>
+                    <div class="flex flex-wrap gap-2 mt-1">
+                        
+                        <span class="px-2 py-1 bg-white border rounded text-xs text-gray-600 tooltip-target"
+                              data-case-name="T-Quillpad-编辑-任务清单-20251230_011338"
+                              data-module="任务清单模块"
+                              data-expected="{"输入数据": "- [ ] 待办", "前置条件": "正文输入- [ ] 待办", "执行步骤": "1.在- [ ]后输入“待办”\n2.点击复选框", "预期结果": "复选框变为✅，原文自动改为- [x] 待办"}"
+                              data-actual="None"
+                              data-steps="1. 将光标移至“办”字前，删除“办”并输入“待办”，使文本变为“- [ ] 待办”。
+2. 点击“[ ]”区域，尝试触发状态切换为“[x]”。
+3. 观察文本是否自动更新为“- [x] 待办”，确认任务清单可交互。
+4. 若成功， ；若仍失败，标记该功能不可用并报告用户。"
+                              data-remark="编辑-任务清单">
+                            T-Quillpad-编辑-任务清单-20251230_011338
+                        </span>
+                        
+                        <span class="px-2 py-1 bg-white border rounded text-xs text-gray-600 tooltip-target"
+                              data-case-name="T-Cirrus-Manage locations-20260101_174802"
+                              data-module="位置管理模块"
+                              data-expected="{"输入数据": "无", "前置条件": "1.成功进入Manage locations页面\n2.Manage locations列表中已有多个城市", "执行步骤": "1.长按某个城市\n2.拖动到新位置\n3.释放", "预期结果": "城市顺序更新，页面提示\"Hold and drag to sort\"可见"}"
+                              data-actual="None"
+                              data-steps="1. 长按“上海市”条目，等待其进入可拖动状态。
+2. 将“上海市”拖动至“北京市”上方后松开手指完成拖放。
+3. 观察城市顺序是否更新，并确认提示文字“Hold and drag to sort.”仍可见。"
+                              data-remark="Manage locations">
+                            T-Cirrus-Manage locations-20260101_174802
+                        </span>
+                        
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mb-6 bg-red-50 p-4 rounded-lg border border-red-100">
+                <h3 class="font-bold text-red-800 text-lg mb-2">同步与解析问题</h3>
+                <p class="text-gray-700 mb-2"><strong>总结:</strong> 数据同步失败或文件解析失败</p>
+                <p class="text-gray-700 mb-2"><strong>风险评估:</strong> 可能导致数据丢失或功能不可用</p>
+                <div class="mt-3">
+                    <span class="text-sm font-semibold text-gray-500">相关用例:</span>
+                    <div class="flex flex-wrap gap-2 mt-1">
+                        
+                        <span class="px-2 py-1 bg-white border rounded text-xs text-gray-600 tooltip-target"
+                              data-case-name="T-Quillpad-同步-双向-20251230_032026"
+                              data-module="同步模块"
+                              data-expected="{"输入数据": "A", "前置条件": "已完成TR-017", "执行步骤": "1.本地新增笔记A并等待30s\n2.在Web端查看", "预期结果": "Web端出现A；在Web修改A后30s本地同步更新"}"
+                              data-actual="None"
+                              data-steps="1. 提醒用户前往Web端将笔记内容修改为“修改后的A”，并等待其确认操作完成。
+2. 用户确认后，等待30秒，返回本地检查内容是否同步更新为“修改后的A”。
+3. 若未更新，则报告同步失败；若已更新，则验证成功，标记任务为“”。"
+                              data-remark="同步-双向">
+                            T-Quillpad-同步-双向-20251230_032026
+                        </span>
+                        
+                        <span class="px-2 py-1 bg-white border rounded text-xs text-gray-600 tooltip-target"
+                              data-case-name="T-Quillpad-备份-导出-20251230_034458"
+                              data-module="备份与恢复模块"
+                              data-expected="{"前置条件": "设置页", "执行步骤": "1.设置→创建备份→选文件夹→保存", "预期结果": "生成Quillpad_backup_xxx.zip，含json+附件；文件可解压"}"
+                              data-actual="None"
+                              data-steps="1. 点击屏幕底部“桌面设置”按钮右侧的空白区域（或直接点击“桌面设置”），尝试退出桌面编辑模式，恢复为正常桌面状态。
+2. 若成功退出，从屏幕底部向上滑动打开应用抽屉，搜索并打开“文件管理器”应用。
+3. 在文件管理器中，进入内部存储或下载目录，搜索“Quillpad_backup_*.zip”文件。
+4. 找到后长按该文件，选择“解压”或使用第三方解压工具打开，验证内容是否包含json文件和附件。
+5. 若解压成功且内容完整，则任务完成；否则返回Quillpad重新执行备份流程。"
+                              data-remark="备份-导出">
+                            T-Quillpad-备份-导出-20251230_034458
+                        </span>
+                        
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mb-6 bg-red-50 p-4 rounded-lg border border-red-100">
+                <h3 class="font-bold text-red-800 text-lg mb-2">数据不一致问题</h3>
+                <p class="text-gray-700 mb-2"><strong>总结:</strong> 实际结果与预期不符，数据未正确保存或显示</p>
+                <p class="text-gray-700 mb-2"><strong>风险评估:</strong> 可能导致数据错误，影响功能正确性</p>
+                <div class="mt-3">
+                    <span class="text-sm font-semibold text-gray-500">相关用例:</span>
+                    <div class="flex flex-wrap gap-2 mt-1">
+                        
+                        <span class="px-2 py-1 bg-white border rounded text-xs text-gray-600 tooltip-target"
+                              data-case-name="T-Quillpad-编辑-多级标题-20251230_050721"
+                              data-module="编辑功能模块"
+                              data-expected="{"输入数据": "### 三级\n###### 六级", "前置条件": "编辑页", "执行步骤": "1.输入：### 三级\n###### 六级", "预期结果": "预览字体大小逐级递减；样式区分明显；无解析错误"}"
+                              data-actual="None"
+                              data-steps="1. 长按输入框内任意位置，调出上下文菜单，点击“全选”，然后点击键盘“删除”键，彻底清空当前所有文本内容。
+2. 输入标准Markdown格式：` 三级\n 六级`，以触发应用对多级标题的解析。
+3. 点击右下角绿色眼睛图标按钮，预览渲染效果。
+4. 观察是否字体大小逐级递减、样式区分明显且无解析错误。
+5. 若符合预期，则任务完成；否则检查应用是否支持该Markdown语法或尝试其他标题标记方式。"
+                              data-remark="编辑-多级标题">
+                            T-Quillpad-编辑-多级标题-20251230_050721
+                        </span>
+                        
+                        <span class="px-2 py-1 bg-white border rounded text-xs text-gray-600 tooltip-target"
+                              data-case-name="T-Cirrus-Manage locations-20260101_171633"
+                              data-module="城市管理模块"
+                              data-expected="{"输入数据": "城市名称：Tokyo", "前置条件": "1.成功进入Manage locations页面", "执行步骤": "1.点击添加按钮\n2.输入城市名称\n3.选择提示中的城市\n4.点击【ADD】", "预期结果": "城市成功添加并显示在列表中"}"
+                              data-actual="None"
+                              data-steps="1. 在输入框中输入“Tokyo”。
+2. 从下拉列表中选择“東京, JP, 东京都”选项。
+3. 点击【ADD】按钮提交添加请求。
+4. 返回“Manage locations”页面，检查城市列表中是否显示“Tokyo”。
+5. 若列表中显示“Tokyo”， ；否则，提示用户检查网络或系统状态。"
+                              data-remark="Manage locations">
+                            T-Cirrus-Manage locations-20260101_171633
+                        </span>
+                        
+                        <span class="px-2 py-1 bg-white border rounded text-xs text-gray-600 tooltip-target"
+                              data-case-name="T-Chrono-闹钟-20260101_013859"
+                              data-module="闹钟模块"
+                              data-expected="{"输入数据": "无", "前置条件": "1.成功进入闹钟页面\n2.成功打开选择时间窗口\n2.成功进入闹钟自定义页面", "执行步骤": "1.点击【类型】\n2.选择“指定星期”\n3.勾选周一、周三、周五\n4.点击【保存】", "预期结果": "闹钟设置为“指定星期”响铃提示"}"
+                              data-actual="None"
+                              data-steps="1. 点击右下角蓝色“+”按钮，进入新建闹钟页面。
+2. 设置任意时间后点击【保存】按钮，进入闹钟自定义页面。
+3. 在闹钟自定义页面中寻找“类型”选项并点击。
+4. 选择“指定星期”。
+5. 勾选“周一”、“周三”、“周五”三个选项。
+6. 点击【保存】按钮完成设置。
+7. 检查闹钟列表中新增的闹钟是否显示为“指定星期”响铃提示。 。"
+                              data-remark="闹钟">
+                            T-Chrono-闹钟-20260101_013859
+                        </span>
+                        
+                        <span class="px-2 py-1 bg-white border rounded text-xs text-gray-600 tooltip-target"
+                              data-case-name="T-Chrono-闹钟-20260101_015129"
+                              data-module="闹钟模块"
+                              data-expected="{"输入数据": "无", "前置条件": "1.成功进入闹钟页面\n2.成功打开选择时间窗口\n2.成功进入闹钟自定义页面", "执行步骤": "1.点击【类型】\n2.选择“指定日期”\n3.选择未来某天\n4.开启“结束后删除”开关\n5.点击【保存】", "预期结果": "闹钟显示指定日期，并显示“结束后删除”标记"}"
+                              data-actual="None"
+                              data-steps="1. 点击页面右下角蓝色加号按钮，进入创建新闹钟页面。
+2. 在创建新闹钟页面中，寻找并点击【类型】选项（或类似名称如“闹钟模式”、“触发方式”等），选择“指定日期”。
+3. 在弹出的日期选择器中，选择一个未来的日期。
+4. 找到“结束后删除”开关并将其开启。
+5. 点击页面底部的【保存】按钮，完成闹钟设置。
+6. 验证新闹钟是否显示指定日期并带有“结束后删除”标记。"
+                              data-remark="闹钟">
+                            T-Chrono-闹钟-20260101_015129
+                        </span>
+                        
+                        <span class="px-2 py-1 bg-white border rounded text-xs text-gray-600 tooltip-target"
+                              data-case-name="T-Chrono-闹钟-20260101_020315"
+                              data-module="闹钟模块"
+                              data-expected="{"输入数据": "无", "前置条件": "1.成功进入闹钟页面\n2.成功打开选择时间窗口\n2.成功进入闹钟自定义页面", "执行步骤": "1.点击【类型】\n2.选择“日期范围”\n3.选择未来两天\n4.点击【间隔】\n5.选择“每周”\n6.点击【保存】", "预期结果": "闹钟显示日期范围，间隔为每周响铃"}"
+                              data-actual="None"
+                              data-steps="1. 点击屏幕右下角蓝色加号按钮，进入新建闹钟页面。
+2. 点击“保存”按钮以确认当前时间设置并进入下一步闹钟配置页面。
+3. 点击顶部筛选栏中的“类型”下拉框。
+4. 选择“日期范围”作为闹钟类型。
+5. 选择未来两天作为日期范围。
+6. 点击【间隔】选项。
+7. 选择“每周”。
+8. 点击【保存】按钮。
+9. 验证闹钟列表中新增闹钟是否显示日期范围且间隔为每周。 。 点击屏幕右下角蓝色加号按钮，进入新建闹钟页面。 点击弹窗外区域以关闭“状态”筛选弹窗，返回闹钟设置主界面。 点击屏幕右下角蓝色加号按钮，进入新建闹钟页面。 点击屏幕右下角蓝色加号按钮，进入新建闹钟页面。
+10. 点击“保存”按钮以确认当前时间设置并进入下一步闹钟配置页面。
+11. 点击顶部筛选栏中的“类型”下拉框。
+12. 选择“日期范围”作为闹钟类型。
+13. 选择未来两天作为日期范围。
+14. 点击【间隔】选项。
+15. 选择“每周”。
+16. 点击【保存】按钮。
+17. 验证闹钟列表中新增闹钟是否显示日期范围且间隔为每周。 。"
+                              data-remark="闹钟">
+                            T-Chrono-闹钟-20260101_020315
+                        </span>
+                        
+                        <span class="px-2 py-1 bg-white border rounded text-xs text-gray-600 tooltip-target"
+                              data-case-name="T-Chrono-闹钟-20260101_022738"
+                              data-module="闹钟模块"
+                              data-expected="{"输入数据": "无", "前置条件": "1.成功进入闹钟页面\n2.成功打开选择时间窗口\n2.成功进入闹钟自定义页面", "执行步骤": "1.点击【贪睡】\n2.确保“启用”开关开启\n3.拖动时长至10分钟\n4.点击【保存】", "预期结果": "贪睡功能开启，时长显示设置为10分钟"}"
+                              data-actual="None"
+                              data-steps="1. 小幅度向左滑动“贪睡”时长滑块，每次微调约1-2毫米，逐步将时长从14.4分钟降至10分钟（注意观察数值变化，避免过度调整）
+2. 确认滑块数值稳定在10分钟（若系统四舍五入显示10.0或10分钟，则视为成功）
+3. 点击页面顶部的【保存】按钮以保存设置
+4. 返回闹钟列表页面，再次点击该闹钟进入设置页，确认贪睡功能已开启且时长显示为10分钟"
+                              data-remark="闹钟">
+                            T-Chrono-闹钟-20260101_022738
+                        </span>
+                        
+                        <span class="px-2 py-1 bg-white border rounded text-xs text-gray-600 tooltip-target"
+                              data-case-name="T-Chrono-闹钟-20260101_025943"
+                              data-module="闹钟模块"
+                              data-expected="{"输入数据": "新时间：另一时间", "前置条件": "1.成功进入闹钟页面\n2.闹钟列表中已存在至少一个闹钟", "执行步骤": "1.点击该闹钟\n2.修改时间为另一时间\n3.点击【保存】", "预期结果": "闹钟时间更新为新时间"}"
+                              data-actual="None"
+                              data-steps="1. 在闹钟列表中仔细查找“3:00 上午”闹钟，确认其是否存在（可滑动查看完整列表或使用搜索功能）。
+2. 若未找到，重新点击“+”按钮新建一个“3:00 上午”闹钟并保存，再返回列表验证。
+3. 若找到且状态正常（开关开启、时间正确）， ；否则标记为 "" 并报告失败。"
+                              data-remark="闹钟">
+                            T-Chrono-闹钟-20260101_025943
+                        </span>
+                        
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mb-6 bg-red-50 p-4 rounded-lg border border-red-100">
+                <h3 class="font-bold text-red-800 text-lg mb-2">设置更新问题</h3>
+                <p class="text-gray-700 mb-2"><strong>总结:</strong> 设置保存后未能正确更新或显示</p>
+                <p class="text-gray-700 mb-2"><strong>风险评估:</strong> 影响用户设置的正确性和体验</p>
+                <div class="mt-3">
+                    <span class="text-sm font-semibold text-gray-500">相关用例:</span>
+                    <div class="flex flex-wrap gap-2 mt-1">
+                        
+                        <span class="px-2 py-1 bg-white border rounded text-xs text-gray-600 tooltip-target"
+                              data-case-name="T-Chrono-闹钟-20260101_021516"
+                              data-module="闹钟模块"
+                              data-expected="{"输入数据": "无", "前置条件": "1.成功进入闹钟页面\n2.成功打开选择时间窗口\n2.成功进入闹钟自定义页面", "执行步骤": "1.点击【声音与振动】\n2.点击【铃声】\n3.选择“Cesium”\n4.点击【保存】", "预期结果": "闹钟铃声显示为Cesium"}"
+                              data-actual="None"
+                              data-steps="1. 点击“最近”选项，查看最近使用的音频中是否包含“Cesium”。
+2. 若仍无结果，提示用户可能需要手动将“Cesium”音频文件放入手机存储的铃声目录（如 /Ringtones/），并重新扫描。
+3. 一旦找到“Cesium”，选择后点击【保存】确认更改。
+4. 验证闹钟铃声显示为“Cesium”。"
+                              data-remark="闹钟">
+                            T-Chrono-闹钟-20260101_021516
+                        </span>
+                        
+                        <span class="px-2 py-1 bg-white border rounded text-xs text-gray-600 tooltip-target"
+                              data-case-name="T-Chrono-闹钟-20260101_024740"
+                              data-module="闹钟模块"
+                              data-expected="{"输入数据": "无", "前置条件": "1.成功进入闹钟页面\n2.成功打开选择时间窗口\n2.成功进入闹钟自定义页面", "执行步骤": "1.点击【Tags】\n2.勾选“Work”和“Home”\n3.点击【保存】", "预期结果": "闹钟标签显示Work和Home"}"
+                              data-actual="None"
+                              data-steps="1. 在当前激活的“添加标签”输入框中输入文本“Home”。
+2. 点击屏幕右下角的“保存”按钮以确认添加“Home”标签。
+3. 返回闹钟列表页面，验证该闹钟下方是否同时显示“Work”和“Home”标签。 。"
+                              data-remark="闹钟">
+                            T-Chrono-闹钟-20260101_024740
+                        </span>
+                        
+                        <span class="px-2 py-1 bg-white border rounded text-xs text-gray-600 tooltip-target"
+                              data-case-name="T-Chrono-计时器-20260101_034822"
+                              data-module="计时器模块"
+                              data-expected="{"输入数据": "新名称：瑜伽\n新时长：20分钟", "前置条件": "1.成功进入计时器页面", "执行步骤": "1.点击【+】按钮\n2.点击【编辑】\n3.点击某个预设\n4.修改名称和时长\n5.点击【保存】", "预期结果": "预设模板更新为“瑜伽”，时长为20分钟"}"
+                              data-actual="None"
+                              data-steps="1. 点击名称输入框以激活焦点，然后手动拖动选择框内全部文本“瑜伽瑜伽kout”，使其高亮选中。
+2. 点击键盘删除键，彻底清空输入框内容。
+3. 在清空后的名称输入框中输入“瑜伽”。
+4. 调整时长选择器，将分钟（M）指针移动至“20”，确保时长变为“20m”。
+5. 点击【保存】按钮。
+6. 验证预设模板是否已更新为名称“瑜伽”、时长“20分钟”。"
+                              data-remark="计时器">
+                            T-Chrono-计时器-20260101_034822
+                        </span>
+                        
+                    </div>
+                </div>
+            </div>
+            
+            
+            
+        </div>
+
+        <!-- Detailed Failures -->
+        <div class="p-6 border-b">
+            <h2 class="text-xl font-bold mb-4 text-gray-800">5. 失败详情列表</h2>
+            <div class="overflow-x-auto">
+                <table class="min-w-full text-sm text-left text-gray-500">
+                    <thead class="text-xs text-gray-700 uppercase bg-gray-100">
+                        <tr>
+                            <th class="px-4 py-2">用例名称</th>
+                            <th class="px-4 py-2">模块</th>
+                            <th class="px-4 py-2">结果</th>
+                            <th class="px-4 py-2">观察事实</th>
+                            <th class="px-4 py-2">推测原因</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        
+                        <tr class="bg-white border-b hover:bg-gray-50 tooltip-target"
+                            data-case-name="T-Quillpad-编辑-预览-20251230_004606"
+                            data-module="预览模块"
+                            data-expected="{"前置条件": "当前笔记含多级标题、列表、粗斜体", "执行步骤": "1.点顶部右下角“眼睛”图标切换预览", "预期结果": "标题字号递减、列表缩进、粗/斜样式正确；代码块高亮"}"
+                            data-actual="None"
+                            data-steps="1. 在当前激活输入框中，于光标位置输入 ` ``` `（三个反引号），以闭合Markdown代码块。
+2. 点击屏幕右下角绿色“眼睛”图标，切换至预览模式。
+3. 观察预览界面：确认标题字号逐级递减、列表有缩进、加粗与斜体样式正确、代码块有语法高亮。 。"
+                            data-remark="编辑-预览">
+                            <td class="px-4 py-2 font-medium text-gray-900">T-Quillpad-编辑-预览-20251230_004606</td>
+                            <td class="px-4 py-2">预览模块</td>
+                            <td class="px-4 py-2 text-red-600 font-bold">Fail</td>
+                            <td class="px-4 py-2">实际结果为None，未达到预期结果中代码块应有语法高亮显示</td>
+                            <td class="px-4 py-2">可能是因为编辑器未能正确解析闭合Markdown代码块的语法</td>
+                        </tr>
+                        
+                        <tr class="bg-white border-b hover:bg-gray-50 tooltip-target"
+                            data-case-name="T-Quillpad-编辑-任务清单-20251230_011338"
+                            data-module="任务清单模块"
+                            data-expected="{"输入数据": "- [ ] 待办", "前置条件": "正文输入- [ ] 待办", "执行步骤": "1.在- [ ]后输入“待办”\n2.点击复选框", "预期结果": "复选框变为✅，原文自动改为- [x] 待办"}"
+                            data-actual="None"
+                            data-steps="1. 将光标移至“办”字前，删除“办”并输入“待办”，使文本变为“- [ ] 待办”。
+2. 点击“[ ]”区域，尝试触发状态切换为“[x]”。
+3. 观察文本是否自动更新为“- [x] 待办”，确认任务清单可交互。
+4. 若成功， ；若仍失败，标记该功能不可用并报告用户。"
+                            data-remark="编辑-任务清单">
+                            <td class="px-4 py-2 font-medium text-gray-900">T-Quillpad-编辑-任务清单-20251230_011338</td>
+                            <td class="px-4 py-2">任务清单模块</td>
+                            <td class="px-4 py-2 text-red-600 font-bold">Fail</td>
+                            <td class="px-4 py-2">实际结果为None，即点击复选框后没有任何变化</td>
+                            <td class="px-4 py-2">可能是前端事件处理程序未正确绑定或执行</td>
+                        </tr>
+                        
+                        <tr class="bg-white border-b hover:bg-gray-50 tooltip-target"
+                            data-case-name="T-Quillpad-同步-双向-20251230_032026"
+                            data-module="同步模块"
+                            data-expected="{"输入数据": "A", "前置条件": "已完成TR-017", "执行步骤": "1.本地新增笔记A并等待30s\n2.在Web端查看", "预期结果": "Web端出现A；在Web修改A后30s本地同步更新"}"
+                            data-actual="None"
+                            data-steps="1. 提醒用户前往Web端将笔记内容修改为“修改后的A”，并等待其确认操作完成。
+2. 用户确认后，等待30秒，返回本地检查内容是否同步更新为“修改后的A”。
+3. 若未更新，则报告同步失败；若已更新，则验证成功，标记任务为“”。"
+                            data-remark="同步-双向">
+                            <td class="px-4 py-2 font-medium text-gray-900">T-Quillpad-同步-双向-20251230_032026</td>
+                            <td class="px-4 py-2">同步模块</td>
+                            <td class="px-4 py-2 text-red-600 font-bold">Fail</td>
+                            <td class="px-4 py-2">用户在Web端修改笔记内容为'修改后的A'后，本地未同步更新</td>
+                            <td class="px-4 py-2">同步机制可能未正确设置或存在缺陷，导致本地内容未能及时同步Web端的更改</td>
+                        </tr>
+                        
+                        <tr class="bg-white border-b hover:bg-gray-50 tooltip-target"
+                            data-case-name="T-Quillpad-备份-导出-20251230_034458"
+                            data-module="备份与恢复模块"
+                            data-expected="{"前置条件": "设置页", "执行步骤": "1.设置→创建备份→选文件夹→保存", "预期结果": "生成Quillpad_backup_xxx.zip，含json+附件；文件可解压"}"
+                            data-actual="None"
+                            data-steps="1. 点击屏幕底部“桌面设置”按钮右侧的空白区域（或直接点击“桌面设置”），尝试退出桌面编辑模式，恢复为正常桌面状态。
+2. 若成功退出，从屏幕底部向上滑动打开应用抽屉，搜索并打开“文件管理器”应用。
+3. 在文件管理器中，进入内部存储或下载目录，搜索“Quillpad_backup_*.zip”文件。
+4. 找到后长按该文件，选择“解压”或使用第三方解压工具打开，验证内容是否包含json文件和附件。
+5. 若解压成功且内容完整，则任务完成；否则返回Quillpad重新执行备份流程。"
+                            data-remark="备份-导出">
+                            <td class="px-4 py-2 font-medium text-gray-900">T-Quillpad-备份-导出-20251230_034458</td>
+                            <td class="px-4 py-2">备份与恢复模块</td>
+                            <td class="px-4 py-2 text-red-600 font-bold">Fail</td>
+                            <td class="px-4 py-2">实际结果为None，即未能成功生成备份文件或文件无法解压验证内容</td>
+                            <td class="px-4 py-2">可能是因为备份流程未能正确执行，或者备份文件在导出过程中损坏</td>
+                        </tr>
+                        
+                        <tr class="bg-white border-b hover:bg-gray-50 tooltip-target"
+                            data-case-name="T-Quillpad-附件-图片查看-20251230_042243"
+                            data-module="附件查看模块"
+                            data-expected="{"前置条件": "笔记已插入图片", "执行步骤": "1.点图片", "预期结果": "进入全屏查看；支持双指缩放、左右滑动"}"
+                            data-actual="None"
+                            data-steps="1. 点击Quillpad应用图标，重新打开应用。
+2. 在Quillpad中找到并点击标题为“验证笔记2”的笔记卡片，进入其详情页。
+3. 点击笔记正文中的图片附件“Screenshot_2025122...”，触发全屏查看模式。
+4. 在全屏查看模式下，使用双指捏合手势验证缩放功能是否正常。
+5. 在全屏查看模式下，左右滑动屏幕验证是否支持切换其他图片（如存在多图）。
+6. 确认上述功能均正常后， 。"
+                            data-remark="附件-图片查看">
+                            <td class="px-4 py-2 font-medium text-gray-900">T-Quillpad-附件-图片查看-20251230_042243</td>
+                            <td class="px-4 py-2">附件查看模块</td>
+                            <td class="px-4 py-2 text-red-600 font-bold">Fail</td>
+                            <td class="px-4 py-2">实际结果为None，未进入全屏查看模式，双指缩放和左右滑动功能均未触发</td>
+                            <td class="px-4 py-2">可能是图片附件无法正确识别或全屏查看模式的触发条件有误</td>
+                        </tr>
+                        
+                        <tr class="bg-white border-b hover:bg-gray-50 tooltip-target"
+                            data-case-name="T-Quillpad-编辑-多级标题-20251230_050721"
+                            data-module="编辑功能模块"
+                            data-expected="{"输入数据": "### 三级\n###### 六级", "前置条件": "编辑页", "执行步骤": "1.输入：### 三级\n###### 六级", "预期结果": "预览字体大小逐级递减；样式区分明显；无解析错误"}"
+                            data-actual="None"
+                            data-steps="1. 长按输入框内任意位置，调出上下文菜单，点击“全选”，然后点击键盘“删除”键，彻底清空当前所有文本内容。
+2. 输入标准Markdown格式：` 三级\n 六级`，以触发应用对多级标题的解析。
+3. 点击右下角绿色眼睛图标按钮，预览渲染效果。
+4. 观察是否字体大小逐级递减、样式区分明显且无解析错误。
+5. 若符合预期，则任务完成；否则检查应用是否支持该Markdown语法或尝试其他标题标记方式。"
+                            data-remark="编辑-多级标题">
+                            <td class="px-4 py-2 font-medium text-gray-900">T-Quillpad-编辑-多级标题-20251230_050721</td>
+                            <td class="px-4 py-2">编辑功能模块</td>
+                            <td class="px-4 py-2 text-red-600 font-bold">Fail</td>
+                            <td class="px-4 py-2">输入标准Markdown格式后，预览渲染效果未出现，应用未正确解析多级标题</td>
+                            <td class="px-4 py-2">应用可能不支持输入的Markdown多级标题格式，或者解析器存在缺陷</td>
+                        </tr>
+                        
+                        <tr class="bg-white border-b hover:bg-gray-50 tooltip-target"
+                            data-case-name="T-Cirrus-Weather-20260101_165453"
+                            data-module="天气信息刷新模块"
+                            data-expected="{"输入数据": "无", "前置条件": "1.当前在Weather页面\n2.已添加至少一个城市", "执行步骤": "1.点击右上角刷新按钮", "预期结果": "页面刷新显示最新时间及天气信息"}"
+                            data-actual="None"
+                            data-steps="1. 重新在输入框中输入“北京”，并确认输入法为中文模式。
+2. 点击键盘上的“搜索”键（如存在）或等待系统自动响应，确保“北京”被提交并显示搜索结果。
+3. 点击搜索结果中的第一项“北京市, CN, 北京, 北京市”以选择该城市。
+4. 等待城市添加成功后，点击左上角菜单图标返回侧边栏。
+5. 点击“Weather”选项，进入主天气页面。
+6. 点击右上角刷新按钮。
+7. 等待页面刷新完成，确认显示最新时间及天气信息。 。"
+                            data-remark="Weather">
+                            <td class="px-4 py-2 font-medium text-gray-900">T-Cirrus-Weather-20260101_165453</td>
+                            <td class="px-4 py-2">天气信息刷新模块</td>
+                            <td class="px-4 py-2 text-red-600 font-bold">Fail</td>
+                            <td class="px-4 py-2">实际结果为None，页面未刷新显示最新时间及天气信息</td>
+                            <td class="px-4 py-2">可能是刷新功能未能正常工作，或者天气信息获取失败</td>
+                        </tr>
+                        
+                        <tr class="bg-white border-b hover:bg-gray-50 tooltip-target"
+                            data-case-name="T-Cirrus-Manage locations-20260101_171633"
+                            data-module="城市管理模块"
+                            data-expected="{"输入数据": "城市名称：Tokyo", "前置条件": "1.成功进入Manage locations页面", "执行步骤": "1.点击添加按钮\n2.输入城市名称\n3.选择提示中的城市\n4.点击【ADD】", "预期结果": "城市成功添加并显示在列表中"}"
+                            data-actual="None"
+                            data-steps="1. 在输入框中输入“Tokyo”。
+2. 从下拉列表中选择“東京, JP, 东京都”选项。
+3. 点击【ADD】按钮提交添加请求。
+4. 返回“Manage locations”页面，检查城市列表中是否显示“Tokyo”。
+5. 若列表中显示“Tokyo”， ；否则，提示用户检查网络或系统状态。"
+                            data-remark="Manage locations">
+                            <td class="px-4 py-2 font-medium text-gray-900">T-Cirrus-Manage locations-20260101_171633</td>
+                            <td class="px-4 py-2">城市管理模块</td>
+                            <td class="px-4 py-2 text-red-600 font-bold">Fail</td>
+                            <td class="px-4 py-2">实际结果为None，预期结果是城市成功添加并显示在列表中</td>
+                            <td class="px-4 py-2">可能是因为添加操作未能正确执行，或者添加后页面未刷新导致列表更新失败</td>
+                        </tr>
+                        
+                        <tr class="bg-white border-b hover:bg-gray-50 tooltip-target"
+                            data-case-name="T-Cirrus-Manage locations-20260101_173744"
+                            data-module="位置管理模块"
+                            data-expected="{"输入数据": "新名称：北京中心", "前置条件": "1.成功进入Manage locations页面\n2.Manage locations列表中已有至少一个城市", "执行步骤": "1.点击城市名称\n2.修改名称\n3.点击【MODIFY】", "预期结果": "城市名称更新成功"}"
+                            data-actual="None"
+                            data-steps="1. 点击列表中对应的城市条目（原“32.06° / 118.77°”位置），进入详情页面以验证名称是否已更新为“北京中心”。
+2. 若确认名称已更新， 。
+3. 若未更新，返回编辑页面重新输入并保存。
+4. 最终将计划标记为 ""。"
+                            data-remark="Manage locations">
+                            <td class="px-4 py-2 font-medium text-gray-900">T-Cirrus-Manage locations-20260101_173744</td>
+                            <td class="px-4 py-2">位置管理模块</td>
+                            <td class="px-4 py-2 text-red-600 font-bold">Fail</td>
+                            <td class="px-4 py-2">实际结果为None，未显示城市名称已更新为“北京中心”</td>
+                            <td class="px-4 py-2">可能是因为列表中的城市条目点击失败，或者名称更新逻辑有误</td>
+                        </tr>
+                        
+                        <tr class="bg-white border-b hover:bg-gray-50 tooltip-target"
+                            data-case-name="T-Cirrus-Manage locations-20260101_174802"
+                            data-module="位置管理模块"
+                            data-expected="{"输入数据": "无", "前置条件": "1.成功进入Manage locations页面\n2.Manage locations列表中已有多个城市", "执行步骤": "1.长按某个城市\n2.拖动到新位置\n3.释放", "预期结果": "城市顺序更新，页面提示\"Hold and drag to sort\"可见"}"
+                            data-actual="None"
+                            data-steps="1. 长按“上海市”条目，等待其进入可拖动状态。
+2. 将“上海市”拖动至“北京市”上方后松开手指完成拖放。
+3. 观察城市顺序是否更新，并确认提示文字“Hold and drag to sort.”仍可见。"
+                            data-remark="Manage locations">
+                            <td class="px-4 py-2 font-medium text-gray-900">T-Cirrus-Manage locations-20260101_174802</td>
+                            <td class="px-4 py-2">位置管理模块</td>
+                            <td class="px-4 py-2 text-red-600 font-bold">Fail</td>
+                            <td class="px-4 py-2">实际结果为None，即未得到任何反馈或结果</td>
+                            <td class="px-4 py-2">可能是因为拖放事件未被正确识别或处理，或者前端页面存在bug导致无法更新视图</td>
+                        </tr>
+                        
+                        <tr class="bg-white border-b hover:bg-gray-50 tooltip-target"
+                            data-case-name="T-Chrono-闹钟-20260101_013859"
+                            data-module="闹钟模块"
+                            data-expected="{"输入数据": "无", "前置条件": "1.成功进入闹钟页面\n2.成功打开选择时间窗口\n2.成功进入闹钟自定义页面", "执行步骤": "1.点击【类型】\n2.选择“指定星期”\n3.勾选周一、周三、周五\n4.点击【保存】", "预期结果": "闹钟设置为“指定星期”响铃提示"}"
+                            data-actual="None"
+                            data-steps="1. 点击右下角蓝色“+”按钮，进入新建闹钟页面。
+2. 设置任意时间后点击【保存】按钮，进入闹钟自定义页面。
+3. 在闹钟自定义页面中寻找“类型”选项并点击。
+4. 选择“指定星期”。
+5. 勾选“周一”、“周三”、“周五”三个选项。
+6. 点击【保存】按钮完成设置。
+7. 检查闹钟列表中新增的闹钟是否显示为“指定星期”响铃提示。 。"
+                            data-remark="闹钟">
+                            <td class="px-4 py-2 font-medium text-gray-900">T-Chrono-闹钟-20260101_013859</td>
+                            <td class="px-4 py-2">闹钟模块</td>
+                            <td class="px-4 py-2 text-red-600 font-bold">Fail</td>
+                            <td class="px-4 py-2">实际结果为None，即闹钟列表中新增的闹钟未显示为“指定星期”响铃提示</td>
+                            <td class="px-4 py-2">闹钟类型设置未正确保存或显示逻辑存在缺陷</td>
+                        </tr>
+                        
+                        <tr class="bg-white border-b hover:bg-gray-50 tooltip-target"
+                            data-case-name="T-Chrono-闹钟-20260101_015129"
+                            data-module="闹钟模块"
+                            data-expected="{"输入数据": "无", "前置条件": "1.成功进入闹钟页面\n2.成功打开选择时间窗口\n2.成功进入闹钟自定义页面", "执行步骤": "1.点击【类型】\n2.选择“指定日期”\n3.选择未来某天\n4.开启“结束后删除”开关\n5.点击【保存】", "预期结果": "闹钟显示指定日期，并显示“结束后删除”标记"}"
+                            data-actual="None"
+                            data-steps="1. 点击页面右下角蓝色加号按钮，进入创建新闹钟页面。
+2. 在创建新闹钟页面中，寻找并点击【类型】选项（或类似名称如“闹钟模式”、“触发方式”等），选择“指定日期”。
+3. 在弹出的日期选择器中，选择一个未来的日期。
+4. 找到“结束后删除”开关并将其开启。
+5. 点击页面底部的【保存】按钮，完成闹钟设置。
+6. 验证新闹钟是否显示指定日期并带有“结束后删除”标记。"
+                            data-remark="闹钟">
+                            <td class="px-4 py-2 font-medium text-gray-900">T-Chrono-闹钟-20260101_015129</td>
+                            <td class="px-4 py-2">闹钟模块</td>
+                            <td class="px-4 py-2 text-red-600 font-bold">Fail</td>
+                            <td class="px-4 py-2">实际结果为None，即未返回任何显示信息</td>
+                            <td class="px-4 py-2">可能是代码逻辑错误，未能正确保存或显示闹钟设置</td>
+                        </tr>
+                        
+                        <tr class="bg-white border-b hover:bg-gray-50 tooltip-target"
+                            data-case-name="T-Chrono-闹钟-20260101_020315"
+                            data-module="闹钟模块"
+                            data-expected="{"输入数据": "无", "前置条件": "1.成功进入闹钟页面\n2.成功打开选择时间窗口\n2.成功进入闹钟自定义页面", "执行步骤": "1.点击【类型】\n2.选择“日期范围”\n3.选择未来两天\n4.点击【间隔】\n5.选择“每周”\n6.点击【保存】", "预期结果": "闹钟显示日期范围，间隔为每周响铃"}"
+                            data-actual="None"
+                            data-steps="1. 点击屏幕右下角蓝色加号按钮，进入新建闹钟页面。
+2. 点击“保存”按钮以确认当前时间设置并进入下一步闹钟配置页面。
+3. 点击顶部筛选栏中的“类型”下拉框。
+4. 选择“日期范围”作为闹钟类型。
+5. 选择未来两天作为日期范围。
+6. 点击【间隔】选项。
+7. 选择“每周”。
+8. 点击【保存】按钮。
+9. 验证闹钟列表中新增闹钟是否显示日期范围且间隔为每周。 。 点击屏幕右下角蓝色加号按钮，进入新建闹钟页面。 点击弹窗外区域以关闭“状态”筛选弹窗，返回闹钟设置主界面。 点击屏幕右下角蓝色加号按钮，进入新建闹钟页面。 点击屏幕右下角蓝色加号按钮，进入新建闹钟页面。
+10. 点击“保存”按钮以确认当前时间设置并进入下一步闹钟配置页面。
+11. 点击顶部筛选栏中的“类型”下拉框。
+12. 选择“日期范围”作为闹钟类型。
+13. 选择未来两天作为日期范围。
+14. 点击【间隔】选项。
+15. 选择“每周”。
+16. 点击【保存】按钮。
+17. 验证闹钟列表中新增闹钟是否显示日期范围且间隔为每周。 。"
+                            data-remark="闹钟">
+                            <td class="px-4 py-2 font-medium text-gray-900">T-Chrono-闹钟-20260101_020315</td>
+                            <td class="px-4 py-2">闹钟模块</td>
+                            <td class="px-4 py-2 text-red-600 font-bold">Fail</td>
+                            <td class="px-4 py-2">实际结果为None，未返回预期的闹钟设置信息。</td>
+                            <td class="px-4 py-2">可能是因为在设置闹钟过程中某个步骤出现了异常，导致保存操作未能正确执行或者结果未能正确返回。</td>
+                        </tr>
+                        
+                        <tr class="bg-white border-b hover:bg-gray-50 tooltip-target"
+                            data-case-name="T-Chrono-闹钟-20260101_021516"
+                            data-module="闹钟模块"
+                            data-expected="{"输入数据": "无", "前置条件": "1.成功进入闹钟页面\n2.成功打开选择时间窗口\n2.成功进入闹钟自定义页面", "执行步骤": "1.点击【声音与振动】\n2.点击【铃声】\n3.选择“Cesium”\n4.点击【保存】", "预期结果": "闹钟铃声显示为Cesium"}"
+                            data-actual="None"
+                            data-steps="1. 点击“最近”选项，查看最近使用的音频中是否包含“Cesium”。
+2. 若仍无结果，提示用户可能需要手动将“Cesium”音频文件放入手机存储的铃声目录（如 /Ringtones/），并重新扫描。
+3. 一旦找到“Cesium”，选择后点击【保存】确认更改。
+4. 验证闹钟铃声显示为“Cesium”。"
+                            data-remark="闹钟">
+                            <td class="px-4 py-2 font-medium text-gray-900">T-Chrono-闹钟-20260101_021516</td>
+                            <td class="px-4 py-2">闹钟模块</td>
+                            <td class="px-4 py-2 text-red-600 font-bold">Fail</td>
+                            <td class="px-4 py-2">实际结果为None，即未达到预期显示'Cesium'作为闹钟铃声</td>
+                            <td class="px-4 py-2">可能是'Cesium'音频文件未成功放入手机存储的铃声目录，或者闹钟应用未能正确扫描到该音频文件</td>
+                        </tr>
+                        
+                        <tr class="bg-white border-b hover:bg-gray-50 tooltip-target"
+                            data-case-name="T-Chrono-闹钟-20260101_022738"
+                            data-module="闹钟模块"
+                            data-expected="{"输入数据": "无", "前置条件": "1.成功进入闹钟页面\n2.成功打开选择时间窗口\n2.成功进入闹钟自定义页面", "执行步骤": "1.点击【贪睡】\n2.确保“启用”开关开启\n3.拖动时长至10分钟\n4.点击【保存】", "预期结果": "贪睡功能开启，时长显示设置为10分钟"}"
+                            data-actual="None"
+                            data-steps="1. 小幅度向左滑动“贪睡”时长滑块，每次微调约1-2毫米，逐步将时长从14.4分钟降至10分钟（注意观察数值变化，避免过度调整）
+2. 确认滑块数值稳定在10分钟（若系统四舍五入显示10.0或10分钟，则视为成功）
+3. 点击页面顶部的【保存】按钮以保存设置
+4. 返回闹钟列表页面，再次点击该闹钟进入设置页，确认贪睡功能已开启且时长显示为10分钟"
+                            data-remark="闹钟">
+                            <td class="px-4 py-2 font-medium text-gray-900">T-Chrono-闹钟-20260101_022738</td>
+                            <td class="px-4 py-2">闹钟模块</td>
+                            <td class="px-4 py-2 text-red-600 font-bold">Fail</td>
+                            <td class="px-4 py-2">执行完所有步骤后，实际结果字段为None，未显示预期的贪睡功能开启且时长显示为10分钟</td>
+                            <td class="px-4 py-2">可能是在保存设置时发生了错误，或者返回结果时数据未正确传输</td>
+                        </tr>
+                        
+                        <tr class="bg-white border-b hover:bg-gray-50 tooltip-target"
+                            data-case-name="T-Chrono-闹钟-20260101_024740"
+                            data-module="闹钟模块"
+                            data-expected="{"输入数据": "无", "前置条件": "1.成功进入闹钟页面\n2.成功打开选择时间窗口\n2.成功进入闹钟自定义页面", "执行步骤": "1.点击【Tags】\n2.勾选“Work”和“Home”\n3.点击【保存】", "预期结果": "闹钟标签显示Work和Home"}"
+                            data-actual="None"
+                            data-steps="1. 在当前激活的“添加标签”输入框中输入文本“Home”。
+2. 点击屏幕右下角的“保存”按钮以确认添加“Home”标签。
+3. 返回闹钟列表页面，验证该闹钟下方是否同时显示“Work”和“Home”标签。 。"
+                            data-remark="闹钟">
+                            <td class="px-4 py-2 font-medium text-gray-900">T-Chrono-闹钟-20260101_024740</td>
+                            <td class="px-4 py-2">闹钟模块</td>
+                            <td class="px-4 py-2 text-red-600 font-bold">Fail</td>
+                            <td class="px-4 py-2">实际结果为None，即未显示“Work”和“Home”标签</td>
+                            <td class="px-4 py-2">可能是因为标签添加后未正确保存或页面未刷新导致标签显示失败</td>
+                        </tr>
+                        
+                        <tr class="bg-white border-b hover:bg-gray-50 tooltip-target"
+                            data-case-name="T-Chrono-闹钟-20260101_025943"
+                            data-module="闹钟模块"
+                            data-expected="{"输入数据": "新时间：另一时间", "前置条件": "1.成功进入闹钟页面\n2.闹钟列表中已存在至少一个闹钟", "执行步骤": "1.点击该闹钟\n2.修改时间为另一时间\n3.点击【保存】", "预期结果": "闹钟时间更新为新时间"}"
+                            data-actual="None"
+                            data-steps="1. 在闹钟列表中仔细查找“3:00 上午”闹钟，确认其是否存在（可滑动查看完整列表或使用搜索功能）。
+2. 若未找到，重新点击“+”按钮新建一个“3:00 上午”闹钟并保存，再返回列表验证。
+3. 若找到且状态正常（开关开启、时间正确）， ；否则标记为 "" 并报告失败。"
+                            data-remark="闹钟">
+                            <td class="px-4 py-2 font-medium text-gray-900">T-Chrono-闹钟-20260101_025943</td>
+                            <td class="px-4 py-2">闹钟模块</td>
+                            <td class="px-4 py-2 text-red-600 font-bold">Fail</td>
+                            <td class="px-4 py-2">执行修改闹钟时间的操作后，实际结果为空，未得到预期的闹钟时间更新反馈</td>
+                            <td class="px-4 py-2">可能是因为闹钟列表中不存在'3:00 上午'的闹钟，或者闹钟修改功能存在缺陷</td>
+                        </tr>
+                        
+                        <tr class="bg-white border-b hover:bg-gray-50 tooltip-target"
+                            data-case-name="T-Chrono-计时器-20260101_034822"
+                            data-module="计时器模块"
+                            data-expected="{"输入数据": "新名称：瑜伽\n新时长：20分钟", "前置条件": "1.成功进入计时器页面", "执行步骤": "1.点击【+】按钮\n2.点击【编辑】\n3.点击某个预设\n4.修改名称和时长\n5.点击【保存】", "预期结果": "预设模板更新为“瑜伽”，时长为20分钟"}"
+                            data-actual="None"
+                            data-steps="1. 点击名称输入框以激活焦点，然后手动拖动选择框内全部文本“瑜伽瑜伽kout”，使其高亮选中。
+2. 点击键盘删除键，彻底清空输入框内容。
+3. 在清空后的名称输入框中输入“瑜伽”。
+4. 调整时长选择器，将分钟（M）指针移动至“20”，确保时长变为“20m”。
+5. 点击【保存】按钮。
+6. 验证预设模板是否已更新为名称“瑜伽”、时长“20分钟”。"
+                            data-remark="计时器">
+                            <td class="px-4 py-2 font-medium text-gray-900">T-Chrono-计时器-20260101_034822</td>
+                            <td class="px-4 py-2">计时器模块</td>
+                            <td class="px-4 py-2 text-red-600 font-bold">Fail</td>
+                            <td class="px-4 py-2">实际结果为None，预期结果是预设模板更新为“瑜伽”，时长为20分钟</td>
+                            <td class="px-4 py-2">可能是因为输入框或时长选择器的值未被正确处理或保存</td>
+                        </tr>
+                        
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Appendix: All Cases -->
+        <div class="p-6">
+            <h2 class="text-xl font-bold mb-4 text-gray-800">6. 附录：完整测试报告</h2>
+            <div class="overflow-x-auto">
+                <table class="min-w-full text-sm text-left text-gray-500">
+                    <thead class="text-xs text-gray-700 uppercase bg-gray-100">
+                        <tr>
+                            <th class="px-4 py-2">ID</th>
+                            <th class="px-4 py-2">用例名称</th>
+                            <th class="px-4 py-2">模块</th>
+                            <th class="px-4 py-2">结果</th>
+                            <th class="px-4 py-2">备注</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        
+                        <tr class="bg-white border-b hover:bg-gray-50">
+                            <td class="px-4 py-2">1</td>
+                            <td class="px-4 py-2 font-medium text-gray-900">T-Quillpad-编辑-Markdown-20251230_003148</td>
+                            <td class="px-4 py-2">编辑模块</td>
+                            <td class="px-4 py-2">
+                                
+                                <span class="text-green-600 font-bold">Pass</span>
+                                
+                            </td>
+                            <td class="px-4 py-2">编辑-Markdown</td>
+                        </tr>
+                        
+                        <tr class="bg-white border-b hover:bg-gray-50">
+                            <td class="px-4 py-2">2</td>
+                            <td class="px-4 py-2 font-medium text-gray-900">T-Quillpad-编辑-保存-20251230_003756</td>
+                            <td class="px-4 py-2">编辑模块</td>
+                            <td class="px-4 py-2">
+                                
+                                <span class="text-green-600 font-bold">Pass</span>
+                                
+                            </td>
+                            <td class="px-4 py-2">编辑-保存</td>
+                        </tr>
+                        
+                        <tr class="bg-white border-b hover:bg-gray-50">
+                            <td class="px-4 py-2">3</td>
+                            <td class="px-4 py-2 font-medium text-gray-900">T-Quillpad-笔记-置顶-20251230_014016</td>
+                            <td class="px-4 py-2">笔记管理模块</td>
+                            <td class="px-4 py-2">
+                                
+                                <span class="text-green-600 font-bold">Pass</span>
+                                
+                            </td>
+                            <td class="px-4 py-2">笔记-置顶</td>
+                        </tr>
+                        
+                        <tr class="bg-white border-b hover:bg-gray-50">
+                            <td class="px-4 py-2">4</td>
+                            <td class="px-4 py-2 font-medium text-gray-900">T-Quillpad-笔记-隐藏-20251230_014741</td>
+                            <td class="px-4 py-2">笔记管理模块</td>
+                            <td class="px-4 py-2">
+                                
+                                <span class="text-green-600 font-bold">Pass</span>
+                                
+                            </td>
+                            <td class="px-4 py-2">笔记-隐藏</td>
+                        </tr>
+                        
+                        <tr class="bg-white border-b hover:bg-gray-50">
+                            <td class="px-4 py-2">5</td>
+                            <td class="px-4 py-2 font-medium text-gray-900">T-Quillpad-笔记-提醒-20251230_015940</td>
+                            <td class="px-4 py-2">提醒功能模块</td>
+                            <td class="px-4 py-2">
+                                
+                                <span class="text-green-600 font-bold">Pass</span>
+                                
+                            </td>
+                            <td class="px-4 py-2">笔记-提醒</td>
+                        </tr>
+                        
+                        <tr class="bg-white border-b hover:bg-gray-50">
+                            <td class="px-4 py-2">6</td>
+                            <td class="px-4 py-2 font-medium text-gray-900">T-Quillpad-附件-录音-20251230_020527</td>
+                            <td class="px-4 py-2">附件模块</td>
+                            <td class="px-4 py-2">
+                                
+                                <span class="text-green-600 font-bold">Pass</span>
+                                
+                            </td>
+                            <td class="px-4 py-2">附件-录音</td>
+                        </tr>
+                        
+                        <tr class="bg-white border-b hover:bg-gray-50">
+                            <td class="px-4 py-2">7</td>
+                            <td class="px-4 py-2 font-medium text-gray-900">T-Quillpad-附件-文件-20251230_021005</td>
+                            <td class="px-4 py-2">附件模块</td>
+                            <td class="px-4 py-2">
+                                
+                                <span class="text-green-600 font-bold">Pass</span>
+                                
+                            </td>
+                            <td class="px-4 py-2">附件-文件</td>
+                        </tr>
+                        
+                        <tr class="bg-white border-b hover:bg-gray-50">
+                            <td class="px-4 py-2">8</td>
+                            <td class="px-4 py-2 font-medium text-gray-900">T-Quillpad-笔记本-创建-20251230_022220</td>
+                            <td class="px-4 py-2">笔记本管理模块</td>
+                            <td class="px-4 py-2">
+                                
+                                <span class="text-green-600 font-bold">Pass</span>
+                                
+                            </td>
+                            <td class="px-4 py-2">笔记本-创建</td>
+                        </tr>
+                        
+                        <tr class="bg-white border-b hover:bg-gray-50">
+                            <td class="px-4 py-2">9</td>
+                            <td class="px-4 py-2 font-medium text-gray-900">T-Quillpad-笔记本-移动-20251230_022912</td>
+                            <td class="px-4 py-2">笔记管理模块</td>
+                            <td class="px-4 py-2">
+                                
+                                <span class="text-green-600 font-bold">Pass</span>
+                                
+                            </td>
+                            <td class="px-4 py-2">笔记本-移动</td>
+                        </tr>
+                        
+                        <tr class="bg-white border-b hover:bg-gray-50">
+                            <td class="px-4 py-2">10</td>
+                            <td class="px-4 py-2 font-medium text-gray-900">T-Quillpad-标签-添加-20251230_024306</td>
+                            <td class="px-4 py-2">标签管理模块</td>
+                            <td class="px-4 py-2">
+                                
+                                <span class="text-green-600 font-bold">Pass</span>
+                                
+                            </td>
+                            <td class="px-4 py-2">标签-添加</td>
+                        </tr>
+                        
+                        <tr class="bg-white border-b hover:bg-gray-50">
+                            <td class="px-4 py-2">11</td>
+                            <td class="px-4 py-2 font-medium text-gray-900">T-Quillpad-标签-搜索-20251230_025727</td>
+                            <td class="px-4 py-2">搜索模块</td>
+                            <td class="px-4 py-2">
+                                
+                                <span class="text-green-600 font-bold">Pass</span>
+                                
+                            </td>
+                            <td class="px-4 py-2">标签-搜索</td>
+                        </tr>
+                        
+                        <tr class="bg-white border-b hover:bg-gray-50">
+                            <td class="px-4 py-2">12</td>
+                            <td class="px-4 py-2 font-medium text-gray-900">T-Quillpad-笔记-归档-20251230_030017</td>
+                            <td class="px-4 py-2">笔记管理模块</td>
+                            <td class="px-4 py-2">
+                                
+                                <span class="text-green-600 font-bold">Pass</span>
+                                
+                            </td>
+                            <td class="px-4 py-2">笔记-归档</td>
+                        </tr>
+                        
+                        <tr class="bg-white border-b hover:bg-gray-50">
+                            <td class="px-4 py-2">13</td>
+                            <td class="px-4 py-2 font-medium text-gray-900">T-Quillpad-存档-恢复-20251230_030437</td>
+                            <td class="px-4 py-2">笔记管理模块</td>
+                            <td class="px-4 py-2">
+                                
+                                <span class="text-green-600 font-bold">Pass</span>
+                                
+                            </td>
+                            <td class="px-4 py-2">存档-恢复</td>
+                        </tr>
+                        
+                        <tr class="bg-white border-b hover:bg-gray-50">
+                            <td class="px-4 py-2">14</td>
+                            <td class="px-4 py-2 font-medium text-gray-900">T-Quillpad-搜索-全文-20251230_030859</td>
+                            <td class="px-4 py-2">搜索模块</td>
+                            <td class="px-4 py-2">
+                                
+                                <span class="text-green-600 font-bold">Pass</span>
+                                
+                            </td>
+                            <td class="px-4 py-2">搜索-全文</td>
+                        </tr>
+                        
+                        <tr class="bg-white border-b hover:bg-gray-50">
+                            <td class="px-4 py-2">15</td>
+                            <td class="px-4 py-2 font-medium text-gray-900">T-Quillpad-同步-登录-20251230_031539</td>
+                            <td class="px-4 py-2">同步模块</td>
+                            <td class="px-4 py-2">
+                                
+                                <span class="text-green-600 font-bold">Pass</span>
+                                
+                            </td>
+                            <td class="px-4 py-2">同步-登录</td>
+                        </tr>
+                        
+                        <tr class="bg-white border-b hover:bg-gray-50">
+                            <td class="px-4 py-2">16</td>
+                            <td class="px-4 py-2 font-medium text-gray-900">T-Quillpad-主题-深色-20251230_040245</td>
+                            <td class="px-4 py-2">主题与设置模块</td>
+                            <td class="px-4 py-2">
+                                
+                                <span class="text-green-600 font-bold">Pass</span>
+                                
+                            </td>
+                            <td class="px-4 py-2">主题-深色</td>
+                        </tr>
+                        
+                        <tr class="bg-white border-b hover:bg-gray-50">
+                            <td class="px-4 py-2">17</td>
+                            <td class="px-4 py-2 font-medium text-gray-900">T-Quillpad-主题-浅色-20251230_040918</td>
+                            <td class="px-4 py-2">界面设置模块</td>
+                            <td class="px-4 py-2">
+                                
+                                <span class="text-green-600 font-bold">Pass</span>
+                                
+                            </td>
+                            <td class="px-4 py-2">主题-浅色</td>
+                        </tr>
+                        
+                        <tr class="bg-white border-b hover:bg-gray-50">
+                            <td class="px-4 py-2">18</td>
+                            <td class="px-4 py-2 font-medium text-gray-900">T-Quillpad-主题-配色-20251230_041429</td>
+                            <td class="px-4 py-2">界面设置模块</td>
+                            <td class="px-4 py-2">
+                                
+                                <span class="text-green-600 font-bold">Pass</span>
+                                
+                            </td>
+                            <td class="px-4 py-2">主题-配色</td>
+                        </tr>
+                        
+                        <tr class="bg-white border-b hover:bg-gray-50">
+                            <td class="px-4 py-2">19</td>
+                            <td class="px-4 py-2 font-medium text-gray-900">T-Quillpad-附件-视频播放-20251230_043946</td>
+                            <td class="px-4 py-2">附件查看模块</td>
+                            <td class="px-4 py-2">
+                                
+                                <span class="text-green-600 font-bold">Pass</span>
+                                
+                            </td>
+                            <td class="px-4 py-2">附件-视频播放</td>
+                        </tr>
+                        
+                        <tr class="bg-white border-b hover:bg-gray-50">
+                            <td class="px-4 py-2">20</td>
+                            <td class="px-4 py-2 font-medium text-gray-900">T-Quillpad-UI-侧边栏-20251230_045732</td>
+                            <td class="px-4 py-2">UI交互模块</td>
+                            <td class="px-4 py-2">
+                                
+                                <span class="text-green-600 font-bold">Pass</span>
+                                
+                            </td>
+                            <td class="px-4 py-2">UI-侧边栏</td>
+                        </tr>
+                        
+                        <tr class="bg-white border-b hover:bg-gray-50">
+                            <td class="px-4 py-2">21</td>
+                            <td class="px-4 py-2 font-medium text-gray-900">T-Quillpad-系统-最小化-20251230_050025</td>
+                            <td class="px-4 py-2">系统交互模块</td>
+                            <td class="px-4 py-2">
+                                
+                                <span class="text-green-600 font-bold">Pass</span>
+                                
+                            </td>
+                            <td class="px-4 py-2">系统-最小化</td>
+                        </tr>
+                        
+                        <tr class="bg-white border-b hover:bg-gray-50">
+                            <td class="px-4 py-2">22</td>
+                            <td class="px-4 py-2 font-medium text-gray-900">T-Quillpad-搜索-模糊-20251230_055044</td>
+                            <td class="px-4 py-2">搜索功能模块</td>
+                            <td class="px-4 py-2">
+                                
+                                <span class="text-green-600 font-bold">Pass</span>
+                                
+                            </td>
+                            <td class="px-4 py-2">搜索-模糊</td>
+                        </tr>
+                        
+                        <tr class="bg-white border-b hover:bg-gray-50">
+                            <td class="px-4 py-2">23</td>
+                            <td class="px-4 py-2 font-medium text-gray-900">T-Quillpad-笔记-取消置顶-20251230_055438</td>
+                            <td class="px-4 py-2">笔记管理模块</td>
+                            <td class="px-4 py-2">
+                                
+                                <span class="text-green-600 font-bold">Pass</span>
+                                
+                            </td>
+                            <td class="px-4 py-2">笔记-取消置顶</td>
+                        </tr>
+                        
+                        <tr class="bg-white border-b hover:bg-gray-50">
+                            <td class="px-4 py-2">24</td>
+                            <td class="px-4 py-2 font-medium text-gray-900">T-Cirrus-Weather-20260101_165327</td>
+                            <td class="px-4 py-2">Cirrus应用模块</td>
+                            <td class="px-4 py-2">
+                                
+                                <span class="text-green-600 font-bold">Pass</span>
+                                
+                            </td>
+                            <td class="px-4 py-2">Weather</td>
+                        </tr>
+                        
+                        <tr class="bg-white border-b hover:bg-gray-50">
+                            <td class="px-4 py-2">25</td>
+                            <td class="px-4 py-2 font-medium text-gray-900">T-Cirrus-Weather-20260101_165406</td>
+                            <td class="px-4 py-2">导航菜单模块</td>
+                            <td class="px-4 py-2">
+                                
+                                <span class="text-green-600 font-bold">Pass</span>
+                                
+                            </td>
+                            <td class="px-4 py-2">Weather</td>
+                        </tr>
+                        
+                        <tr class="bg-white border-b hover:bg-gray-50">
+                            <td class="px-4 py-2">26</td>
+                            <td class="px-4 py-2 font-medium text-gray-900">T-Cirrus-Weather-20260101_170527</td>
+                            <td class="px-4 py-2">网络请求与权限同意模块</td>
+                            <td class="px-4 py-2">
+                                
+                                <span class="text-green-600 font-bold">Pass</span>
+                                
+                            </td>
+                            <td class="px-4 py-2">Weather</td>
+                        </tr>
+                        
+                        <tr class="bg-white border-b hover:bg-gray-50">
+                            <td class="px-4 py-2">27</td>
+                            <td class="px-4 py-2 font-medium text-gray-900">T-Cirrus-Weather-20260101_170751</td>
+                            <td class="px-4 py-2">网络请求与权限拒绝模块</td>
+                            <td class="px-4 py-2">
+                                
+                                <span class="text-green-600 font-bold">Pass</span>
+                                
+                            </td>
+                            <td class="px-4 py-2">Weather</td>
+                        </tr>
+                        
+                        <tr class="bg-white border-b hover:bg-gray-50">
+                            <td class="px-4 py-2">28</td>
+                            <td class="px-4 py-2 font-medium text-gray-900">T-Cirrus-Weather-20260101_170847</td>
+                            <td class="px-4 py-2">GPS定位模块</td>
+                            <td class="px-4 py-2">
+                                
+                                <span class="text-green-600 font-bold">Pass</span>
+                                
+                            </td>
+                            <td class="px-4 py-2">Weather</td>
+                        </tr>
+                        
+                        <tr class="bg-white border-b hover:bg-gray-50">
+                            <td class="px-4 py-2">29</td>
+                            <td class="px-4 py-2 font-medium text-gray-900">T-Cirrus-Weather-20260101_171220</td>
+                            <td class="px-4 py-2">天气预报查看模块</td>
+                            <td class="px-4 py-2">
+                                
+                                <span class="text-green-600 font-bold">Pass</span>
+                                
+                            </td>
+                            <td class="px-4 py-2">Weather</td>
+                        </tr>
+                        
+                        <tr class="bg-white border-b hover:bg-gray-50">
+                            <td class="px-4 py-2">30</td>
+                            <td class="px-4 py-2 font-medium text-gray-900">T-Cirrus-Weather-20260101_171539</td>
+                            <td class="px-4 py-2">天气预报详情查看模块</td>
+                            <td class="px-4 py-2">
+                                
+                                <span class="text-green-600 font-bold">Pass</span>
+                                
+                            </td>
+                            <td class="px-4 py-2">Weather</td>
+                        </tr>
+                        
+                        <tr class="bg-white border-b hover:bg-gray-50">
+                            <td class="px-4 py-2">31</td>
+                            <td class="px-4 py-2 font-medium text-gray-900">T-Cirrus-Manage locations-20260101_172737</td>
+                            <td class="px-4 py-2">城市搜索与地图显示模块</td>
+                            <td class="px-4 py-2">
+                                
+                                <span class="text-green-600 font-bold">Pass</span>
+                                
+                            </td>
+                            <td class="px-4 py-2">Manage locations</td>
+                        </tr>
+                        
+                        <tr class="bg-white border-b hover:bg-gray-50">
+                            <td class="px-4 py-2">32</td>
+                            <td class="px-4 py-2 font-medium text-gray-900">T-Cirrus-Manage locations-20260101_173209</td>
+                            <td class="px-4 py-2">城市添加验证模块</td>
+                            <td class="px-4 py-2">
+                                
+                                <span class="text-green-600 font-bold">Pass</span>
+                                
+                            </td>
+                            <td class="px-4 py-2">Manage locations</td>
+                        </tr>
+                        
+                        <tr class="bg-white border-b hover:bg-gray-50">
+                            <td class="px-4 py-2">33</td>
+                            <td class="px-4 py-2 font-medium text-gray-900">T-Cirrus-Manage locations-20260101_173432</td>
+                            <td class="px-4 py-2">位置管理模块</td>
+                            <td class="px-4 py-2">
+                                
+                                <span class="text-green-600 font-bold">Pass</span>
+                                
+                            </td>
+                            <td class="px-4 py-2">Manage locations</td>
+                        </tr>
+                        
+                        <tr class="bg-white border-b hover:bg-gray-50">
+                            <td class="px-4 py-2">34</td>
+                            <td class="px-4 py-2 font-medium text-gray-900">T-Cirrus-Manage locations-20260101_175832</td>
+                            <td class="px-4 py-2">位置管理模块</td>
+                            <td class="px-4 py-2">
+                                
+                                <span class="text-green-600 font-bold">Pass</span>
+                                
+                            </td>
+                            <td class="px-4 py-2">Manage locations</td>
+                        </tr>
+                        
+                        <tr class="bg-white border-b hover:bg-gray-50">
+                            <td class="px-4 py-2">35</td>
+                            <td class="px-4 py-2 font-medium text-gray-900">T-Cirrus-Settings-20260101_180013</td>
+                            <td class="px-4 py-2">设置模块</td>
+                            <td class="px-4 py-2">
+                                
+                                <span class="text-green-600 font-bold">Pass</span>
+                                
+                            </td>
+                            <td class="px-4 py-2">Settings</td>
+                        </tr>
+                        
+                        <tr class="bg-white border-b hover:bg-gray-50">
+                            <td class="px-4 py-2">36</td>
+                            <td class="px-4 py-2 font-medium text-gray-900">T-Cirrus-Settings-20260101_180125</td>
+                            <td class="px-4 py-2">设置模块</td>
+                            <td class="px-4 py-2">
+                                
+                                <span class="text-green-600 font-bold">Pass</span>
+                                
+                            </td>
+                            <td class="px-4 py-2">Settings</td>
+                        </tr>
+                        
+                        <tr class="bg-white border-b hover:bg-gray-50">
+                            <td class="px-4 py-2">37</td>
+                            <td class="px-4 py-2 font-medium text-gray-900">T-Cirrus-Settings-20260101_180301</td>
+                            <td class="px-4 py-2">设置模块</td>
+                            <td class="px-4 py-2">
+                                
+                                <span class="text-green-600 font-bold">Pass</span>
+                                
+                            </td>
+                            <td class="px-4 py-2">Settings</td>
+                        </tr>
+                        
+                        <tr class="bg-white border-b hover:bg-gray-50">
+                            <td class="px-4 py-2">38</td>
+                            <td class="px-4 py-2 font-medium text-gray-900">T-Cirrus-Settings-20260101_180451</td>
+                            <td class="px-4 py-2">设置模块</td>
+                            <td class="px-4 py-2">
+                                
+                                <span class="text-green-600 font-bold">Pass</span>
+                                
+                            </td>
+                            <td class="px-4 py-2">Settings</td>
+                        </tr>
+                        
+                        <tr class="bg-white border-b hover:bg-gray-50">
+                            <td class="px-4 py-2">39</td>
+                            <td class="px-4 py-2 font-medium text-gray-900">T-Cirrus-Settings-20260101_180734</td>
+                            <td class="px-4 py-2">设置模块</td>
+                            <td class="px-4 py-2">
+                                
+                                <span class="text-green-600 font-bold">Pass</span>
+                                
+                            </td>
+                            <td class="px-4 py-2">Settings</td>
+                        </tr>
+                        
+                        <tr class="bg-white border-b hover:bg-gray-50">
+                            <td class="px-4 py-2">40</td>
+                            <td class="px-4 py-2 font-medium text-gray-900">T-Cirrus-Settings-20260101_181050</td>
+                            <td class="px-4 py-2">设置模块</td>
+                            <td class="px-4 py-2">
+                                
+                                <span class="text-green-600 font-bold">Pass</span>
+                                
+                            </td>
+                            <td class="px-4 py-2">Settings</td>
+                        </tr>
+                        
+                        <tr class="bg-white border-b hover:bg-gray-50">
+                            <td class="px-4 py-2">41</td>
+                            <td class="px-4 py-2 font-medium text-gray-900">T-Cirrus-Settings-20260101_181243</td>
+                            <td class="px-4 py-2">设置模块</td>
+                            <td class="px-4 py-2">
+                                
+                                <span class="text-green-600 font-bold">Pass</span>
+                                
+                            </td>
+                            <td class="px-4 py-2">Settings</td>
+                        </tr>
+                        
+                        <tr class="bg-white border-b hover:bg-gray-50">
+                            <td class="px-4 py-2">42</td>
+                            <td class="px-4 py-2 font-medium text-gray-900">T-Cirrus-Settings-20260101_181656</td>
+                            <td class="px-4 py-2">设置模块</td>
+                            <td class="px-4 py-2">
+                                
+                                <span class="text-green-600 font-bold">Pass</span>
+                                
+                            </td>
+                            <td class="px-4 py-2">Settings</td>
+                        </tr>
+                        
+                        <tr class="bg-white border-b hover:bg-gray-50">
+                            <td class="px-4 py-2">43</td>
+                            <td class="px-4 py-2 font-medium text-gray-900">T-Cirrus-Settings-20260101_181913</td>
+                            <td class="px-4 py-2">设置模块</td>
+                            <td class="px-4 py-2">
+                                
+                                <span class="text-green-600 font-bold">Pass</span>
+                                
+                            </td>
+                            <td class="px-4 py-2">Settings</td>
+                        </tr>
+                        
+                        <tr class="bg-white border-b hover:bg-gray-50">
+                            <td class="px-4 py-2">44</td>
+                            <td class="px-4 py-2 font-medium text-gray-900">T-Cirrus-Settings-20260101_182211</td>
+                            <td class="px-4 py-2">设置模块</td>
+                            <td class="px-4 py-2">
+                                
+                                <span class="text-green-600 font-bold">Pass</span>
+                                
+                            </td>
+                            <td class="px-4 py-2">Settings</td>
+                        </tr>
+                        
+                        <tr class="bg-white border-b hover:bg-gray-50">
+                            <td class="px-4 py-2">45</td>
+                            <td class="px-4 py-2 font-medium text-gray-900">T-Cirrus-Settings-20260101_182448</td>
+                            <td class="px-4 py-2">设置模块</td>
+                            <td class="px-4 py-2">
+                                
+                                <span class="text-green-600 font-bold">Pass</span>
+                                
+                            </td>
+                            <td class="px-4 py-2">Settings</td>
+                        </tr>
+                        
+                        <tr class="bg-white border-b hover:bg-gray-50">
+                            <td class="px-4 py-2">46</td>
+                            <td class="px-4 py-2 font-medium text-gray-900">T-Cirrus-Settings-20260101_182752</td>
+                            <td class="px-4 py-2">设置模块</td>
+                            <td class="px-4 py-2">
+                                
+                                <span class="text-green-600 font-bold">Pass</span>
+                                
+                            </td>
+                            <td class="px-4 py-2">Settings</td>
+                        </tr>
+                        
+                        <tr class="bg-white border-b hover:bg-gray-50">
+                            <td class="px-4 py-2">47</td>
+                            <td class="px-4 py-2 font-medium text-gray-900">T-Cirrus-BackupRestore-20260101_183041</td>
+                            <td class="px-4 py-2">备份与恢复模块</td>
+                            <td class="px-4 py-2">
+                                
+                                <span class="text-green-600 font-bold">Pass</span>
+                                
+                            </td>
+                            <td class="px-4 py-2">Backup/Restore</td>
+                        </tr>
+                        
+                        <tr class="bg-white border-b hover:bg-gray-50">
+                            <td class="px-4 py-2">48</td>
+                            <td class="px-4 py-2 font-medium text-gray-900">T-Cirrus-BackupRestore-20260101_183408</td>
+                            <td class="px-4 py-2">备份与恢复模块</td>
+                            <td class="px-4 py-2">
+                                
+                                <span class="text-green-600 font-bold">Pass</span>
+                                
+                            </td>
+                            <td class="px-4 py-2">Backup/Restore</td>
+                        </tr>
+                        
+                        <tr class="bg-white border-b hover:bg-gray-50">
+                            <td class="px-4 py-2">49</td>
+                            <td class="px-4 py-2 font-medium text-gray-900">T-Cirrus-BackupRestore-20260101_183559</td>
+                            <td class="px-4 py-2">备份与恢复模块</td>
+                            <td class="px-4 py-2">
+                                
+                                <span class="text-green-600 font-bold">Pass</span>
+                                
+                            </td>
+                            <td class="px-4 py-2">Backup/Restore</td>
+                        </tr>
+                        
+                        <tr class="bg-white border-b hover:bg-gray-50">
+                            <td class="px-4 py-2">50</td>
+                            <td class="px-4 py-2 font-medium text-gray-900">T-Cirrus-BackupRestore-20260101_184141</td>
+                            <td class="px-4 py-2">备份与恢复模块</td>
+                            <td class="px-4 py-2">
+                                
+                                <span class="text-green-600 font-bold">Pass</span>
+                                
+                            </td>
+                            <td class="px-4 py-2">Backup/Restore</td>
+                        </tr>
+                        
+                        <tr class="bg-white border-b hover:bg-gray-50">
+                            <td class="px-4 py-2">51</td>
+                            <td class="px-4 py-2 font-medium text-gray-900">T-Chrono-闹钟-20260101_012910</td>
+                            <td class="px-4 py-2">闹钟模块</td>
+                            <td class="px-4 py-2">
+                                
+                                <span class="text-green-600 font-bold">Pass</span>
+                                
+                            </td>
+                            <td class="px-4 py-2">闹钟</td>
+                        </tr>
+                        
+                        <tr class="bg-white border-b hover:bg-gray-50">
+                            <td class="px-4 py-2">52</td>
+                            <td class="px-4 py-2 font-medium text-gray-900">T-Chrono-闹钟-20260101_013001</td>
+                            <td class="px-4 py-2">闹钟模块</td>
+                            <td class="px-4 py-2">
+                                
+                                <span class="text-green-600 font-bold">Pass</span>
+                                
+                            </td>
+                            <td class="px-4 py-2">闹钟</td>
+                        </tr>
+                        
+                        <tr class="bg-white border-b hover:bg-gray-50">
+                            <td class="px-4 py-2">53</td>
+                            <td class="px-4 py-2 font-medium text-gray-900">T-Chrono-闹钟-20260101_013300</td>
+                            <td class="px-4 py-2">闹钟模块</td>
+                            <td class="px-4 py-2">
+                                
+                                <span class="text-green-600 font-bold">Pass</span>
+                                
+                            </td>
+                            <td class="px-4 py-2">闹钟</td>
+                        </tr>
+                        
+                        <tr class="bg-white border-b hover:bg-gray-50">
+                            <td class="px-4 py-2">54</td>
+                            <td class="px-4 py-2 font-medium text-gray-900">T-Chrono-闹钟-20260101_024032</td>
+                            <td class="px-4 py-2">闹钟模块</td>
+                            <td class="px-4 py-2">
+                                
+                                <span class="text-green-600 font-bold">Pass</span>
+                                
+                            </td>
+                            <td class="px-4 py-2">闹钟</td>
+                        </tr>
+                        
+                        <tr class="bg-white border-b hover:bg-gray-50">
+                            <td class="px-4 py-2">55</td>
+                            <td class="px-4 py-2 font-medium text-gray-900">T-Chrono-闹钟-20260101_031211</td>
+                            <td class="px-4 py-2">闹钟模块</td>
+                            <td class="px-4 py-2">
+                                
+                                <span class="text-green-600 font-bold">Pass</span>
+                                
+                            </td>
+                            <td class="px-4 py-2">闹钟</td>
+                        </tr>
+                        
+                        <tr class="bg-white border-b hover:bg-gray-50">
+                            <td class="px-4 py-2">56</td>
+                            <td class="px-4 py-2 font-medium text-gray-900">T-Chrono-闹钟-20260101_031311</td>
+                            <td class="px-4 py-2">闹钟模块</td>
+                            <td class="px-4 py-2">
+                                
+                                <span class="text-green-600 font-bold">Pass</span>
+                                
+                            </td>
+                            <td class="px-4 py-2">闹钟</td>
+                        </tr>
+                        
+                        <tr class="bg-white border-b hover:bg-gray-50">
+                            <td class="px-4 py-2">57</td>
+                            <td class="px-4 py-2 font-medium text-gray-900">T-Chrono-闹钟-20260101_031459</td>
+                            <td class="px-4 py-2">闹钟模块</td>
+                            <td class="px-4 py-2">
+                                
+                                <span class="text-green-600 font-bold">Pass</span>
+                                
+                            </td>
+                            <td class="px-4 py-2">闹钟</td>
+                        </tr>
+                        
+                        <tr class="bg-white border-b hover:bg-gray-50">
+                            <td class="px-4 py-2">58</td>
+                            <td class="px-4 py-2 font-medium text-gray-900">T-Chrono-闹钟-20260101_031614</td>
+                            <td class="px-4 py-2">闹钟模块</td>
+                            <td class="px-4 py-2">
+                                
+                                <span class="text-green-600 font-bold">Pass</span>
+                                
+                            </td>
+                            <td class="px-4 py-2">闹钟</td>
+                        </tr>
+                        
+                        <tr class="bg-white border-b hover:bg-gray-50">
+                            <td class="px-4 py-2">59</td>
+                            <td class="px-4 py-2 font-medium text-gray-900">T-Chrono-闹钟-20260101_031735</td>
+                            <td class="px-4 py-2">闹钟模块</td>
+                            <td class="px-4 py-2">
+                                
+                                <span class="text-green-600 font-bold">Pass</span>
+                                
+                            </td>
+                            <td class="px-4 py-2">闹钟</td>
+                        </tr>
+                        
+                        <tr class="bg-white border-b hover:bg-gray-50">
+                            <td class="px-4 py-2">60</td>
+                            <td class="px-4 py-2 font-medium text-gray-900">T-Chrono-时钟-20260101_031919</td>
+                            <td class="px-4 py-2">时钟模块</td>
+                            <td class="px-4 py-2">
+                                
+                                <span class="text-green-600 font-bold">Pass</span>
+                                
+                            </td>
+                            <td class="px-4 py-2">时钟</td>
+                        </tr>
+                        
+                        <tr class="bg-white border-b hover:bg-gray-50">
+                            <td class="px-4 py-2">61</td>
+                            <td class="px-4 py-2 font-medium text-gray-900">T-Chrono-时钟-20260101_032018</td>
+                            <td class="px-4 py-2">时钟模块</td>
+                            <td class="px-4 py-2">
+                                
+                                <span class="text-green-600 font-bold">Pass</span>
+                                
+                            </td>
+                            <td class="px-4 py-2">时钟</td>
+                        </tr>
+                        
+                        <tr class="bg-white border-b hover:bg-gray-50">
+                            <td class="px-4 py-2">62</td>
+                            <td class="px-4 py-2 font-medium text-gray-900">T-Chrono-时钟-20260101_032228</td>
+                            <td class="px-4 py-2">时钟模块</td>
+                            <td class="px-4 py-2">
+                                
+                                <span class="text-green-600 font-bold">Pass</span>
+                                
+                            </td>
+                            <td class="px-4 py-2">时钟</td>
+                        </tr>
+                        
+                        <tr class="bg-white border-b hover:bg-gray-50">
+                            <td class="px-4 py-2">63</td>
+                            <td class="px-4 py-2 font-medium text-gray-900">T-Chrono-计时器-20260101_032413</td>
+                            <td class="px-4 py-2">计时器模块</td>
+                            <td class="px-4 py-2">
+                                
+                                <span class="text-green-600 font-bold">Pass</span>
+                                
+                            </td>
+                            <td class="px-4 py-2">计时器</td>
+                        </tr>
+                        
+                        <tr class="bg-white border-b hover:bg-gray-50">
+                            <td class="px-4 py-2">64</td>
+                            <td class="px-4 py-2 font-medium text-gray-900">T-Chrono-计时器-20260101_032539</td>
+                            <td class="px-4 py-2">计时器模块</td>
+                            <td class="px-4 py-2">
+                                
+                                <span class="text-green-600 font-bold">Pass</span>
+                                
+                            </td>
+                            <td class="px-4 py-2">计时器</td>
+                        </tr>
+                        
+                        <tr class="bg-white border-b hover:bg-gray-50">
+                            <td class="px-4 py-2">65</td>
+                            <td class="px-4 py-2 font-medium text-gray-900">T-Chrono-计时器-20260101_032853</td>
+                            <td class="px-4 py-2">计时器模块</td>
+                            <td class="px-4 py-2">
+                                
+                                <span class="text-green-600 font-bold">Pass</span>
+                                
+                            </td>
+                            <td class="px-4 py-2">计时器</td>
+                        </tr>
+                        
+                        <tr class="bg-white border-b hover:bg-gray-50">
+                            <td class="px-4 py-2">66</td>
+                            <td class="px-4 py-2 font-medium text-gray-900">T-Chrono-计时器-20260101_033836</td>
+                            <td class="px-4 py-2">计时器模块</td>
+                            <td class="px-4 py-2">
+                                
+                                <span class="text-green-600 font-bold">Pass</span>
+                                
+                            </td>
+                            <td class="px-4 py-2">计时器</td>
+                        </tr>
+                        
+                        <tr class="bg-white border-b hover:bg-gray-50">
+                            <td class="px-4 py-2">67</td>
+                            <td class="px-4 py-2 font-medium text-gray-900">T-Chrono-计时器-20260101_040102</td>
+                            <td class="px-4 py-2">计时器模块</td>
+                            <td class="px-4 py-2">
+                                
+                                <span class="text-green-600 font-bold">Pass</span>
+                                
+                            </td>
+                            <td class="px-4 py-2">计时器</td>
+                        </tr>
+                        
+                        <tr class="bg-white border-b hover:bg-gray-50">
+                            <td class="px-4 py-2">68</td>
+                            <td class="px-4 py-2 font-medium text-gray-900">T-Chrono-计时器-20260101_040245</td>
+                            <td class="px-4 py-2">计时器模块</td>
+                            <td class="px-4 py-2">
+                                
+                                <span class="text-green-600 font-bold">Pass</span>
+                                
+                            </td>
+                            <td class="px-4 py-2">计时器</td>
+                        </tr>
+                        
+                        <tr class="bg-white border-b hover:bg-gray-50">
+                            <td class="px-4 py-2">69</td>
+                            <td class="px-4 py-2 font-medium text-gray-900">T-Chrono-秒表-20260101_040456</td>
+                            <td class="px-4 py-2">秒表模块</td>
+                            <td class="px-4 py-2">
+                                
+                                <span class="text-green-600 font-bold">Pass</span>
+                                
+                            </td>
+                            <td class="px-4 py-2">秒表</td>
+                        </tr>
+                        
+                        <tr class="bg-white border-b hover:bg-gray-50">
+                            <td class="px-4 py-2">70</td>
+                            <td class="px-4 py-2 font-medium text-gray-900">T-Chrono-秒表-20260101_040618</td>
+                            <td class="px-4 py-2">秒表模块</td>
+                            <td class="px-4 py-2">
+                                
+                                <span class="text-green-600 font-bold">Pass</span>
+                                
+                            </td>
+                            <td class="px-4 py-2">秒表</td>
+                        </tr>
+                        
+                        <tr class="bg-white border-b hover:bg-gray-50">
+                            <td class="px-4 py-2">71</td>
+                            <td class="px-4 py-2 font-medium text-gray-900">T-Chrono-秒表-20260101_040758</td>
+                            <td class="px-4 py-2">秒表模块</td>
+                            <td class="px-4 py-2">
+                                
+                                <span class="text-green-600 font-bold">Pass</span>
+                                
+                            </td>
+                            <td class="px-4 py-2">秒表</td>
+                        </tr>
+                        
+                        <tr class="bg-white border-b hover:bg-gray-50">
+                            <td class="px-4 py-2">72</td>
+                            <td class="px-4 py-2 font-medium text-gray-900">T-Chrono-秒表-20260101_041009</td>
+                            <td class="px-4 py-2">秒表模块</td>
+                            <td class="px-4 py-2">
+                                
+                                <span class="text-green-600 font-bold">Pass</span>
+                                
+                            </td>
+                            <td class="px-4 py-2">秒表</td>
+                        </tr>
+                        
+                        <tr class="bg-white border-b hover:bg-gray-50">
+                            <td class="px-4 py-2">73</td>
+                            <td class="px-4 py-2 font-medium text-gray-900">T-桌上习惯-首页-搜索-20260101_115209</td>
+                            <td class="px-4 py-2">搜索模块</td>
+                            <td class="px-4 py-2">
+                                
+                                <span class="text-green-600 font-bold">Pass</span>
+                                
+                            </td>
+                            <td class="px-4 py-2">首页-搜索</td>
+                        </tr>
+                        
+                        <tr class="bg-white border-b hover:bg-gray-50">
+                            <td class="px-4 py-2">74</td>
+                            <td class="px-4 py-2 font-medium text-gray-900">T-Quillpad-编辑-预览-20251230_004606</td>
+                            <td class="px-4 py-2">预览模块</td>
+                            <td class="px-4 py-2">
+                                
+                                <span class="text-red-600 font-bold">Fail</span>
+                                
+                            </td>
+                            <td class="px-4 py-2">编辑-预览</td>
+                        </tr>
+                        
+                        <tr class="bg-white border-b hover:bg-gray-50">
+                            <td class="px-4 py-2">75</td>
+                            <td class="px-4 py-2 font-medium text-gray-900">T-Quillpad-编辑-任务清单-20251230_011338</td>
+                            <td class="px-4 py-2">任务清单模块</td>
+                            <td class="px-4 py-2">
+                                
+                                <span class="text-red-600 font-bold">Fail</span>
+                                
+                            </td>
+                            <td class="px-4 py-2">编辑-任务清单</td>
+                        </tr>
+                        
+                        <tr class="bg-white border-b hover:bg-gray-50">
+                            <td class="px-4 py-2">76</td>
+                            <td class="px-4 py-2 font-medium text-gray-900">T-Quillpad-同步-双向-20251230_032026</td>
+                            <td class="px-4 py-2">同步模块</td>
+                            <td class="px-4 py-2">
+                                
+                                <span class="text-red-600 font-bold">Fail</span>
+                                
+                            </td>
+                            <td class="px-4 py-2">同步-双向</td>
+                        </tr>
+                        
+                        <tr class="bg-white border-b hover:bg-gray-50">
+                            <td class="px-4 py-2">77</td>
+                            <td class="px-4 py-2 font-medium text-gray-900">T-Quillpad-备份-导出-20251230_034458</td>
+                            <td class="px-4 py-2">备份与恢复模块</td>
+                            <td class="px-4 py-2">
+                                
+                                <span class="text-red-600 font-bold">Fail</span>
+                                
+                            </td>
+                            <td class="px-4 py-2">备份-导出</td>
+                        </tr>
+                        
+                        <tr class="bg-white border-b hover:bg-gray-50">
+                            <td class="px-4 py-2">78</td>
+                            <td class="px-4 py-2 font-medium text-gray-900">T-Quillpad-附件-图片查看-20251230_042243</td>
+                            <td class="px-4 py-2">附件查看模块</td>
+                            <td class="px-4 py-2">
+                                
+                                <span class="text-red-600 font-bold">Fail</span>
+                                
+                            </td>
+                            <td class="px-4 py-2">附件-图片查看</td>
+                        </tr>
+                        
+                        <tr class="bg-white border-b hover:bg-gray-50">
+                            <td class="px-4 py-2">79</td>
+                            <td class="px-4 py-2 font-medium text-gray-900">T-Quillpad-编辑-多级标题-20251230_050721</td>
+                            <td class="px-4 py-2">编辑功能模块</td>
+                            <td class="px-4 py-2">
+                                
+                                <span class="text-red-600 font-bold">Fail</span>
+                                
+                            </td>
+                            <td class="px-4 py-2">编辑-多级标题</td>
+                        </tr>
+                        
+                        <tr class="bg-white border-b hover:bg-gray-50">
+                            <td class="px-4 py-2">80</td>
+                            <td class="px-4 py-2 font-medium text-gray-900">T-Cirrus-Weather-20260101_165453</td>
+                            <td class="px-4 py-2">天气信息刷新模块</td>
+                            <td class="px-4 py-2">
+                                
+                                <span class="text-red-600 font-bold">Fail</span>
+                                
+                            </td>
+                            <td class="px-4 py-2">Weather</td>
+                        </tr>
+                        
+                        <tr class="bg-white border-b hover:bg-gray-50">
+                            <td class="px-4 py-2">81</td>
+                            <td class="px-4 py-2 font-medium text-gray-900">T-Cirrus-Manage locations-20260101_171633</td>
+                            <td class="px-4 py-2">城市管理模块</td>
+                            <td class="px-4 py-2">
+                                
+                                <span class="text-red-600 font-bold">Fail</span>
+                                
+                            </td>
+                            <td class="px-4 py-2">Manage locations</td>
+                        </tr>
+                        
+                        <tr class="bg-white border-b hover:bg-gray-50">
+                            <td class="px-4 py-2">82</td>
+                            <td class="px-4 py-2 font-medium text-gray-900">T-Cirrus-Manage locations-20260101_173744</td>
+                            <td class="px-4 py-2">位置管理模块</td>
+                            <td class="px-4 py-2">
+                                
+                                <span class="text-red-600 font-bold">Fail</span>
+                                
+                            </td>
+                            <td class="px-4 py-2">Manage locations</td>
+                        </tr>
+                        
+                        <tr class="bg-white border-b hover:bg-gray-50">
+                            <td class="px-4 py-2">83</td>
+                            <td class="px-4 py-2 font-medium text-gray-900">T-Cirrus-Manage locations-20260101_174802</td>
+                            <td class="px-4 py-2">位置管理模块</td>
+                            <td class="px-4 py-2">
+                                
+                                <span class="text-red-600 font-bold">Fail</span>
+                                
+                            </td>
+                            <td class="px-4 py-2">Manage locations</td>
+                        </tr>
+                        
+                        <tr class="bg-white border-b hover:bg-gray-50">
+                            <td class="px-4 py-2">84</td>
+                            <td class="px-4 py-2 font-medium text-gray-900">T-Chrono-闹钟-20260101_013859</td>
+                            <td class="px-4 py-2">闹钟模块</td>
+                            <td class="px-4 py-2">
+                                
+                                <span class="text-red-600 font-bold">Fail</span>
+                                
+                            </td>
+                            <td class="px-4 py-2">闹钟</td>
+                        </tr>
+                        
+                        <tr class="bg-white border-b hover:bg-gray-50">
+                            <td class="px-4 py-2">85</td>
+                            <td class="px-4 py-2 font-medium text-gray-900">T-Chrono-闹钟-20260101_015129</td>
+                            <td class="px-4 py-2">闹钟模块</td>
+                            <td class="px-4 py-2">
+                                
+                                <span class="text-red-600 font-bold">Fail</span>
+                                
+                            </td>
+                            <td class="px-4 py-2">闹钟</td>
+                        </tr>
+                        
+                        <tr class="bg-white border-b hover:bg-gray-50">
+                            <td class="px-4 py-2">86</td>
+                            <td class="px-4 py-2 font-medium text-gray-900">T-Chrono-闹钟-20260101_020315</td>
+                            <td class="px-4 py-2">闹钟模块</td>
+                            <td class="px-4 py-2">
+                                
+                                <span class="text-red-600 font-bold">Fail</span>
+                                
+                            </td>
+                            <td class="px-4 py-2">闹钟</td>
+                        </tr>
+                        
+                        <tr class="bg-white border-b hover:bg-gray-50">
+                            <td class="px-4 py-2">87</td>
+                            <td class="px-4 py-2 font-medium text-gray-900">T-Chrono-闹钟-20260101_021516</td>
+                            <td class="px-4 py-2">闹钟模块</td>
+                            <td class="px-4 py-2">
+                                
+                                <span class="text-red-600 font-bold">Fail</span>
+                                
+                            </td>
+                            <td class="px-4 py-2">闹钟</td>
+                        </tr>
+                        
+                        <tr class="bg-white border-b hover:bg-gray-50">
+                            <td class="px-4 py-2">88</td>
+                            <td class="px-4 py-2 font-medium text-gray-900">T-Chrono-闹钟-20260101_022738</td>
+                            <td class="px-4 py-2">闹钟模块</td>
+                            <td class="px-4 py-2">
+                                
+                                <span class="text-red-600 font-bold">Fail</span>
+                                
+                            </td>
+                            <td class="px-4 py-2">闹钟</td>
+                        </tr>
+                        
+                        <tr class="bg-white border-b hover:bg-gray-50">
+                            <td class="px-4 py-2">89</td>
+                            <td class="px-4 py-2 font-medium text-gray-900">T-Chrono-闹钟-20260101_024740</td>
+                            <td class="px-4 py-2">闹钟模块</td>
+                            <td class="px-4 py-2">
+                                
+                                <span class="text-red-600 font-bold">Fail</span>
+                                
+                            </td>
+                            <td class="px-4 py-2">闹钟</td>
+                        </tr>
+                        
+                        <tr class="bg-white border-b hover:bg-gray-50">
+                            <td class="px-4 py-2">90</td>
+                            <td class="px-4 py-2 font-medium text-gray-900">T-Chrono-闹钟-20260101_025943</td>
+                            <td class="px-4 py-2">闹钟模块</td>
+                            <td class="px-4 py-2">
+                                
+                                <span class="text-red-600 font-bold">Fail</span>
+                                
+                            </td>
+                            <td class="px-4 py-2">闹钟</td>
+                        </tr>
+                        
+                        <tr class="bg-white border-b hover:bg-gray-50">
+                            <td class="px-4 py-2">91</td>
+                            <td class="px-4 py-2 font-medium text-gray-900">T-Chrono-计时器-20260101_034822</td>
+                            <td class="px-4 py-2">计时器模块</td>
+                            <td class="px-4 py-2">
+                                
+                                <span class="text-red-600 font-bold">Fail</span>
+                                
+                            </td>
+                            <td class="px-4 py-2">计时器</td>
+                        </tr>
+                        
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- Tooltip Element -->
+    <div id="case-tooltip" class="fixed hidden bg-gray-800 text-white text-xs p-4 rounded shadow-xl z-50 max-w-lg pointer-events-none transition-opacity duration-300 opacity-0">
+        <div class="grid grid-cols-1 gap-2">
+            <div><span class="font-bold text-blue-300">模块:</span> <span id="tt-module"></span></div>
+            <div><span class="font-bold text-blue-300">用例:</span> <span id="tt-name"></span></div>
+            <div><span class="font-bold text-blue-300">步骤:</span> <span id="tt-steps" class="whitespace-pre-wrap"></span></div>
+            <div><span class="font-bold text-blue-300">预期:</span> <span id="tt-expected" class="whitespace-pre-wrap"></span></div>
+            <div><span class="font-bold text-blue-300">实际:</span> <span id="tt-actual" class="whitespace-pre-wrap"></span></div>
+            <div><span class="font-bold text-blue-300">备注:</span> <span id="tt-remark"></span></div>
+        </div>
+    </div>
+
+    <script>
+        // Render Charts using Plotly
+        var resultData = [{
+            values: [73, 18, 0, 0],
+            labels: ['通过', '失败', '阻塞', '跳过'],
+            type: 'pie',
+            marker: {colors: ['#4ade80', '#f87171', '#facc15', '#9ca3af']}
+        }];
+        Plotly.newPlot('chart-results', resultData, {title: '测试结果分布'});
+
+        var modules = {"Cirrus\u5e94\u7528\u6a21\u5757": 1, "GPS\u5b9a\u4f4d\u6a21\u5757": 1, "UI\u4ea4\u4e92\u6a21\u5757": 1, "\u4e3b\u9898\u4e0e\u8bbe\u7f6e\u6a21\u5757": 1, "\u4efb\u52a1\u6e05\u5355\u6a21\u5757": 1, "\u4f4d\u7f6e\u7ba1\u7406\u6a21\u5757": 4, "\u540c\u6b65\u6a21\u5757": 2, "\u57ce\u5e02\u641c\u7d22\u4e0e\u5730\u56fe\u663e\u793a\u6a21\u5757": 1, "\u57ce\u5e02\u6dfb\u52a0\u9a8c\u8bc1\u6a21\u5757": 1, "\u57ce\u5e02\u7ba1\u7406\u6a21\u5757": 1, "\u5907\u4efd\u4e0e\u6062\u590d\u6a21\u5757": 5, "\u5929\u6c14\u4fe1\u606f\u5237\u65b0\u6a21\u5757": 1, "\u5929\u6c14\u9884\u62a5\u67e5\u770b\u6a21\u5757": 1, "\u5929\u6c14\u9884\u62a5\u8be6\u60c5\u67e5\u770b\u6a21\u5757": 1, "\u5bfc\u822a\u83dc\u5355\u6a21\u5757": 1, "\u63d0\u9192\u529f\u80fd\u6a21\u5757": 1, "\u641c\u7d22\u529f\u80fd\u6a21\u5757": 1, "\u641c\u7d22\u6a21\u5757": 3, "\u65f6\u949f\u6a21\u5757": 3, "\u6807\u7b7e\u7ba1\u7406\u6a21\u5757": 1, "\u754c\u9762\u8bbe\u7f6e\u6a21\u5757": 2, "\u79d2\u8868\u6a21\u5757": 4, "\u7b14\u8bb0\u672c\u7ba1\u7406\u6a21\u5757": 1, "\u7b14\u8bb0\u7ba1\u7406\u6a21\u5757": 6, "\u7cfb\u7edf\u4ea4\u4e92\u6a21\u5757": 1, "\u7f16\u8f91\u529f\u80fd\u6a21\u5757": 1, "\u7f16\u8f91\u6a21\u5757": 2, "\u7f51\u7edc\u8bf7\u6c42\u4e0e\u6743\u9650\u540c\u610f\u6a21\u5757": 1, "\u7f51\u7edc\u8bf7\u6c42\u4e0e\u6743\u9650\u62d2\u7edd\u6a21\u5757": 1, "\u8ba1\u65f6\u5668\u6a21\u5757": 7, "\u8bbe\u7f6e\u6a21\u5757": 12, "\u95f9\u949f\u6a21\u5757": 16, "\u9644\u4ef6\u67e5\u770b\u6a21\u5757": 2, "\u9644\u4ef6\u6a21\u5757": 2, "\u9884\u89c8\u6a21\u5757": 1};
+        var moduleData = [{
+            x: Object.keys(modules),
+            y: Object.values(modules),
+            type: 'bar'
+        }];
+        Plotly.newPlot('chart-modules', moduleData, {title: '各模块用例数'});
+
+        // Tooltip Logic
+        const tooltip = document.getElementById('case-tooltip');
+        let tooltipTimer = null;
+        let activeElement = null;
+
+        function showTooltip(x, y, data) {
+            document.getElementById('tt-module').textContent = data.module || 'N/A';
+            document.getElementById('tt-name').textContent = data.name || 'N/A';
+            document.getElementById('tt-steps').textContent = data.steps || 'N/A';
+            document.getElementById('tt-expected').textContent = data.expected || 'N/A';
+            document.getElementById('tt-actual').textContent = data.actual || 'N/A';
+            document.getElementById('tt-remark').textContent = data.remark || 'N/A';
+
+            tooltip.style.left = (x + 15) + 'px';
+            tooltip.style.top = (y + 15) + 'px';
+            tooltip.classList.remove('hidden');
+            tooltip.classList.remove('opacity-0');
+        }
+
+        function hideTooltip() {
+            tooltip.classList.add('opacity-0');
+            tooltip.classList.add('hidden');
+        }
+
+        document.querySelectorAll('.tooltip-target').forEach(el => {
+            el.addEventListener('mouseenter', (e) => {
+                // Clear global timer if exists
+                if (tooltipTimer) {
+                    clearTimeout(tooltipTimer);
+                    tooltipTimer = null;
+                }
+                
+                // Hide current tooltip immediately
+                hideTooltip();
+                
+                // Set this element as active
+                activeElement = el;
+
+                // Capture data
+                const data = {
+                    name: el.getAttribute('data-case-name'),
+                    module: el.getAttribute('data-module'),
+                    expected: el.getAttribute('data-expected'),
+                    actual: el.getAttribute('data-actual'),
+                    steps: el.getAttribute('data-steps'),
+                    remark: el.getAttribute('data-remark')
+                };
+
+                // Initialize coordinates
+                el._mouseX = e.clientX;
+                el._mouseY = e.clientY;
+
+                // Start timer
+                tooltipTimer = setTimeout(() => {
+                    // Only show if this element is still active
+                    if (activeElement === el) {
+                        showTooltip(el._mouseX, el._mouseY, data);
+                    }
+                }, 1000); // 1 second delay
+            });
+
+            el.addEventListener('mousemove', (e) => {
+                // Update coordinates for when timer fires
+                el._mouseX = e.clientX;
+                el._mouseY = e.clientY;
+
+                // If tooltip is already visible AND this is the active element, move it
+                if (!tooltip.classList.contains('hidden') && activeElement === el) {
+                    tooltip.style.left = (e.clientX + 15) + 'px';
+                    tooltip.style.top = (e.clientY + 15) + 'px';
+                }
+            });
+
+            el.addEventListener('mouseleave', () => {
+                // Only clear if we are leaving the active element
+                if (activeElement === el) {
+                    if (tooltipTimer) {
+                        clearTimeout(tooltipTimer);
+                        tooltipTimer = null;
+                    }
+                    hideTooltip();
+                    activeElement = null;
+                }
+            });
+        });
+
+    </script>
+</body>
+</html>
