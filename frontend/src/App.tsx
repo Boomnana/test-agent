@@ -10,6 +10,7 @@ export default function App() {
   const [status, setStatus] = useState<any>(null)
   const [jobId, setJobId] = useState<string>('')
   const [error, setError] = useState<string>('')
+  const [isCancelling, setIsCancelling] = useState<boolean>(false)
 
   const login = async () => {
     setError('')
@@ -30,7 +31,7 @@ export default function App() {
   const upload = async () => {
     if (!file || !token) return
     setError('')
-    setStatus({ message: '已提交请求到后端，正在等待响应...' })
+    setStatus({ status: 'pending', message: '已提交请求到后端，正在等待响应...' })
     try {
       const form = new FormData()
       form.append('file', file)
@@ -54,12 +55,30 @@ export default function App() {
         const res = await fetch(`${API_BASE}/jobs/status/${id}`)
         const data = await res.json()
         setStatus(data)
-        if (data.status === 'completed' || data.status === 'failed' || data.status === 'unknown') {
+        if (data.status === 'completed' || data.status === 'failed' || data.status === 'unknown' || data.status === 'cancelled') {
           clearInterval(timer)
         }
       } catch {
       }
     }, 2000)
+  }
+
+  const cancelJob = async () => {
+    if (!jobId) return
+    setError('')
+    setIsCancelling(true)
+    try {
+      const res = await fetch(`${API_BASE}/jobs/${jobId}`, {
+        method: 'DELETE',
+        headers: token ? { 'Authorization': `Bearer ${token}` } : undefined
+      })
+      const data = await res.json()
+      setStatus((prev: any) => ({ ...(prev || {}), ...data }))
+    } catch (e: any) {
+      setError(e.message || '取消任务失败')
+    } finally {
+      setIsCancelling(false)
+    }
   }
 
   const openResult = async () => {
@@ -95,7 +114,25 @@ export default function App() {
         </section>
 
         <section className="space-y-3 rounded-xl border border-slate-800 p-4 bg-slate-900/60">
-          <p className="text-sm text-slate-300">任务状态</p>
+          <div className="flex items-center justify-between gap-3">
+            <p className="text-sm text-slate-300">任务状态</p>
+            <div className="flex items-center gap-3">
+              {status?.status && (
+                <span className="px-2 py-1 text-xs rounded-full border border-slate-700 bg-slate-900 text-slate-200">
+                  当前状态: {status.status}
+                </span>
+              )}
+              {jobId && (status?.status === 'pending' || status?.status === 'running' || status?.status === 'cancelling') && (
+                <button
+                  onClick={cancelJob}
+                  disabled={isCancelling}
+                  className="px-3 py-2 rounded bg-rose-500 hover:bg-rose-400 text-slate-950 font-semibold text-xs disabled:opacity-60 disabled:cursor-not-allowed"
+                >
+                  {isCancelling ? '正在取消…' : '紧急停止当前任务'}
+                </button>
+              )}
+            </div>
+          </div>
           <pre className="text-xs bg-slate-950 p-3 rounded border border-slate-800">{JSON.stringify(status || {}, null, 2)}</pre>
           {status?.report_url && status?.status === 'completed' && (
             <button className="px-3 py-2 rounded bg-emerald-500 text-slate-950 font-semibold" onClick={openResult}>

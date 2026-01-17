@@ -2453,3 +2453,101 @@ print(json_result)
 2026-01-15 18:18:28.134 | INFO     | app.services.audit.auditor:audit_cases_concurrently:28 - Result audit completed.
 2026-01-15 18:18:28.134 | INFO     | app.services.defects.extractor:extract_defect_facts_concurrently:15 - Extracting defects for 47 cases concurrently...
 2026-01-15 18:18:36.673 | INFO     | app.services.defects.extractor:extract_defect_facts_concurrently:22 - Extracted 47 defects.
+2026-01-17 13:31:57.372 | INFO     | app.services.ingest.service:parse_excel:13 - Parsing Excel file: 测试用例汇总.xlsx
+2026-01-17 13:31:57.542 | INFO     | app.services.ingest.service:_align_columns_with_llm:123 - Aligning columns for sheet Sheet1 with LLM...
+2026-01-17 13:31:59.686 | INFO     | app.services.ingest.service:_align_columns_with_llm:131 - Column mapping received: {'测试用例编号': 'case_name', '用例说明': 'case_name', '执行步骤': 'steps', '成功步骤': 'steps', '输入数据': 'precondition', '执行结果': 'test_result'}
+2026-01-17 13:31:59.687 | WARNING  | app.services.ingest.service:_align_columns_with_llm:144 - Duplicate mapping for case_name: 测试用例编号 vs 用例说明. Keeping 测试用例编号
+2026-01-17 13:31:59.687 | WARNING  | app.services.ingest.service:_align_columns_with_llm:144 - Duplicate mapping for steps: 执行步骤 vs 成功步骤. Keeping 执行步骤
+2026-01-17 13:31:59.688 | INFO     | app.services.ingest.service:_normalize_results_with_llm:192 - Normalizing results with LLM for values: ['完成', '未完成']
+2026-01-17 13:32:00.633 | INFO     | app.services.ingest.service:_normalize_results_with_llm:198 - Result mapping received: {'完成': 'Pass', '未完成': 'Fail'}
+2026-01-17 13:32:00.638 | INFO     | app.services.ingest.service:parse_excel:37 - Parsed 91 cases from 测试用例汇总.xlsx
+2026-01-17 13:32:00.647 | INFO     | app.services.ingest.tagging:tag_cases_concurrently:16 - Starting concurrent module tagging for 91 cases...
+2026-01-17 13:32:28.103 | INFO     | app.services.ingest.tagging:tag_cases_concurrently:24 - Module tagging completed.
+2026-01-17 13:32:28.619 | INFO     | app.services.audit.auditor:audit_cases_concurrently:20 - Starting concurrent result audit for 73 passed cases...
+2026-01-17 13:32:42.653 | INFO     | app.services.audit.auditor:audit_cases_concurrently:28 - Result audit completed.
+2026-01-17 13:32:42.659 | INFO     | app.services.defects.extractor:extract_defect_facts_concurrently:15 - Extracting defects for 18 cases concurrently...
+2026-01-17 13:33:02.087 | INFO     | app.services.defects.extractor:extract_defect_facts_concurrently:22 - Extracted 18 defects.
+2026-01-17 13:47:37.679 | INFO     | app.services.ingest.service:parse_excel:13 - Parsing Excel file: 测试用例汇总.xlsx
+2026-01-17 13:47:37.835 | INFO     | app.services.ingest.service:_align_columns_with_llm:123 - Aligning columns for sheet Sheet1 with LLM...
+2026-01-17 13:47:39.217 | INFO     | app.services.ingest.service:_align_columns_with_llm:131 - Column mapping received: {'测试用例编号': 'case_name', '模块名称': 'remark', '用例说明': 'case_name', '执行步骤': 'steps', '成功步骤': 'steps', '输入数据': 'precondition', '执行结果': 'test_result'}
+2026-01-17 13:47:39.217 | WARNING  | app.services.ingest.service:_align_columns_with_llm:144 - Duplicate mapping for case_name: 测试用例编号 vs 用例说明. Keeping 测试用例编号
+2026-01-17 13:47:39.218 | WARNING  | app.services.ingest.service:_align_columns_with_llm:144 - Duplicate mapping for steps: 执行步骤 vs 成功步骤. Keeping 执行步骤
+2026-01-17 13:47:39.219 | INFO     | app.services.ingest.service:_normalize_results_with_llm:192 - Normalizing results with LLM for values: ['完成', '未完成']
+2026-01-17 13:47:39.772 | INFO     | app.services.ingest.service:_normalize_results_with_llm:198 - Result mapping received: {'完成': 'Pass', '未完成': 'Fail'}
+2026-01-17 13:47:39.777 | INFO     | app.services.ingest.service:parse_excel:37 - Parsed 91 cases from 测试用例汇总.xlsx
+2026-01-17 13:47:39.786 | INFO     | app.services.ingest.tagging:tag_cases_concurrently:16 - Starting concurrent module tagging for 91 cases...
+2026-01-17 13:48:07.228 | INFO     | app.services.ingest.tagging:tag_cases_concurrently:24 - Module tagging completed.
+2026-01-17 13:48:07.510 | INFO     | app.services.audit.auditor:audit_cases_concurrently:20 - Starting concurrent result audit for 73 passed cases...
+2026-01-17 13:48:23.268 | INFO     | app.services.audit.auditor:audit_cases_concurrently:28 - Result audit completed.
+2026-01-17 13:48:23.271 | INFO     | app.services.defects.extractor:extract_defect_facts_concurrently:15 - Extracting defects for 18 cases concurrently...
+2026-01-17 13:48:35.389 | INFO     | app.services.defects.extractor:extract_defect_facts_concurrently:22 - Extracted 18 defects.
+2026-01-17 13:57:36.557 | INFO     | app.services.ingest.service:parse_excel:13 - Parsing Excel file: 测试用例汇总.xlsx
+2026-01-17 13:57:36.719 | INFO     | app.services.ingest.service:_align_columns_with_llm:123 - Aligning columns for sheet Sheet1 with LLM...
+2026-01-17 13:57:39.736 | INFO     | app.services.ingest.service:_align_columns_with_llm:131 - Column mapping received: {'测试用例编号': 'case_name', '模块名称': 'remark', '用例说明': 'case_name', '执行步骤': 'steps', '成功步骤': 'steps', '输入数据': 'precondition', '执行结果': 'test_result'}
+2026-01-17 13:57:39.737 | WARNING  | app.services.ingest.service:_align_columns_with_llm:144 - Duplicate mapping for case_name: 测试用例编号 vs 用例说明. Keeping 测试用例编号
+2026-01-17 13:57:39.737 | WARNING  | app.services.ingest.service:_align_columns_with_llm:144 - Duplicate mapping for steps: 执行步骤 vs 成功步骤. Keeping 执行步骤
+2026-01-17 13:57:39.738 | INFO     | app.services.ingest.service:_normalize_results_with_llm:192 - Normalizing results with LLM for values: ['完成', '未完成']
+2026-01-17 13:57:40.604 | INFO     | app.services.ingest.service:_normalize_results_with_llm:198 - Result mapping received: {'完成': 'Pass', '未完成': 'Fail'}
+2026-01-17 13:57:40.609 | INFO     | app.services.ingest.service:parse_excel:37 - Parsed 91 cases from 测试用例汇总.xlsx
+2026-01-17 13:57:40.618 | INFO     | app.services.ingest.tagging:tag_cases_concurrently:16 - Starting concurrent module tagging for 91 cases...
+2026-01-17 13:58:00.125 | INFO     | app.services.ingest.tagging:tag_cases_concurrently:24 - Module tagging completed.
+2026-01-17 13:58:00.384 | INFO     | app.services.audit.auditor:audit_cases_concurrently:20 - Starting concurrent result audit for 73 passed cases...
+2026-01-17 13:58:15.526 | INFO     | app.services.audit.auditor:audit_cases_concurrently:28 - Result audit completed.
+2026-01-17 13:58:15.528 | INFO     | app.services.defects.extractor:extract_defect_facts_concurrently:15 - Extracting defects for 18 cases concurrently...
+2026-01-17 13:58:37.976 | INFO     | app.services.defects.extractor:extract_defect_facts_concurrently:22 - Extracted 18 defects.
+2026-01-17 14:07:17.355 | INFO     | app.services.ingest.service:parse_excel:13 - Parsing Excel file: 测试用例汇总.xlsx
+2026-01-17 14:07:17.509 | INFO     | app.services.ingest.service:_align_columns_with_llm:123 - Aligning columns for sheet Sheet1 with LLM...
+2026-01-17 14:07:19.238 | INFO     | app.services.ingest.service:_align_columns_with_llm:131 - Column mapping received: {'测试用例编号': 'case_name', '模块名称': 'remark', '用例说明': 'case_name', '执行步骤': 'steps', '成功步骤': 'steps', '输入数据': 'precondition', '执行结果': 'test_result'}
+2026-01-17 14:07:19.238 | WARNING  | app.services.ingest.service:_align_columns_with_llm:144 - Duplicate mapping for case_name: 测试用例编号 vs 用例说明. Keeping 测试用例编号
+2026-01-17 14:07:19.239 | WARNING  | app.services.ingest.service:_align_columns_with_llm:144 - Duplicate mapping for steps: 执行步骤 vs 成功步骤. Keeping 执行步骤
+2026-01-17 14:07:19.240 | INFO     | app.services.ingest.service:_normalize_results_with_llm:192 - Normalizing results with LLM for values: ['完成', '未完成']
+2026-01-17 14:07:19.689 | INFO     | app.services.ingest.service:_normalize_results_with_llm:198 - Result mapping received: {'完成': 'Pass', '未完成': 'Fail'}
+2026-01-17 14:07:19.694 | INFO     | app.services.ingest.service:parse_excel:37 - Parsed 91 cases from 测试用例汇总.xlsx
+2026-01-17 14:07:19.703 | INFO     | app.services.ingest.tagging:tag_cases_concurrently:16 - Starting concurrent module tagging for 91 cases...
+2026-01-17 14:07:48.324 | INFO     | app.services.ingest.tagging:tag_cases_concurrently:24 - Module tagging completed.
+2026-01-17 14:07:48.638 | INFO     | app.services.audit.auditor:audit_cases_concurrently:20 - Starting concurrent result audit for 73 passed cases...
+2026-01-17 14:07:57.370 | INFO     | app.services.audit.auditor:audit_cases_concurrently:28 - Result audit completed.
+2026-01-17 14:07:57.375 | INFO     | app.services.defects.extractor:extract_defect_facts_concurrently:15 - Extracting defects for 18 cases concurrently...
+2026-01-17 14:08:05.391 | INFO     | app.services.defects.extractor:extract_defect_facts_concurrently:22 - Extracted 18 defects.
+2026-01-17 14:42:17.057 | INFO     | app.services.ingest.service:parse_excel:13 - Parsing Excel file: 测试用例汇总.xlsx
+2026-01-17 14:42:17.212 | INFO     | app.services.ingest.service:_align_columns_with_llm:123 - Aligning columns for sheet Sheet1 with LLM...
+2026-01-17 14:42:19.111 | INFO     | app.services.ingest.service:_align_columns_with_llm:131 - Column mapping received: {'测试用例编号': 'case_name', '模块名称': 'remark', '用例说明': 'case_name', '执行步骤': 'steps', '成功步骤': 'steps', '输入数据': 'precondition', '执行结果': 'test_result'}
+2026-01-17 14:42:19.112 | WARNING  | app.services.ingest.service:_align_columns_with_llm:144 - Duplicate mapping for case_name: 测试用例编号 vs 用例说明. Keeping 测试用例编号
+2026-01-17 14:42:19.112 | WARNING  | app.services.ingest.service:_align_columns_with_llm:144 - Duplicate mapping for steps: 执行步骤 vs 成功步骤. Keeping 执行步骤
+2026-01-17 14:42:19.113 | INFO     | app.services.ingest.service:_normalize_results_with_llm:192 - Normalizing results with LLM for values: ['完成', '未完成']
+2026-01-17 14:42:19.931 | INFO     | app.services.ingest.service:_normalize_results_with_llm:198 - Result mapping received: {'完成': 'Pass', '未完成': 'Fail'}
+2026-01-17 14:42:19.936 | INFO     | app.services.ingest.service:parse_excel:37 - Parsed 91 cases from 测试用例汇总.xlsx
+2026-01-17 14:42:19.945 | INFO     | app.services.ingest.tagging:tag_cases_concurrently:16 - Starting concurrent module tagging for 91 cases...
+2026-01-17 14:42:32.824 | INFO     | app.services.ingest.tagging:tag_cases_concurrently:24 - Module tagging completed.
+2026-01-17 14:42:33.085 | INFO     | app.services.audit.auditor:audit_cases_concurrently:20 - Starting concurrent result audit for 73 passed cases...
+2026-01-17 14:42:55.131 | INFO     | app.services.audit.auditor:audit_cases_concurrently:28 - Result audit completed.
+2026-01-17 14:42:55.135 | INFO     | app.services.defects.extractor:extract_defect_facts_concurrently:15 - Extracting defects for 18 cases concurrently...
+2026-01-17 14:43:29.662 | INFO     | app.services.defects.extractor:extract_defect_facts_concurrently:22 - Extracted 18 defects.
+2026-01-17 14:48:27.075 | INFO     | app.services.ingest.service:parse_excel:13 - Parsing Excel file: 测试用例汇总.xlsx
+2026-01-17 14:48:27.240 | INFO     | app.services.ingest.service:_align_columns_with_llm:123 - Aligning columns for sheet Sheet1 with LLM...
+2026-01-17 14:48:28.523 | INFO     | app.services.ingest.service:_align_columns_with_llm:131 - Column mapping received: {'测试用例编号': 'case_name', '模块名称': 'remark', '用例说明': 'case_name', '执行步骤': 'steps', '成功步骤': 'steps', '输入数据': 'precondition', '执行结果': 'test_result'}
+2026-01-17 14:48:28.524 | WARNING  | app.services.ingest.service:_align_columns_with_llm:144 - Duplicate mapping for case_name: 测试用例编号 vs 用例说明. Keeping 测试用例编号
+2026-01-17 14:48:28.524 | WARNING  | app.services.ingest.service:_align_columns_with_llm:144 - Duplicate mapping for steps: 执行步骤 vs 成功步骤. Keeping 执行步骤
+2026-01-17 14:48:28.526 | INFO     | app.services.ingest.service:_normalize_results_with_llm:192 - Normalizing results with LLM for values: ['完成', '未完成']
+2026-01-17 14:48:31.487 | INFO     | app.services.ingest.service:_normalize_results_with_llm:198 - Result mapping received: {'完成': 'Pass', '未完成': 'Fail'}
+2026-01-17 14:48:31.492 | INFO     | app.services.ingest.service:parse_excel:37 - Parsed 91 cases from 测试用例汇总.xlsx
+2026-01-17 14:48:31.501 | INFO     | app.services.ingest.tagging:tag_cases_concurrently:16 - Starting concurrent module tagging for 91 cases...
+2026-01-17 14:48:47.884 | INFO     | app.services.ingest.tagging:tag_cases_concurrently:24 - Module tagging completed.
+2026-01-17 14:48:48.141 | INFO     | app.services.audit.auditor:audit_cases_concurrently:20 - Starting concurrent result audit for 73 passed cases...
+2026-01-17 14:49:03.089 | INFO     | app.services.audit.auditor:audit_cases_concurrently:28 - Result audit completed.
+2026-01-17 14:49:03.092 | INFO     | app.services.defects.extractor:extract_defect_facts_concurrently:15 - Extracting defects for 18 cases concurrently...
+2026-01-17 14:49:57.033 | INFO     | app.services.defects.extractor:extract_defect_facts_concurrently:22 - Extracted 18 defects.
+2026-01-17 15:06:00.877 | INFO     | app.services.ingest.service:parse_excel:13 - Parsing Excel file: 测试用例汇总.xlsx
+2026-01-17 15:06:01.030 | INFO     | app.services.ingest.service:_align_columns_with_llm:123 - Aligning columns for sheet Sheet1 with LLM...
+2026-01-17 15:06:02.434 | INFO     | app.services.ingest.service:_align_columns_with_llm:131 - Column mapping received: {'测试用例编号': 'case_name', '用例说明': 'case_name', '执行步骤': 'steps', '成功步骤': 'steps', '输入数据': 'precondition', '执行结果': 'test_result'}
+2026-01-17 15:06:02.435 | WARNING  | app.services.ingest.service:_align_columns_with_llm:144 - Duplicate mapping for case_name: 测试用例编号 vs 用例说明. Keeping 测试用例编号
+2026-01-17 15:06:02.435 | WARNING  | app.services.ingest.service:_align_columns_with_llm:144 - Duplicate mapping for steps: 执行步骤 vs 成功步骤. Keeping 执行步骤
+2026-01-17 15:06:02.437 | INFO     | app.services.ingest.service:_normalize_results_with_llm:192 - Normalizing results with LLM for values: ['完成', '未完成']
+2026-01-17 15:06:03.843 | INFO     | app.services.ingest.service:_normalize_results_with_llm:198 - Result mapping received: {'完成': 'Pass', '未完成': 'Fail'}
+2026-01-17 15:06:03.850 | INFO     | app.services.ingest.service:parse_excel:37 - Parsed 91 cases from 测试用例汇总.xlsx
+2026-01-17 15:06:03.859 | INFO     | app.services.ingest.tagging:tag_cases_concurrently:16 - Starting concurrent module tagging for 91 cases...
+2026-01-17 15:06:32.264 | INFO     | app.services.ingest.tagging:tag_cases_concurrently:24 - Module tagging completed.
+2026-01-17 15:06:32.519 | INFO     | app.services.audit.auditor:audit_cases_concurrently:20 - Starting concurrent result audit for 73 passed cases...
+2026-01-17 15:06:59.914 | INFO     | app.services.audit.auditor:audit_cases_concurrently:28 - Result audit completed.
+2026-01-17 15:06:59.916 | INFO     | app.services.defects.extractor:extract_defect_facts_concurrently:15 - Extracting defects for 18 cases concurrently...
+2026-01-17 15:08:13.478 | INFO     | app.services.defects.extractor:extract_defect_facts_concurrently:22 - Extracted 18 defects.

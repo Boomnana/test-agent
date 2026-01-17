@@ -46,39 +46,51 @@
         </div>
         {% if suspicious_cases %}
         <div class="p-6 border-b bg-yellow-50">
-            <h2 class="text-xl font-bold mb-4 text-yellow-800">3. 质量审计与可信度分析 (疑似假成功)</h2>
-            <div class="mb-4 text-yellow-700">
-                <p>⚠️ 系统检测到以下 <strong>{{ suspicious_cases|length }}</strong> 个用例虽然被标记为“成功”，但其实际结果或备注显示可能存在失败。请重点复核！</p>
+            <div class="flex items-center justify-between mb-4">
+                <h2 class="text-xl font-bold text-yellow-800">3. 质量审计与可信度分析 (疑似假成功)</h2>
+                <button
+                    type="button"
+                    class="text-sm text-yellow-900 bg-yellow-100 hover:bg-yellow-200 border border-yellow-300 px-3 py-1 rounded"
+                    data-toggle-target="#suspicious-cases-body"
+                    data-toggle-open-text="收起用例列表"
+                    data-toggle-closed-text="展开用例列表">
+                    收起用例列表
+                </button>
             </div>
-            <div class="overflow-x-auto">
-                <table class="min-w-full text-sm text-left text-gray-500 border border-yellow-200">
-                    <thead class="text-xs text-yellow-900 uppercase bg-yellow-100">
-                        <tr>
-                            <th class="px-4 py-2">用例名称</th>
-                            <th class="px-4 py-2">预期结果</th>
-                            <th class="px-4 py-2">实际结果</th>
-                            <th class="px-4 py-2">备注</th>
-                            <th class="px-4 py-2">审计发现 (AI 分析)</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {% for case in suspicious_cases %}
-                        <tr class="bg白 border-b hover:bg-yellow-50 tooltip-target"
-                            data-case-name="{{ case.case_name }}"
-                            data-module="{{ case.module }}"
-                            data-expected="{{ case.expected }}"
-                            data-actual="{{ case.actual }}"
-                            data-steps="{{ case.steps }}"
-                            data-remark="{{ case.remark }}">
-                            <td class="px-4 py-2 font-medium text-gray-900">{{ case.case_name }}</td>
-                            <td class="px-4 py-2">{{ case.expected }}</td>
-                            <td class="px-4 py-2">{{ case.actual }}</td>
-                            <td class="px-4 py-2 text-gray-600">{{ case.remark }}</td>
-                            <td class="px-4 py-2 text-red-600 font-bold">{{ case.audit_reason }}</td>
-                        </tr>
-                        {% endfor %}
-                    </tbody>
-                </table>
+            <div id="suspicious-cases-body" class="space-y-4">
+                <div class="text-yellow-700">
+                    <p>⚠️ 系统检测到以下 <strong>{{ suspicious_cases|length }}</strong> 个用例虽然被标记为“成功”，但其实际结果或备注显示可能存在失败。请重点复核！</p>
+                </div>
+                <div class="overflow-x-auto">
+                    <table class="min-w-full text-sm text-left text-gray-500 border border-yellow-200">
+                        <thead class="text-xs text-yellow-900 uppercase bg-yellow-100">
+                            <tr>
+                                <th class="px-4 py-2">用例名称</th>
+                                <th class="px-4 py-2">预期结果</th>
+                                <th class="px-4 py-2">实际结果</th>
+                                <th class="px-4 py-2">备注</th>
+                                <th class="px-4 py-2">审计发现 (AI 分析)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for case in suspicious_cases %}
+                            <tr class="bg白 border-b hover:bg-yellow-50 tooltip-target"
+                                data-case-name="{{ case.case_name }}"
+                                data-module="{{ case.module }}"
+                                data-expected="{{ case.expected }}"
+                                data-actual="{{ case.actual }}"
+                                data-steps="{{ case.steps }}"
+                                data-remark="{{ case.remark }}">
+                                <td class="px-4 py-2 font-medium text-gray-900">{{ case.case_name }}</td>
+                                <td class="px-4 py-2">{{ case.expected }}</td>
+                                <td class="px-4 py-2">{{ case.actual }}</td>
+                                <td class="px-4 py-2 text-gray-600">{{ case.remark }}</td>
+                                <td class="px-4 py-2 text-red-600 font-bold">{{ case.audit_reason }}</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
         {% endif %}
@@ -292,8 +304,8 @@
             tooltip.classList.add('hidden');
         }
 
-        document.querySelectorAll('.tooltip-target').forEach(el => {
-            el.addEventListener('mouseenter', (e) => {
+        document.querySelectorAll('.tooltip-target').forEach(function(el) {
+            el.addEventListener('mouseenter', function(e) {
                 // Clear global timer if exists
                 if (tooltipTimer) {
                     clearTimeout(tooltipTimer);
@@ -329,7 +341,7 @@
                 }, 1000); // 1 second delay
             });
 
-            el.addEventListener('mousemove', (e) => {
+            el.addEventListener('mousemove', function(e) {
                 // Update coordinates for when timer fires
                 el._mouseX = e.clientX;
                 el._mouseY = e.clientY;
@@ -341,7 +353,7 @@
                 }
             });
 
-            el.addEventListener('mouseleave', () => {
+            el.addEventListener('mouseleave', function() {
                 // Only clear if we are leaving the active element
                 if (activeElement === el) {
                     if (tooltipTimer) {
@@ -350,6 +362,29 @@
                     }
                     hideTooltip();
                     activeElement = null;
+                }
+            });
+        });
+
+        document.querySelectorAll('[data-toggle-target]').forEach(function(btn) {
+            btn.addEventListener('click', function() {
+                var targetSelector = btn.getAttribute('data-toggle-target');
+                if (!targetSelector) {
+                    return;
+                }
+                var target = document.querySelector(targetSelector);
+                if (!target) {
+                    return;
+                }
+                var openText = btn.getAttribute('data-toggle-open-text') || '收起';
+                var closedText = btn.getAttribute('data-toggle-closed-text') || '展开';
+                var isHidden = target.classList.contains('hidden');
+                if (isHidden) {
+                    target.classList.remove('hidden');
+                    btn.textContent = openText;
+                } else {
+                    target.classList.add('hidden');
+                    btn.textContent = closedText;
                 }
             });
         });

@@ -12,12 +12,12 @@ class IngestService:
     async def parse_excel(self, file_path: str, job_id: str) -> List[Dict[str, Any]]:
         logger.info(f"Parsing Excel file: {file_path}")
         try:
-            # Read all sheets
             xls = pd.ExcelFile(file_path)
             all_cases = []
             
             for sheet_name in xls.sheet_names:
                 df = pd.read_excel(file_path, sheet_name=sheet_name)
+                df = self._preprocess_dataframe(df)
                 
                 # 1. LLM-based Column Alignment
                 df = await self._align_columns_with_llm(df, sheet_name)
@@ -41,19 +41,49 @@ class IngestService:
             logger.error(f"Failed to parse Excel: {e}")
             raise e
 
+    def _preprocess_dataframe(self, df: pd.DataFrame) -> pd.DataFrame:
+        if df is None or df.empty:
+            return df
+        df = df.dropna(how="all")
+        df = df.dropna(axis=1, how="all")
+        if isinstance(df.columns, pd.MultiIndex):
+            flattened = []
+            for cols in df.columns:
+                parts = []
+                for c in cols:
+                    if c is None:
+                        continue
+                    text = str(c).strip()
+                    if text and text.lower() != "nan":
+                        parts.append(text)
+                flattened.append(" / ".join(parts))
+            df.columns = flattened
+        df.columns = [str(c).strip() for c in df.columns]
+        unnamed_count = sum(col.startswith("Unnamed:") for col in df.columns)
+        if unnamed_count and unnamed_count >= len(df.columns) / 2:
+            for idx, row in df.iterrows():
+                if not row.isna().all():
+                    new_cols = [str(v).strip() for v in row.tolist()]
+                    df = df.iloc[idx + 1 :].reset_index(drop=True)
+                    df.columns = new_cols
+                    break
+            df = df.dropna(how="all")
+            df = df.dropna(axis=1, how="all")
+            df.columns = [str(c).strip() for c in df.columns]
+        return df
+
     async def _align_columns_with_llm(self, df: pd.DataFrame, sheet_name: str) -> pd.DataFrame:
         headers = df.columns.tolist()
-        # Take first valid row as sample
-        sample = {}
+        samples = []
         if not df.empty:
-            # Find a row that isn't all NaN
-            for _, row in df.head(5).iterrows():
+            for _, row in df.head(10).iterrows():
                 if not row.isna().all():
-                    sample = row.fillna("").to_dict()
+                    samples.append(row.fillna("").to_dict())
+                if len(samples) >= 3:
                     break
         
         prompt = f"""
-        你是一个数据解析引擎。你的任务是将输入的 Excel 列名映射到标准字段。
+        你是一个数据解析引擎。你的任务是从可能不规范的 Excel 表格中识别出与单条测试用例相关的列，并将这些列名映射到标准字段。
         
         【重要指令】
         1. 仅输出纯 JSON 字符串。
@@ -71,11 +101,16 @@ class IngestService:
         - executor: 执行人
         - remark: 备注
         
+        输入数据可能包含以下情况：
+        - 多行表头、标题行或说明文字。
+        - 无含义的列名（例如 "Unnamed: 0"、空白列）。
+        - 与测试用例无关的统计列、汇总行等。
+
         输入数据：
         - 列名列表: {headers}
-        - 样本数据: {sample}
+        - 样本数据列表(最多3行，仅包含非空行): {samples}
         
-        请返回 JSON 对象，键为表格中的原始列名，值为对应的标准字段名。
+        请返回 JSON 对象，键为表格中的原始列名，值为对应的标准字段名。仅为真正表示单条测试用例字段的列做映射，忽略明显不是单条用例字段的列。
         
         示例输出：
         {{
@@ -141,6 +176,10 @@ class IngestService:
         - 失败/错误/Fail/Error/Bug -> Fail
         - 阻塞/Block/Blocked -> Blocked
         - 跳过/不适用/Skip/NA -> Skipped
+        - 符号或缩写也需要映射，例如：
+          - "√"、"Y"、"Yes"、"1" 通常表示通过 -> Pass
+          - "×"、"X"、"N"、"No"、"0" 通常表示失败 -> Fail
+        - 对明显不是结果状态的字符串，可以合理推断后映射到最接近的标准状态；如果完全无法判断，可以映射为 "Skipped"。
         
         示例输出：
         {{
